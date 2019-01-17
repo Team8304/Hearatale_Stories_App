@@ -7,7 +7,6 @@
     tools:context=".Home_Page">
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hearatale Stories"
@@ -19,13 +18,21 @@
         app:layout_constraintVertical_bias="0.123" />
 
     <Button
-        android:id="@+id/buttonqxj"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        tools:layout_editor_absoluteY="200dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="393dp"
+        tools:layout_editor_absoluteY="207dp" />
 
 </android.support.constraint.ConstraintLayout>
