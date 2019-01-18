@@ -10,4 +10,5 @@ public class Activity_title_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_title_page);
     }
+    
 }
