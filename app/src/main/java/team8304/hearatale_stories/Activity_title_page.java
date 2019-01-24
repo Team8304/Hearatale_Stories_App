@@ -51,16 +51,6 @@ public class Activity_title_page extends AppCompatActivity {
 //            }
 //        }
 
-        //For Demo
-//        data = "A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion";
-////        sbuffer_2.append(data + "n");
-////        story_description.setText(sbuffer_2);
-////        StringBuffer sbuffer_1 = new StringBuffer();
-////        data = "The Lion and the Mouse";
-////        sbuffer_1.append(data + "n");
-////        story_title.setText(sbuffer_1);
-
-
         back_button = findViewById(R.id.button3);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
