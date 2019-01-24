@@ -61,7 +61,7 @@ public class Activity_title_page extends AppCompatActivity {
 ////        story_title.setText(sbuffer_1);
 
 
-        back_button = (Button) findViewById(R.id.button3);
+        back_button = findViewById(R.id.button3);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,15 +69,13 @@ public class Activity_title_page extends AppCompatActivity {
             }
         });
 
-        favourite_button = (Button) findViewById(R.id.button5);
-        favourite_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                favourite_button.setBackgroundResource(R.drawable.favourite);
-            }
-        });
-
-
+//        favourite_button = (Button) findViewById(R.id.button5);
+//        favourite_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                favourite_button.setBackgroundResource(R.drawable.favourite);
+//            }
+//        });
     }
 
     public void back_to_home_page () {
