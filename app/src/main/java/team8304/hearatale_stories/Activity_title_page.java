@@ -24,25 +24,41 @@ public class Activity_title_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_title_page);
 
+
+        story_title = (TextView) findViewById(R.id.textView2);
+        story_title.setMovementMethod(new ScrollingMovementMethod());
         story_description = (TextView) findViewById(R.id.textView3);
         story_description.setMovementMethod(new ScrollingMovementMethod());
 
-        String data = "";
-        StringBuffer sbuffer = new StringBuffer();
-        InputStream is = this.getResources().openRawResource(R.raw.sample);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
-        if(is != null) {
-            try {
-                while((data=reader.readLine()) != null) {
-                    sbuffer.append(data + "n");
-                }
-                story_description.setText(sbuffer);
-                is.close();
-            }catch(Exception e) {
-                e.printStackTrace();
-            }
-        }
+        String data = "";
+        StringBuffer sbuffer_2 = new StringBuffer();
+
+        // Read txt File
+//        InputStream is = this.getResources().openRawResource(R.raw.sample);
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
+//        if(is != null) {
+//            try {
+//                while((data=reader.readLine()) != null) {
+//                    sbuffer.append(data + "n");
+//                }
+//                story_description.setText(sbuffer);
+//                is.close();
+//            }catch(Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+
+        //For Demo
+        data = "A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion";
+        sbuffer_2.append(data + "n");
+        story_description.setText(sbuffer_2);
+        StringBuffer sbuffer_1 = new StringBuffer();
+        data = "The Lion and the Mouse";
+        sbuffer_1.append(data + "n");
+        story_title.setText(sbuffer_1);
+
 
         back_button = (Button) findViewById(R.id.button3);
         back_button.setOnClickListener(new View.OnClickListener() {

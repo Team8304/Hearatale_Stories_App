@@ -10,40 +10,41 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
         android:text="Back"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="194dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="256dp" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play"
-        tools:layout_editor_absoluteX="238dp"
-        tools:layout_editor_absoluteY="194dp" />
+        android:layout_width="76dp"
+        android:layout_height="69dp"
+        android:background="@drawable/ic_launcher_background"
+        tools:layout_editor_absoluteX="252dp"
+        tools:layout_editor_absoluteY="240dp" />
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="wrap_content"
+        android:layout_width="137dp"
         android:layout_height="wrap_content"
-        android:text="Save for Later"
-        tools:layout_editor_absoluteX="412dp"
-        tools:layout_editor_absoluteY="194dp" />
+        android:text="Favourite"
+        tools:layout_editor_absoluteX="408dp"
+        tools:layout_editor_absoluteY="256dp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="discription_text"
-        tools:layout_editor_absoluteX="251dp"
-        tools:layout_editor_absoluteY="145dp" />
+        android:text="description_text"
+        tools:layout_editor_absoluteX="238dp"
+        tools:layout_editor_absoluteY="185dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="22dp"
         android:text="bookname_text"
-        tools:layout_editor_absoluteX="250dp"
-        tools:layout_editor_absoluteY="116dp" />
+        tools:layout_editor_absoluteX="242dp"
+        tools:layout_editor_absoluteY="138dp" />
 
 </android.support.constraint.ConstraintLayout>
