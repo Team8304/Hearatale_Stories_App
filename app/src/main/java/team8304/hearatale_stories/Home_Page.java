@@ -14,7 +14,7 @@ public class Home_Page extends AppCompatActivity {
     }
 
     public void navigateToLibrary(View view) {
-//        Intent startLibraryActivity = new Intent(this, Library.class);
-//        startActivity(startLibraryActivity);
+        Intent startLibraryActivity = new Intent(this, LibraryActivity.class);
+        startActivity(startLibraryActivity);
     }
 }
