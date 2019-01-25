@@ -13,8 +13,9 @@
         android:text="Hearatale Stories"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.123" />
 
@@ -22,7 +23,9 @@
         android:id="@+id/button"
         android:layout_width="86dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="228dp"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="navigateToLibrary"
@@ -33,7 +36,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.592" />
-
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -46,7 +48,7 @@
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.246"
         app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.592" />
