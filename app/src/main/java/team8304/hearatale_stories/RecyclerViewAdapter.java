@@ -14,13 +14,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.List;
+
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static android.support.v4.content.ContextCompat.startActivity;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
@@ -60,12 +57,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //replace Home_Page.class with a class from an arraylist based on the
-                //position of the current item
-                //Intent intent = new Intent(mContext, Home_Page.class);
-                Intent intent = new Intent(mContext, mClasses.get(position));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(intent);
                 mContext.startActivity(new Intent(mContext, mClasses.get(position)));
             }
         });
