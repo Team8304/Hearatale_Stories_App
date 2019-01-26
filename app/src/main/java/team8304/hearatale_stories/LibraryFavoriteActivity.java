@@ -48,39 +48,39 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
 
         mImageUrls.add("http://hearatale.com/images/star-blank.png");
         mNames.add("Favorite 1");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/images/star-blank.png");
         mNames.add("Favorite 2");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/images/star-blank.png");
         mNames.add("Favorite 3");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/images/star-blank.png");
         mNames.add("Favorite 4");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/images/star-blank.png");
         mNames.add("Favorite 5");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/images/star-blank.png");
         mNames.add("Favorite 6");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/images/star-blank.png");
         mNames.add("Favorite 7");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/images/star-blank.png");
         mNames.add("Favorite 8");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/images/star-blank.png");
         mNames.add("Favorite 9");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         initRecyclerView();
 

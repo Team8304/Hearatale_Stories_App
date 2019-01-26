@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
 
@@ -24,6 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
+    private ArrayList<String> mFileTitles = new ArrayList<>();
     private Context mContext;
 
     public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls,
@@ -32,6 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         mImageUrls = imageUrls;
         mClasses = classes;
         mContext = context;
+        mFileTitles = null;
     }
 
     @Override
@@ -54,7 +57,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext, mClasses.get(position)));
+                Bundle b = new Bundle();
+                b.putString("title", mFileTitles.get(position));
+                mContext.startActivity(new Intent(mContext, mClasses.get(position)), b);
             }
         });
     }
