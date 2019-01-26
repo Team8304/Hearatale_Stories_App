@@ -78,6 +78,36 @@ public class LibraryActivity extends AppCompatActivity {
         mNames.add("The Country Mouse and the City Mouse");
         mClasses.add(Home_Page.class); //replace with correct activity class
 
+        mClasses.add(Home_Page.class); //replace with correct class
+
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/DogAndShadow.jpg");
+        mNames.add("The Dog and His Shadow");
+        mClasses.add(Home_Page.class); //replace with correct class
+
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/PrincessAndPea.jpg");
+        mNames.add("The Princess and the Pea");
+        mClasses.add(Home_Page.class); //replace with correct class
+
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/BlindMenAndElephant.jpg");
+        mNames.add("The Blind Men and the Elephant");
+        mClasses.add(Home_Page.class); //replace with correct class
+
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/LionAndTheMouse.jpg");
+        mNames.add("The Lion and the Mouse");
+        mClasses.add(Home_Page.class); //replace with correct class
+
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/RoosterAndFox.jpg");
+        mNames.add("The Rooster and the Fox");
+        mClasses.add(Home_Page.class); //replace with correct class
+
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/LittleRedHen.jpg");
+        mNames.add("The Little Red Hen");
+        mClasses.add(Home_Page.class); //replace with correct class
+
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/CountryMouseCityMouse.jpg");
+        mNames.add("The Country Mouse and the City Mouse");
+        mClasses.add(Home_Page.class); //replace with correct class
+
         initRecyclerView();
 
     }

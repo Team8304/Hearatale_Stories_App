@@ -26,10 +26,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    //vars
-    private ArrayList<String> mNames;
-    private ArrayList<String> mImageUrls;
-    private ArrayList<Class> mClasses;
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Class> mClasses = new ArrayList<>();
+
     private Context mContext;
 
     public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls,
@@ -66,6 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(mContext, mClasses.get(position));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
+                mContext.startActivity(new Intent(mContext, mClasses.get(position)));
             }
         });
     }
