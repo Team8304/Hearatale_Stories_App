@@ -2,11 +2,13 @@ package team8304.hearatale_stories;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
@@ -24,13 +26,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<String> mDotUrls = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls,
+    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls, ArrayList<String> dotUrls,
                                ArrayList<Class> classes) {
         mNames = names;
         mImageUrls = imageUrls;
+        mDotUrls = dotUrls;
         mClasses = classes;
         mContext = context;
     }
@@ -50,6 +54,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 .load(mImageUrls.get(position))
                 .into(holder.image);
 
+        Glide.with(mContext)
+                .asBitmap()
+                .load(mDotUrls.get(position))
+                .into(holder.dot);
+
         holder.name.setText(mNames.get(position));
 
         holder.image.setOnClickListener(new View.OnClickListener() {
@@ -68,12 +77,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         CircleImageView image;
+        ImageView dot;
         TextView name;
 
         public ViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.image_view);
             name = itemView.findViewById(R.id.name);
+            dot = itemView.findViewById(R.id.dot);
         }
     }
 }
