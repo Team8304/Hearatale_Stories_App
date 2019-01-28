@@ -19,6 +19,8 @@ public class LibraryActivity extends AppCompatActivity {
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
+    private ArrayList<String> mDotUrls = new ArrayList<>();
+    private ArrayList<String> mFileTitles = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,35 +50,45 @@ public class LibraryActivity extends AppCompatActivity {
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/OakTreeAndReeds.jpg");
         mNames.add("The Oak Tree and the Reed");
-        mClasses.add(Home_Page.class); //replace with correct activity class
+
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/DogAndShadow.jpg");
         mNames.add("The Dog and His Shadow");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/PrincessAndPea.jpg");
         mNames.add("The Princess and the Pea");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mDotUrls.add("http://hearatale.com/images/target_audience/F.png");
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/BlindMenAndElephant.jpg");
         mNames.add("The Blind Men and the Elephant");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/LionAndTheMouse.jpg");
         mNames.add("The Lion and the Mouse");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("thelionandthemouse");
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/RoosterAndFox.jpg");
         mNames.add("The Rooster and the Fox");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/LittleRedHen.jpg");
         mNames.add("The Little Red Hen");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/CountryMouseCityMouse.jpg");
         mNames.add("The Country Mouse and the City Mouse");
-        mClasses.add(Home_Page.class); //replace with correct class
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mClasses.add(Activity_title_page.class); //replace with correct class
 
         initRecyclerView();
 
@@ -88,7 +100,7 @@ public class LibraryActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mClasses);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mDotUrls, mClasses);
         recyclerView.setAdapter(adapter);
     }
 }
