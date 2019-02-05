@@ -8,8 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import java.io.File;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -31,9 +33,30 @@ public class Activity_title_page extends AppCompatActivity {
         story_description = (TextView) findViewById(R.id.textView3);
         story_description.setMovementMethod(new ScrollingMovementMethod());
 
+        story_title.setText(getIntent().getStringExtra("title"));
 
-        String data = "";
-        StringBuffer sbuffer_2 = new StringBuffer();
+        // Read txt file
+//        String file_title = getIntent().getStringExtra("title");
+//        file_title = "../main/res/story_assets/" + file_title + "summary.txt";
+//        File file = new File(file_title);
+//        String description = "";
+//        if (file != null) {
+//            try {
+//                BufferedReader reader = new BufferedReader(new FileReader(file));
+//                String line = "";
+//                while((line=reader.readLine()) != null) {
+//                    description = line;
+//                }
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        story_description.setText(description);
+
+
+
+//        String data = "";
+//        StringBuffer sbuffer = new StringBuffer();
 
         // Read txt File
 //        InputStream is = this.getResources().openRawResource(R.raw.sample);
