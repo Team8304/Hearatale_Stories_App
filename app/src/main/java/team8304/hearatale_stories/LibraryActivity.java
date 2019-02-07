@@ -19,8 +19,9 @@ public class LibraryActivity extends AppCompatActivity {
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
-    private ArrayList<String> mDotUrls = new ArrayList<>();
     private ArrayList<String> mFileTitles = new ArrayList<>();
+    private ArrayList<Integer> mDots = new ArrayList<>();
+    private ArrayList<String> mColors = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,43 +51,51 @@ public class LibraryActivity extends AppCompatActivity {
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/OakTreeAndReeds.jpg");
         mNames.add("The Oak Tree and the Reed");
-        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mDots.add(R.drawable.greydot);
+        mColors.add("grey");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/DogAndShadow.jpg");
         mNames.add("The Dog and His Shadow");
-        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mDots.add(R.drawable.greydot);
+        mColors.add("grey");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/PrincessAndPea.jpg");
         mNames.add("The Princess and the Pea");
-        mDotUrls.add("http://hearatale.com/images/target_audience/F.png");
+        mDots.add(R.drawable.reddot);
+        mColors.add("red");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/BlindMenAndElephant.jpg");
         mNames.add("The Blind Men and the Elephant");
-        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
+        mDots.add(R.drawable.greendot);
+        mColors.add("green");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/LionAndTheMouse.jpg");
         mNames.add("The Lion and the Mouse");
-        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mDots.add(R.drawable.greydot);
+        mColors.add("grey");
         mClasses.add(Activity_title_page.class); //replace with correct class
 //        mFileTitles.add("thelionandthemouse");
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/RoosterAndFox.jpg");
         mNames.add("The Rooster and the Fox");
-        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mDots.add(R.drawable.greydot);
+        mColors.add("grey");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/LittleRedHen.jpg");
         mNames.add("The Little Red Hen");
-        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mDots.add(R.drawable.greydot);
+        mColors.add("grey");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/CountryMouseCityMouse.jpg");
         mNames.add("The Country Mouse and the City Mouse");
-        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mDots.add(R.drawable.greydot);
+        mColors.add("grey");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
         initRecyclerView();
@@ -99,7 +108,7 @@ public class LibraryActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mDotUrls, mClasses);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mDots, mColors, mClasses);
         recyclerView.setAdapter(adapter);
     }
 
