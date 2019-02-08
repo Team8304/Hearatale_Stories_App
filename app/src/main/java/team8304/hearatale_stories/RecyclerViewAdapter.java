@@ -27,17 +27,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private static final String TAG = "RecyclerViewAdapter";
 
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Integer> mImages= new ArrayList<>();
     private ArrayList<Integer> mDots = new ArrayList<>();
     private ArrayList<String> mColors = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
 
     private Context mContext;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls, ArrayList<Integer> dots,
+    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<Integer> images, ArrayList<Integer> dots,
                                ArrayList<String> colors, ArrayList<Class> classes) {
         mNames = names;
-        mImageUrls = imageUrls;
+        mImages = images;
         mDots = dots;
         mColors = colors;
         mClasses = classes;
@@ -56,7 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         Glide.with(mContext)
                 .asBitmap()
-                .load(mImageUrls.get(position))
+                .load(mImages.get(position))
                 .into(holder.image);
 
         Glide.with(mContext)
@@ -91,7 +91,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return mImageUrls.size();
+        return mImages.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder  {

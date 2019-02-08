@@ -17,7 +17,7 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
 
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Integer> mImages = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
     private ArrayList<String> mColors = new ArrayList<>();
     private ArrayList<Integer> mDots = new ArrayList<>();
@@ -48,7 +48,7 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
     private void getImages(){
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/LionAndTheMouse.jpg");
+        mImages.add(R.drawable.thelionandthemouse);
         mNames.add("The Lion and the Mouse");
         mDots.add(R.drawable.greydot);
         mColors.add("grey");
@@ -64,7 +64,7 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mDots, mColors, mClasses);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses);
         recyclerView.setAdapter(adapter);
     }
 
