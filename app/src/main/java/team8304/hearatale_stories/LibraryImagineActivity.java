@@ -111,4 +111,10 @@ public class LibraryImagineActivity extends AppCompatActivity {
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mDotUrls, mClasses);
         recyclerView.setAdapter(adapter);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Home_Page.class);
+        startActivity(intent);
+    }
 }

@@ -47,49 +47,9 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
     private void getImages(){
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
-        mImageUrls.add("http://hearatale.com/images/star-blank.png");
-        mNames.add("Favorite 1");
-        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImageUrls.add("http://hearatale.com/images/star-blank.png");
-        mNames.add("Favorite 2");
-        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImageUrls.add("http://hearatale.com/images/star-blank.png");
-        mNames.add("Favorite 3");
-        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImageUrls.add("http://hearatale.com/images/star-blank.png");
-        mNames.add("Favorite 4");
-        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImageUrls.add("http://hearatale.com/images/star-blank.png");
-        mNames.add("Favorite 5");
-        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImageUrls.add("http://hearatale.com/images/star-blank.png");
-        mNames.add("Favorite 6");
-        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImageUrls.add("http://hearatale.com/images/star-blank.png");
-        mNames.add("Favorite 7");
-        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImageUrls.add("http://hearatale.com/images/star-blank.png");
-        mNames.add("Favorite 8");
-        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImageUrls.add("http://hearatale.com/images/star-blank.png");
-        mNames.add("Favorite 9");
-        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/LionAndTheMouse.jpg");
+        mNames.add("The Lion and the Mouse");
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
         initRecyclerView();
@@ -104,5 +64,11 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mDotUrls, mClasses);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Home_Page.class);
+        startActivity(intent);
     }
 }

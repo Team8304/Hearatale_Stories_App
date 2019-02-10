@@ -50,7 +50,6 @@ public class LibraryActivity extends AppCompatActivity {
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/OakTreeAndReeds.jpg");
         mNames.add("The Oak Tree and the Reed");
-
         mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
@@ -73,7 +72,7 @@ public class LibraryActivity extends AppCompatActivity {
         mNames.add("The Lion and the Mouse");
         mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
         mClasses.add(Activity_title_page.class); //replace with correct class
-        mFileTitles.add("thelionandthemouse");
+//        mFileTitles.add("thelionandthemouse");
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/RoosterAndFox.jpg");
         mNames.add("The Rooster and the Fox");
@@ -102,5 +101,11 @@ public class LibraryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mDotUrls, mClasses);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Home_Page.class);
+        startActivity(intent);
     }
 }
