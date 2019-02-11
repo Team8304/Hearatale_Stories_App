@@ -8,9 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.ImageView;
+import android.content.res.Resources;
+import android.content.Context;
 import java.io.File;
+import android.graphics.drawable.Drawable;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -21,19 +26,34 @@ public class Activity_title_page extends AppCompatActivity {
     private Button favourite_button; //TODO
     private TextView story_title;
     private TextView story_description;
+    private ImageView story_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_title_page);
 
-
-        story_title = (TextView) findViewById(R.id.textView2);
+        // Set story title
+        story_title = (TextView) findViewById(R.id.textView3);
         story_title.setMovementMethod(new ScrollingMovementMethod());
-        story_description = (TextView) findViewById(R.id.textView3);
-        story_description.setMovementMethod(new ScrollingMovementMethod());
-
         story_title.setText(getIntent().getStringExtra("title"));
+        // Set story description
+        story_description = (TextView) findViewById(R.id.textView2);
+        story_description.setMovementMethod(new ScrollingMovementMethod());
+        story_description.setText(getIntent().getStringExtra("description"));
+        // Set story image
+        Resources res = getResources();
+        String mDrawableName = getIntent().getStringExtra("image");
+        int resID = res.getIdentifier(mDrawableName, "drawable", getPackageName());
+        story_image.setImageResource(resID);
+//        story_image = findViewById(R.id.imageView2);
+//        Bundle bundle = this.getIntent().getExtras();
+//        int pic = bundle.getInt("image");
+//        story_image.setImageResource(pic);
+//        String fileName = getIntent().getStringExtra("file");
+//        story_image.setImageResource(fileName);
+
+        // FileInputStream fis = context.openFileInput(getIntent().getStringExtra("file"));
 
         // Read txt file
 //        String file_title = getIntent().getStringExtra("title");

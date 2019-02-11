@@ -17,6 +17,7 @@ import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -30,16 +31,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private ArrayList<String> mDotUrls = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
+    private ArrayList<String> mFileNames = new ArrayList<>();
+    private ArrayList<String> mStoryDescriptions = new ArrayList<>();
 
     private Context mContext;
 
     public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls, ArrayList<String> dotUrls,
-                               ArrayList<Class> classes) {
+                               ArrayList<Class> classes, ArrayList<String> fileTitles, ArrayList<String> descriptions) {
         mNames = names;
         mImageUrls = imageUrls;
         mDotUrls = dotUrls;
         mClasses = classes;
         mContext = context;
+        mFileNames = fileTitles;
+        mStoryDescriptions = descriptions;
     }
 
     @Override
@@ -67,7 +72,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext, mClasses.get(position)));
+                Intent intent = new Intent(mContext, mClasses.get(position));
+                intent.putExtra("title", mNames.get(position));
+                intent.putExtra("image", mFileNames.get(position));
+                intent.putExtra("description", mStoryDescriptions.get(position));
+//                Bundle bundle = new Bundle();
+//                bundle.putInt("image", R.drawable.ic_launcher_foreground);
+//                intent.putExtras(bundle);
+               // intent.putExtra("file", mFileNames.get(position));
+                mContext.startActivity(intent);
+                // mContext.startActivity(new Intent(mContext, mClasses.get(position)));
             }
         });
 
