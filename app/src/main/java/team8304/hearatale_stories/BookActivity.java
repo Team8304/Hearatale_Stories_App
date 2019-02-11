@@ -30,7 +30,7 @@ public class BookActivity extends AppCompatActivity {
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
 
         //RawMusic is where the title searches for in the specific folder
-        mp = MediaPlayer.create(this, R.raw.test);
+        mp = MediaPlayer.create(this, R.raw.crab);
         mp.setLooping(false);
         mp.seekTo(0);
         mp.setVolume(0.5f, 0.5f);
