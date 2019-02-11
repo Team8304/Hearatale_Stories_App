@@ -34,8 +34,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$PROJECT_DIR$/app/src/main/res/story_assets/The_Boy_Who_Cried_Wolf/theboywhocriedwolf.png" />
-                                      <entry key="outputName" value="theboywhocriedwolf" />
+                                      <entry key="imageAsset" value="C:\Users\nanga\Documents\greydot.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
