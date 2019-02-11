@@ -49,10 +49,76 @@ public class LibraryActivity extends AppCompatActivity {
     private void getImages(){
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
-        mImages.add(R.drawable.oak_tree_and_reeds);
+        /*mImages.add(R.drawable.oak_tree_and_reeds);
         mNames.add("The Oak Tree and the Reed");
         mDots.add(R.drawable.greydot);
         mColors.add("grey");
+        mClasses.add(Activity_title_page.class); //replace with correct class*/
+
+        mImages.add(R.drawable.thelionandthemouse);
+        mNames.add("The Lion and the Mouse");
+        mDots.add(R.drawable.greydot);
+        mColors.add("grey");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+
+        mImages.add(R.drawable.little_red_hen);
+        mNames.add("The Little Red Hen");
+        mDots.add(R.drawable.greydot);
+        mColors.add("grey");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+
+        mImages.add(R.drawable.boy_who_cried_wolf);
+        mNames.add("The Boy Who Cried Wolf");
+        mDots.add(R.drawable.bluedot);
+        mColors.add("blue");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+
+        mImages.add(R.drawable.elves_and_shoemaker);
+        mNames.add("The Elves and Shoemaker");
+        mDots.add(R.drawable.greendot);
+        mColors.add("green");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+
+        mImages.add(R.drawable.three_little_pigs);
+        mNames.add("The Three Little Pigs");
+        mDots.add(R.drawable.greydot);
+        mColors.add("grey");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+
+        mImages.add(R.drawable.three_billy_goats_gruff);
+        mNames.add("The Three Billy Goats Gruff");
+        mDots.add(R.drawable.greydot);
+        mColors.add("grey");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+
+        mImages.add(R.drawable.peter_rabbit);
+        mNames.add("The Tale of Peter Rabbit");
+        mDots.add(R.drawable.greydot);
+        mColors.add("grey");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+
+        mImages.add(R.drawable.elves_and_shoemaker);
+        mNames.add("The Elves and Shoemaker");
+        mDots.add(R.drawable.greendot);
+        mColors.add("green");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+
+        mImages.add(R.drawable.gingerbread_man);
+        mNames.add("The Gingerbread Man");
+        mDots.add(R.drawable.greendot);
+        mColors.add("green");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+
+        mImages.add(R.drawable.rumplestiltskin);
+        mNames.add("Rumplestiltskin");
+        mDots.add(R.drawable.reddot);
+        mColors.add("red");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+
+        mImages.add(R.drawable.little_red_riding_hood);
+        mNames.add("Little Red Riding Hood");
+        mDots.add(R.drawable.reddot);
+        mColors.add("red");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
         /*mImages.add("http://hearatale.com/Thumbnails/StoriesThumbs/DogAndShadow.jpg");
@@ -73,26 +139,6 @@ public class LibraryActivity extends AppCompatActivity {
         mColors.add("green");
         mClasses.add(Activity_title_page.class); //replace with correct class
         */
-
-        mImages.add(R.drawable.thelionandthemouse);
-        mNames.add("The Lion and the Mouse");
-        mDots.add(R.drawable.greydot);
-        mColors.add("grey");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-//        mFileTitles.add("thelionandthemouse");
-
-        /*mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/RoosterAndFox.jpg");
-        mNames.add("The Rooster and the Fox");
-        mDots.add(R.drawable.greydot);
-        mColors.add("grey");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-        */
-
-        mImages.add(R.drawable.little_red_hen);
-        mNames.add("The Little Red Hen");
-        mDots.add(R.drawable.greydot);
-        mColors.add("grey");
-        mClasses.add(Activity_title_page.class); //replace with correct class
 
         /*mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/CountryMouseCityMouse.jpg");
         mNames.add("The Country Mouse and the City Mouse");
