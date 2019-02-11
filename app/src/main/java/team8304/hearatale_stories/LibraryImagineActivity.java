@@ -17,9 +17,10 @@ public class LibraryImagineActivity extends AppCompatActivity {
 
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Integer> mImages = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
-    private ArrayList<String> mDotUrls = new ArrayList<>();
+    private ArrayList<String> mColors = new ArrayList<>();
+    private ArrayList<Integer> mDots = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,55 +48,65 @@ public class LibraryImagineActivity extends AppCompatActivity {
     private void getImages(){
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/shoe.png");
+        mImages.add(R.drawable.shoe);
         mNames.add("If a Shoe Wanted to be a Car");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/pump.png");
+        mImages.add(R.drawable.pump);
         mNames.add("Do you pump your legs when you swing?");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/window.png");
+        mImages.add(R.drawable.window);
         mNames.add("Upside Down Windows");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/blink.png");
+        mImages.add(R.drawable.blink);
         mNames.add("The Special One-Eye Blink\n");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/angel.png");
+        mImages.add(R.drawable.angel);
         mNames.add("If a Naughty Angel");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/IfYouDecideToBeAKitten.png");
+        mImages.add(R.drawable.if_you_decide_to_be_a_kitten);
         mNames.add("If You Decide to be a Kitten");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/NobodysBetterThanYou.png");
+        mImages.add(R.drawable.nobodys_better_than_you);
         mNames.add("Nobody's Better than You");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/dirt.png");
+        mImages.add(R.drawable.dirt);
         mNames.add("If a Piece of Dirt...");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/palace.png");
+        mImages.add(R.drawable.palace);
         mNames.add("The Imaginary Fairy Palace");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/bubbles.jpg");
+        mImages.add(R.drawable.bubbles);
         mNames.add("Do You Like Bubbles");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
 
         initRecyclerView();
@@ -108,7 +119,13 @@ public class LibraryImagineActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mDotUrls, mClasses);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Home_Page.class);
+        startActivity(intent);
     }
 }
