@@ -13,13 +13,13 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".LibraryFavoriteActivity"
-            android:screenOrientation="landscape">></activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".LibraryImagineActivity"
-            android:screenOrientation="landscape">></activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".LibraryActivity"
-            android:screenOrientation="landscape">></activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".Home_Page"
             android:screenOrientation="landscape"></activity>
