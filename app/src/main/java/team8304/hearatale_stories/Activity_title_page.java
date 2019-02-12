@@ -70,6 +70,8 @@ public class Activity_title_page extends AppCompatActivity {
 
     public void back_to_home_page () {
         Intent intent = new Intent(Activity_title_page.this, LibraryActivity.class);
-        startActivity(intent);
+//        startActivity(intent);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(intent, 0);
     }
 }
