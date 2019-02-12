@@ -15,6 +15,8 @@ public class Home_Page extends AppCompatActivity {
 
     public void navigateToLibrary(View view) {
         Intent startLibraryActivity = new Intent(this, LibraryActivity.class);
-        startActivity(startLibraryActivity);
+//        startActivity(startLibraryActivity);
+        startLibraryActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(startLibraryActivity, 0);
     }
 }

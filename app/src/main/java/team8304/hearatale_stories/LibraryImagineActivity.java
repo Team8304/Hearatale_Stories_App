@@ -31,14 +31,18 @@ public class LibraryImagineActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LibraryImagineActivity.this, LibraryActivity.class));
+                Intent intent = new Intent(LibraryImagineActivity.this, LibraryActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivityIfNeeded(intent, 0);
             }
         });
         Button btn2 = (Button) findViewById(R.id.favoriteButton);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LibraryImagineActivity.this, LibraryFavoriteActivity.class));
+                Intent intent = new Intent(LibraryImagineActivity.this, LibraryFavoriteActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivityIfNeeded(intent, 0);
             }
         });
 
@@ -126,6 +130,8 @@ public class LibraryImagineActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, Home_Page.class);
-        startActivity(intent);
+//        startActivity(intent);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(intent, 0);
     }
 }
