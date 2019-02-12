@@ -76,6 +76,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("title", mNames.get(position));
                 intent.putExtra("image", mFileNames.get(position));
                 intent.putExtra("description", mStoryDescriptions.get(position));
+//                intent.putExtra("class", mContext.);
 //                Bundle bundle = new Bundle();
 //                bundle.putInt("image", R.drawable.ic_launcher_foreground);
 //                intent.putExtras(bundle);

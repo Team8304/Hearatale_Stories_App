@@ -53,7 +53,7 @@ public class LibraryActivity extends AppCompatActivity {
         mNames.add("The Oak Tree and the Reeds");
         mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
         mClasses.add(Activity_title_page.class); //replace with correct class
-        mFileTitles.add("theoaktreeandthereed");
+        mFileTitles.add("theoaktreeandthereeds");
         mStoryDescriptions.add("A big, strong oak tree doesn’t allow sun to reach the little reeds until a storm; the reeds bend and survive, but the oak tree breaks and falls, leaving the reeds in the sunshine.");
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/DogAndShadow.jpg");

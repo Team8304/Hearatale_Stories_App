@@ -43,6 +43,7 @@ public class Activity_title_page extends AppCompatActivity {
         story_description.setText(getIntent().getStringExtra("description"));
         // Set story image
         Resources res = getResources();
+        story_image = findViewById(R.id.imageView2);
         String mDrawableName = getIntent().getStringExtra("image");
         int resID = res.getIdentifier(mDrawableName, "drawable", getPackageName());
         story_image.setImageResource(resID);
