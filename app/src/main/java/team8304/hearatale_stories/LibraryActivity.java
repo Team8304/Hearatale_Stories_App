@@ -17,11 +17,11 @@ public class LibraryActivity extends AppCompatActivity {
 
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<Integer> mImages = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
+    private ArrayList<String> mDotUrls = new ArrayList<>();
     private ArrayList<String> mFileTitles = new ArrayList<>();
-    private ArrayList<Integer> mDots = new ArrayList<>();
-    private ArrayList<String> mColors = new ArrayList<>();
+    private ArrayList<String> mStoryDescriptions = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,18 +32,14 @@ public class LibraryActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LibraryActivity.this, LibraryImagineActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivityIfNeeded(intent, 0);
+                startActivity(new Intent(LibraryActivity.this, LibraryImagineActivity.class));
             }
         });
         Button btn2 = (Button) findViewById(R.id.favoriteButton);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LibraryActivity.this, LibraryFavoriteActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivityIfNeeded(intent, 0);
+                startActivity(new Intent(LibraryActivity.this, LibraryFavoriteActivity.class));
             }
         });
 
@@ -53,103 +49,61 @@ public class LibraryActivity extends AppCompatActivity {
     private void getImages(){
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
-        /*mImages.add(R.drawable.oak_tree_and_reeds);
-        mNames.add("The Oak Tree and the Reed");
-        mDots.add(R.drawable.greydot);
-        mColors.add("grey");
-        mClasses.add(Activity_title_page.class); //replace with correct class*/
-
-        mImages.add(R.drawable.thelionandthemouse);
-        mNames.add("The Lion and the Mouse");
-        mDots.add(R.drawable.greydot);
-        mColors.add("grey");
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/OakTreeAndReeds.jpg");
+        mNames.add("The Oak Tree and the Reeds");
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("theoaktreeandthereeds");
+        mStoryDescriptions.add("A big, strong oak tree doesn’t allow sun to reach the little reeds until a storm; the reeds bend and survive, but the oak tree breaks and falls, leaving the reeds in the sunshine.");
 
-        mImages.add(R.drawable.little_red_hen);
-        mNames.add("The Little Red Hen");
-        mDots.add(R.drawable.greydot);
-        mColors.add("grey");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImages.add(R.drawable.boy_who_cried_wolf);
-        mNames.add("The Boy Who Cried Wolf");
-        mDots.add(R.drawable.bluedot);
-        mColors.add("blue");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImages.add(R.drawable.elves_and_shoemaker);
-        mNames.add("The Elves and Shoemaker");
-        mDots.add(R.drawable.greendot);
-        mColors.add("green");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImages.add(R.drawable.three_little_pigs);
-        mNames.add("The Three Little Pigs");
-        mDots.add(R.drawable.greydot);
-        mColors.add("grey");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImages.add(R.drawable.three_billy_goats_gruff);
-        mNames.add("The Three Billy Goats Gruff");
-        mDots.add(R.drawable.greydot);
-        mColors.add("grey");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImages.add(R.drawable.peter_rabbit);
-        mNames.add("The Tale of Peter Rabbit");
-        mDots.add(R.drawable.greydot);
-        mColors.add("grey");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImages.add(R.drawable.elves_and_shoemaker);
-        mNames.add("The Elves and Shoemaker");
-        mDots.add(R.drawable.greendot);
-        mColors.add("green");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImages.add(R.drawable.gingerbread_man);
-        mNames.add("The Gingerbread Man");
-        mDots.add(R.drawable.greendot);
-        mColors.add("green");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImages.add(R.drawable.rumplestiltskin);
-        mNames.add("Rumplestiltskin");
-        mDots.add(R.drawable.reddot);
-        mColors.add("red");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        mImages.add(R.drawable.little_red_riding_hood);
-        mNames.add("Little Red Riding Hood");
-        mDots.add(R.drawable.reddot);
-        mColors.add("red");
-        mClasses.add(Activity_title_page.class); //replace with correct class
-
-        /*mImages.add("http://hearatale.com/Thumbnails/StoriesThumbs/DogAndShadow.jpg");
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/DogAndShadow.jpg");
         mNames.add("The Dog and His Shadow");
-        mDots.add(R.drawable.greydot);
-        mColors.add("grey");
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("thedogandhisshadow");
+        mStoryDescriptions.add("A greedy dog, not satisfied with his own bone, barks to get another dog’s, but as his own bone splashes in the water he realizes he had only barked at his own reflection.");
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/PrincessAndPea.jpg");
         mNames.add("The Princess and the Pea");
-        mDots.add(R.drawable.reddot);
-        mColors.add("red");
+        mDotUrls.add("http://hearatale.com/images/target_audience/F.png");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("theprincessandthepea");
+        mStoryDescriptions.add("A prince can’t find a real princess to marry until a pea buried under several mattresses makes a young woman too uncomfortable to sleep. ");
 
         mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/BlindMenAndElephant.jpg");
         mNames.add("The Blind Men and the Elephant");
-        mDots.add(R.drawable.greendot);
-        mColors.add("green");
+        mDotUrls.add("http://hearatale.com/images/target_audience/B.png");
         mClasses.add(Activity_title_page.class); //replace with correct class
-        */
+        mFileTitles.add("theblindmenandtheelephant");
+        mStoryDescriptions.add("Blind men argue whether an elephant is a snake, spear, wall, tree or something else; a boy sees the truth all along, but doesn’t bother to argue with them.");
 
-        /*mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/CountryMouseCityMouse.jpg");
-        mNames.add("The Country Mouse and the City Mouse");
-        mDots.add(R.drawable.greydot);
-        mColors.add("grey");
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/LionAndTheMouse.jpg");
+        mNames.add("The Lion and the Mouse");
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
         mClasses.add(Activity_title_page.class); //replace with correct class
-        */
+        mFileTitles.add("thelionandthemouse");
+        mStoryDescriptions.add("A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion.");
+
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/RoosterAndFox.jpg");
+        mNames.add("The Rooster and the Fox");
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("theroosterandthefox");
+        mStoryDescriptions.add("A fox traps a rooster by flattering the rooster’s singing voice, but the rooster escapes when he convinces the fox to taunt and trash talk his pursuers.");
+
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/LittleRedHen.jpg");
+        mNames.add("The Little Red Hen");
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("thelittleredhen");
+        mStoryDescriptions.add("Lazy animals refuse to help the hen plant the seed, harvest the grain, or bake the bread, so the hen refuses to share the baked bread with the lazy animals.");
+
+        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/CountryMouseCityMouse.jpg");
+        mNames.add("The Country Mouse and the City Mouse");
+        mDotUrls.add("http://hearatale.com/images/target_audience/A.png");
+        mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("thecountrymouseandthecitymouse");
+        mStoryDescriptions.add("A country mouse enjoys the luxuries of city life until a frightening city cat convinces him a simple life with safety is better than a rich life full of danger.");
 
         initRecyclerView();
 
@@ -161,15 +115,7 @@ public class LibraryActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mDotUrls, mClasses, mFileTitles, mStoryDescriptions);
         recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(this, Home_Page.class);
-//        startActivity(intent);
-        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivityIfNeeded(intent, 0);
     }
 }
