@@ -11,27 +11,17 @@
         android:layout_width="115dp"
         android:layout_height="115dp"
         android:layout_marginStart="112dp"
-<<<<<<< HEAD
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="48dp"
-=======
-        android:layout_marginBottom="8dp"
->>>>>>> 50c1620a3a3caf74f90c9f34835aa28c15fe836b
         android:background="@drawable/library_icon"
         android:onClick="navigateToLibrary"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
-<<<<<<< HEAD
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_bias="1.0" />
-=======
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="parent" />
->>>>>>> 50c1620a3a3caf74f90c9f34835aa28c15fe836b
 
     <Button
         android:id="@+id/button2"
@@ -55,15 +45,11 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-<<<<<<< HEAD
         app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.978" />
-=======
-        app:layout_constraintStart_toStartOf="parent" />
->>>>>>> 50c1620a3a3caf74f90c9f34835aa28c15fe836b
 
     <TextView
         android:id="@+id/textView5"
@@ -76,13 +62,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.978" />
-=======
-        app:layout_constraintEnd_toEndOf="parent" />
->>>>>>> 50c1620a3a3caf74f90c9f34835aa28c15fe836b
 
     <ImageView
         android:id="@+id/imageView3"
