@@ -1,10 +1,12 @@
 package team8304.hearatale_stories;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -12,12 +14,13 @@ import android.widget.TextView;
 
 public class BookActivity extends AppCompatActivity {
 
-    Button playButton;
-    SeekBar seekBar;
-    TextView elapsedTimeLabel;
-    TextView remainingTimeLabel;
-    MediaPlayer mp;
-    int totalTime;
+    private Button playButton;
+    private SeekBar seekBar;
+    private TextView elapsedTimeLabel;
+    private TextView remainingTimeLabel;
+    private MediaPlayer mp;
+    private int totalTime;
+    private String bookTitle;
 
 
     @Override
@@ -25,11 +28,12 @@ public class BookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
+        bookTitle = getIntent().getExtras().getString("bookTitle");
+
         playButton = (Button) findViewById(R.id.playButton);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
 
-        //RawMusic is where the title searches for in the specific folder
         mp = MediaPlayer.create(this, R.raw.crab);
         mp.setLooping(false);
         mp.seekTo(0);
@@ -115,4 +119,18 @@ public class BookActivity extends AppCompatActivity {
             playButton.setBackgroundResource(R.drawable.play_button);
         }
     }
+
+    public void back_to_home_page (View view) {
+        Intent intent = new Intent(this, Activity_title_page.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(intent, 0);
+        mp.stop();
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        back_to_home_page(new View(this));
+    }
+
 }
