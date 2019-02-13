@@ -2,6 +2,7 @@ package team8304.hearatale_stories;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -33,8 +34,10 @@ public class BookActivity extends AppCompatActivity {
         playButton = (Button) findViewById(R.id.playButton);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
+        Uri bookPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + ""
+            + formatBookTitle(bookTitle));
 
-        mp = MediaPlayer.create(this, R.raw.crab);
+        mp = MediaPlayer.create(this, bookPath);
         mp.setLooping(false);
         mp.seekTo(0);
         mp.setVolume(0.5f, 0.5f);
@@ -131,6 +134,13 @@ public class BookActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         back_to_home_page(new View(this));
+    }
+
+    private String formatBookTitle(String title) {
+        title = title.toLowerCase();
+        title = title.replaceAll(" ", "_");
+        Log.d("DEBUG", title);
+        return title;
     }
 
 }
