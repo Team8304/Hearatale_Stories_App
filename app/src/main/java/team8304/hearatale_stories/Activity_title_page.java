@@ -8,15 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.ImageView;
 import android.content.res.Resources;
-import android.content.Context;
-import java.io.File;
-import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -33,6 +28,7 @@ public class Activity_title_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_title_page);
 
+
         // Set story title
         story_title = (TextView) findViewById(R.id.textView3);
         story_title.setMovementMethod(new ScrollingMovementMethod());
@@ -47,37 +43,10 @@ public class Activity_title_page extends AppCompatActivity {
         String mDrawableName = getIntent().getStringExtra("image");
         int resID = res.getIdentifier(mDrawableName, "drawable", getPackageName());
         story_image.setImageResource(resID);
-//        story_image = findViewById(R.id.imageView2);
-//        Bundle bundle = this.getIntent().getExtras();
-//        int pic = bundle.getInt("image");
-//        story_image.setImageResource(pic);
-//        String fileName = getIntent().getStringExtra("file");
-//        story_image.setImageResource(fileName);
-
-        // FileInputStream fis = context.openFileInput(getIntent().getStringExtra("file"));
-
-        // Read txt file
-//        String file_title = getIntent().getStringExtra("title");
-//        file_title = "../main/res/story_assets/" + file_title + "summary.txt";
-//        File file = new File(file_title);
-//        String description = "";
-//        if (file != null) {
-//            try {
-//                BufferedReader reader = new BufferedReader(new FileReader(file));
-//                String line = "";
-//                while((line=reader.readLine()) != null) {
-//                    description = line;
-//                }
-//            } catch(Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        story_description.setText(description);
 
 
-
-//        String data = "";
-//        StringBuffer sbuffer = new StringBuffer();
+        String data = "";
+        StringBuffer sbuffer_2 = new StringBuffer();
 
         // Read txt File
 //        InputStream is = this.getResources().openRawResource(R.raw.sample);
