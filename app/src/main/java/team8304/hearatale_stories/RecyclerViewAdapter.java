@@ -31,17 +31,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<Integer> mDots = new ArrayList<>();
     private ArrayList<String> mColors = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
+    private ArrayList<String> mFileNames = new ArrayList<>();
+    private ArrayList<String> mStoryDescriptions = new ArrayList<>();
 
     private Context mContext;
 
     public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<Integer> images, ArrayList<Integer> dots,
-                               ArrayList<String> colors, ArrayList<Class> classes) {
+                               ArrayList<String> colors, ArrayList<Class> classes, ArrayList<String> fileNames, ArrayList<String> descriptions) {
         mNames = names;
         mImages = images;
         mDots = dots;
         mColors = colors;
         mClasses = classes;
         mContext = context;
+        mFileNames = fileNames;
+        mStoryDescriptions = descriptions;
     }
 
     @Override
@@ -69,7 +73,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext, mClasses.get(position)));
+                Intent intent = new Intent(mContext, mClasses.get(position));
+                intent.putExtra("title", mNames.get(position));
+                intent.putExtra("image", mFileNames.get(position));
+                intent.putExtra("description", mStoryDescriptions.get(position));
+//                intent.putExtra("class", mContext.);
+//                Bundle bundle = new Bundle();
+//                bundle.putInt("image", R.drawable.ic_launcher_foreground);
+//                intent.putExtras(bundle);
+                // intent.putExtra("file", mFileNames.get(position));
+                mContext.startActivity(intent);
+                // mContext.startActivity(new Intent(mContext, mClasses.get(position)));
             }
         });
 

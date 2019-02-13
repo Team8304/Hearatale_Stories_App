@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.content.res.Resources;
+import android.widget.ImageView;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -19,6 +21,7 @@ public class Activity_title_page extends AppCompatActivity {
     private Button favourite_button; //TODO
     private TextView story_title;
     private TextView story_description;
+    private ImageView story_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +29,20 @@ public class Activity_title_page extends AppCompatActivity {
         setContentView(R.layout.activity_title_page);
 
 
-        story_title = (TextView) findViewById(R.id.textView2);
+        // Set story title
+        story_title = (TextView) findViewById(R.id.textView3);
         story_title.setMovementMethod(new ScrollingMovementMethod());
-        story_description = (TextView) findViewById(R.id.textView3);
+        story_title.setText(getIntent().getStringExtra("title"));
+        // Set story description
+        story_description = (TextView) findViewById(R.id.textView2);
         story_description.setMovementMethod(new ScrollingMovementMethod());
+        story_description.setText(getIntent().getStringExtra("description"));
+        // Set story image
+        Resources res = getResources();
+        story_image = findViewById(R.id.imageView2);
+        String mDrawableName = getIntent().getStringExtra("image");
+        int resID = res.getIdentifier(mDrawableName, "drawable", getPackageName());
+        story_image.setImageResource(resID);
 
 
         String data = "";

@@ -21,6 +21,8 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
     private ArrayList<Class> mClasses = new ArrayList<>();
     private ArrayList<String> mColors = new ArrayList<>();
     private ArrayList<Integer> mDots = new ArrayList<>();
+    private ArrayList<String> mFileTitles = new ArrayList<>();
+    private ArrayList<String> mStoryDescriptions = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses, mFileTitles, mStoryDescriptions);
         recyclerView.setAdapter(adapter);
     }
 
