@@ -17,7 +17,6 @@ import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -28,22 +27,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private static final String TAG = "RecyclerViewAdapter";
 
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
-    private ArrayList<String> mDotUrls = new ArrayList<>();
+    private ArrayList<Integer> mImages= new ArrayList<>();
+    private ArrayList<Integer> mDots = new ArrayList<>();
+    private ArrayList<String> mColors = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
     private ArrayList<String> mFileNames = new ArrayList<>();
     private ArrayList<String> mStoryDescriptions = new ArrayList<>();
 
     private Context mContext;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls, ArrayList<String> dotUrls,
-                               ArrayList<Class> classes, ArrayList<String> fileTitles, ArrayList<String> descriptions) {
+    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<Integer> images, ArrayList<Integer> dots,
+                               ArrayList<String> colors, ArrayList<Class> classes, ArrayList<String> fileNames, ArrayList<String> descriptions) {
         mNames = names;
-        mImageUrls = imageUrls;
-        mDotUrls = dotUrls;
+        mImages = images;
+        mDots = dots;
+        mColors = colors;
         mClasses = classes;
         mContext = context;
-        mFileNames = fileTitles;
+        mFileNames = fileNames;
         mStoryDescriptions = descriptions;
     }
 
@@ -59,12 +60,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         Glide.with(mContext)
                 .asBitmap()
-                .load(mImageUrls.get(position))
+                .load(mImages.get(position))
                 .into(holder.image);
 
         Glide.with(mContext)
                 .asBitmap()
-                .load(mDotUrls.get(position))
+                .load(mDots.get(position))
                 .into(holder.dot);
 
         holder.name.setText(mNames.get(position));
@@ -80,7 +81,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //                Bundle bundle = new Bundle();
 //                bundle.putInt("image", R.drawable.ic_launcher_foreground);
 //                intent.putExtras(bundle);
-               // intent.putExtra("file", mFileNames.get(position));
+                // intent.putExtra("file", mFileNames.get(position));
                 mContext.startActivity(intent);
                 // mContext.startActivity(new Intent(mContext, mClasses.get(position)));
             }
@@ -89,13 +90,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.dot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mDotUrls.get(position).equalsIgnoreCase("http://hearatale.com/images/target_audience/A.png")) {
+                if (mColors.get(position).equalsIgnoreCase("grey")) {
                     Toast.makeText(view.getContext(), "Stories marked with a gray dot feature animals and other non-human protagonists. They will likely appeal equally to both boys and girls.", Toast.LENGTH_LONG).show();
-                } else if (mDotUrls.get(position).equalsIgnoreCase("http://hearatale.com/images/target_audience/B.png")) {
+                } else if (mColors.get(position).equalsIgnoreCase("green")) {
                     Toast.makeText(view.getContext(), "Stories marked with a green dot do not emphasize either gender. They may appeal equally to both boys and girls.", Toast.LENGTH_LONG).show();
-                } else if (mDotUrls.get(position).equalsIgnoreCase("http://hearatale.com/images/target_audience/F.png")) {
+                } else if (mColors.get(position).equalsIgnoreCase("red")) {
                     Toast.makeText(view.getContext(), "Stories marked with a pink dot emphasize female protagonists. They may appeal more to girls.", Toast.LENGTH_LONG).show();
-                } else if (mDotUrls.get(position).equalsIgnoreCase("http://hearatale.com/images/target_audience/M.png")) {
+                } else if (mColors.get(position).equalsIgnoreCase("blue")) {
                     Toast.makeText(view.getContext(), "Stories marked with a blue dot emphasize male protagonists. They may appeal more to boys.", Toast.LENGTH_LONG).show();
                 }
             }
@@ -104,33 +105,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return mImageUrls.size();
+        return mImages.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder  {
 
         CircleImageView image;
         ImageView dot;
         TextView name;
-        //TextView dotDescription;
 
         public ViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.image_view);
             name = itemView.findViewById(R.id.name);
             dot = itemView.findViewById(R.id.dot);
-            //dotDescription = (TextView) itemView.findViewById(R.id.dotDescription);
-
-            dot.setOnClickListener(this);
-        }
-
-        public  void onClick(View v) {
-            /*if (v.getId() == dot.getId()) {
-                Toast.makeText(v.getContext(),"Stories marked with a gray dot feature animals and other non-human protagonists. They will likely appeal equally to both boys and girls.\n" +
-                        "Stories marked with a green dot do not emphasize either gender. They may appeal equally to both boys and girls.\n" +
-                        "Stories marked with a pink dot emphasize female protagonists. They may appeal more to girls.\n" +
-                        "Stories marked with a blue dot emphasize male protagonists. They may appeal more to boys.", Toast.LENGTH_LONG).show();
-            }*/
         }
     }
 }

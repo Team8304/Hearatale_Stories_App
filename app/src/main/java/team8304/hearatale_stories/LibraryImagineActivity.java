@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class LibraryImagineActivity extends AppCompatActivity {
@@ -17,9 +18,10 @@ public class LibraryImagineActivity extends AppCompatActivity {
 
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Integer> mImages = new ArrayList<>();
     private ArrayList<Class> mClasses = new ArrayList<>();
-    private ArrayList<String> mDotUrls = new ArrayList<>();
+    private ArrayList<String> mColors = new ArrayList<>();
+    private ArrayList<Integer> mDots = new ArrayList<>();
     private ArrayList<String> mFileTitles = new ArrayList<>();
     private ArrayList<String> mStoryDescriptions = new ArrayList<>();
 
@@ -32,14 +34,18 @@ public class LibraryImagineActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LibraryImagineActivity.this, LibraryActivity.class));
+                Intent intent = new Intent(LibraryImagineActivity.this, LibraryActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivityIfNeeded(intent, 0);
             }
         });
         Button btn2 = (Button) findViewById(R.id.favoriteButton);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LibraryImagineActivity.this, LibraryFavoriteActivity.class));
+                Intent intent = new Intent(LibraryImagineActivity.this, LibraryFavoriteActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivityIfNeeded(intent, 0);
             }
         });
 
@@ -49,75 +55,85 @@ public class LibraryImagineActivity extends AppCompatActivity {
     private void getImages(){
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/shoe.png");
+        mImages.add(R.drawable.shoe);
         mNames.add("If a Shoe Wanted to be a Car");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("shoe");
         mStoryDescriptions.add("Imagine a shoe wanting to be like a car, and what a child might find in the home to help.");
-        mFileTitles.add("shoecar");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/pump.png");
+        mImages.add(R.drawable.pump);
         mNames.add("Do you pump your legs when you swing?");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
-        mStoryDescriptions.add("Imagine swinging as high as trees, birds, clouds, or even higher, what it might feel like, what you might see. ");
-        mFileTitles.add("pumpswing");
+        mFileTitles.add("pump");
+        mStoryDescriptions.add("Imagine swinging as high as trees, birds, clouds, or even higher, what it might feel like, what you might see.");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/window.png");
+        mImages.add(R.drawable.window);
         mNames.add("Upside Down Windows");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("window");
         mStoryDescriptions.add("Imagine wandering into a world where everything is upside down and backwards.");
-        mFileTitles.add("upsidedownwindows");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/blink.png");
+        mImages.add(R.drawable.blink);
         mNames.add("The Special One-Eye Blink\n");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("blink");
         mStoryDescriptions.add("Imagine blinking to become very tiny and what you might be able to do if you were very, very small.");
-        mFileTitles.add("specialblink");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/angel.png");
+        mImages.add(R.drawable.angel);
         mNames.add("If a Naughty Angel");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("angel");
         mStoryDescriptions.add("Imagine what you’d say if a little angel asked your advice on how to be a tiny bit mischievous.");
-        mFileTitles.add("naughtyangel");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/IfYouDecideToBeAKitten.png");
+        mImages.add(R.drawable.if_you_decide_to_be_a_kitten);
         mNames.add("If You Decide to be a Kitten");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("if_you_decide_to_be_a_kitten");
         mStoryDescriptions.add("Imagine what it might be like to be a kitten.");
-        mFileTitles.add("decidekitten");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/NobodysBetterThanYou.png");
+        mImages.add(R.drawable.nobodys_better_than_you);
         mNames.add("Nobody's Better than You");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("nobodys_better_than_you");
         mStoryDescriptions.add("Always remember, nobody’s better than you.");
-        mFileTitles.add("nobodybetter");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/dirt.png");
+        mImages.add(R.drawable.dirt);
         mNames.add("If a Piece of Dirt...");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("dirt");
         mStoryDescriptions.add("Imagine some of the things you might help a sad, lonely, bored piece of dirt become.");
-        mFileTitles.add("pieceofdirt");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/palace.png");
+        mImages.add(R.drawable.palace);
         mNames.add("The Imaginary Fairy Palace");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("palace");
         mStoryDescriptions.add("Imagine the kind of home fairies might create for themselves if they wanted.");
-        mFileTitles.add("fairypalace");
 
-        mImageUrls.add("http://hearatale.com/Thumbnails/StoriesThumbs/bubbles.jpg");
+        mImages.add(R.drawable.bubbles);
         mNames.add("Do You Like Bubbles");
-        mDotUrls.add("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAU+n3sIAAAAASUVORK5CYII=");
+        mDots.add(R.drawable.whitespace);
+        mColors.add("white");
         mClasses.add(Activity_title_page.class); //replace with correct class
+        mFileTitles.add("bubbles");
         mStoryDescriptions.add("Imagine blowing bubbles in a sink or bathtub.");
-        mFileTitles.add("likebubbles");
 
         initRecyclerView();
 
@@ -129,7 +145,15 @@ public class LibraryImagineActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mDotUrls, mClasses, mFileTitles, mStoryDescriptions);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses, mFileTitles, mStoryDescriptions);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Home_Page.class);
+//        startActivity(intent);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(intent, 0);
     }
 }
