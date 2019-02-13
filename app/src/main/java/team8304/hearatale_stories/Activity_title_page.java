@@ -48,22 +48,6 @@ public class Activity_title_page extends AppCompatActivity {
         String data = "";
         StringBuffer sbuffer_2 = new StringBuffer();
 
-        // Read txt File
-//        InputStream is = this.getResources().openRawResource(R.raw.sample);
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
-//        if(is != null) {
-//            try {
-//                while((data=reader.readLine()) != null) {
-//                    sbuffer.append(data + "n");
-//                }
-//                story_description.setText(sbuffer);
-//                is.close();
-//            }catch(Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-
         back_button = findViewById(R.id.button3);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
