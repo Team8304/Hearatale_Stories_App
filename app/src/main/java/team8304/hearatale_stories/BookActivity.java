@@ -19,9 +19,11 @@ public class BookActivity extends AppCompatActivity {
     private SeekBar seekBar;
     private TextView elapsedTimeLabel;
     private TextView remainingTimeLabel;
+    private TextView storyContent;
     private MediaPlayer mp;
     private int totalTime;
     private String bookTitle;
+
 
 
     @Override
@@ -30,7 +32,7 @@ public class BookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book);
 
         bookTitle = getIntent().getExtras().getString("bookTitle");
-
+        storyContent = (TextView) findViewById(R.id.storyContentTextView);
         playButton = (Button) findViewById(R.id.playButton);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
