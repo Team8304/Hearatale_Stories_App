@@ -139,8 +139,10 @@ public class BookActivity extends AppCompatActivity {
     private String formatBookTitle(String title) {
         title = title.toLowerCase();
         title = title.replaceAll(" ", "_");
+        title = title.replaceAll("\\?", "");
+        title = title.replaceAll("'s", "s");
         Log.d("DEBUG", title);
         return title;
     }
 
-}
+}//
