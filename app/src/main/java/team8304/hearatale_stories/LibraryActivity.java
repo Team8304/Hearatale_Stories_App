@@ -81,7 +81,7 @@ public class LibraryActivity extends AppCompatActivity {
         mDots.add(R.drawable.bluedot);
         mColors.add("blue");
         mClasses.add(Activity_title_page.class); //replace with correct class
-        mFileTitles.add("boy_who_cred_wolf");
+        mFileTitles.add("boy_who_cried_wolf");
         mStoryDescriptions.add("Bored watching over the sheep, a boy causes excitement by lying that a wolf threatens; when a real wolf attacks, the people think the boy’s lying and won’t come to help him.");
 
         mImages.add(R.drawable.elves_and_shoemaker);
