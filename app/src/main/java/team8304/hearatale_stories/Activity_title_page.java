@@ -52,7 +52,8 @@ public class Activity_title_page extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                back_to_home_page();
+                Activity_title_page.super.onBackPressed();
+//                back_to_home_page();
             }
         });
 
