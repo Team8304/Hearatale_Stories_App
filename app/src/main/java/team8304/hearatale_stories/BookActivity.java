@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,7 +45,6 @@ public class BookActivity extends AppCompatActivity {
             + formatBookTitle(bookTitle));
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
                 + formatBookTitle(bookTitle));
-//        InputStream inputStream = getResources().openRawResource(R.raw.story_do_you_like_bubbles);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
