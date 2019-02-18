@@ -75,10 +75,10 @@ public class Activity_title_page extends AppCompatActivity {
         startActivity(playBookIntent);
     }
 
-    public void back_to_home_page () {
-        Intent intent = new Intent(Activity_title_page.this, LibraryActivity.class);
-//        startActivity(intent);
-        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivityIfNeeded(intent, 0);
-    }
+//    public void back_to_home_page () {
+//        Intent intent = new Intent(Activity_title_page.this, LibraryActivity.class);
+////        startActivity(intent);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//        startActivityIfNeeded(intent, 0);
+//    }
 }
