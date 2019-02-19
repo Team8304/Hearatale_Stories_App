@@ -65,7 +65,7 @@ public class BookActivity extends AppCompatActivity {
         mp = MediaPlayer.create(this, bookPath);
         mp.setLooping(false);
         mp.seekTo(0);
-        mp.setVolume(0.5f, 0.5f);
+        mp.setVolume(1.0f, 1.0f);
         totalTime = mp.getDuration();
 
         seekBar = (SeekBar) findViewById(R.id.seekBar);
