@@ -9,17 +9,13 @@ public class Book implements Parcelable {
     private Integer image;
     private Integer dots;
     private String color;
-    private String fileTitle;
 
-
-
-    public Book(String title, String description, Integer image, Integer dots, String color, String fileTitle) {
+    public Book(String title, String description, Integer image, Integer dots, String color) {
         this.title = title;
         this.description = description;
         this.image = image;
         this.dots = dots;
         this.color = color;
-        this.fileTitle = fileTitle;
     }
 
     public String getTitle() {
@@ -34,10 +30,6 @@ public class Book implements Parcelable {
         return this.image;
     }
 
-//    public Class getmClass() {
-//        return this.mClass;
-//    }
-
     public Integer getDots() {
         return this.dots;
     }
@@ -46,29 +38,17 @@ public class Book implements Parcelable {
         return this.color;
     }
 
-    public String getFileTitle() {
-        return this.fileTitle;
-    }
-
     @Override
     public int describeContents() {
         return hashCode();
     }
 
     private Book(Parcel in) {
-//        this.title = in.readString();
-//        this.description = in.readString();
-//        this.image = in.readInt();
-//        //mClass = in.readValue(getClass().getClassLoader());
-//        this.dots = in.readInt();
-//        this.color = in.readString();
-//        this.fileTitle = in.readString();
         title = in.readString();
         description = in.readString();
         image = in.readInt();
         dots = in.readInt();
         color = in.readString();
-        fileTitle = in.readString();
     }
 
     @Override
@@ -78,7 +58,6 @@ public class Book implements Parcelable {
         dest.writeInt(image);
         dest.writeInt(dots);
         dest.writeString(color);
-        dest.writeString(fileTitle);
     }
 
     public static final Parcelable.Creator<Book> CREATOR = new Parcelable.Creator<Book>() {

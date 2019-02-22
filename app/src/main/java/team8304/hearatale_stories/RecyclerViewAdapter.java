@@ -26,33 +26,32 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<Integer> mImages= new ArrayList<>();
-    private ArrayList<Integer> mDots = new ArrayList<>();
-    private ArrayList<String> mColors = new ArrayList<>();
-    private ArrayList<Class> mClasses = new ArrayList<>();
-    private ArrayList<String> mFileNames = new ArrayList<>();
-    private ArrayList<String> mStoryDescriptions = new ArrayList<>();
+//    private ArrayList<String> mNames = new ArrayList<>();
+//    private ArrayList<Integer> mImages= new ArrayList<>();
+//    private ArrayList<Integer> mDots = new ArrayList<>();
+//    private ArrayList<String> mColors = new ArrayList<>();
+//    private ArrayList<Class> mClasses = new ArrayList<>();
+//    private ArrayList<String> mFileNames = new ArrayList<>();
+//    private ArrayList<String> mStoryDescriptions = new ArrayList<>();
     private ArrayList<Book> mBooks = new ArrayList<>();
 
     private Context mContext;
-
-    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<Integer> images, ArrayList<Integer> dots,
-                               ArrayList<String> colors, ArrayList<Class> classes, ArrayList<String> fileNames, ArrayList<String> descriptions) {
-        mNames = names;
-        mImages = images;
-        mDots = dots;
-        mColors = colors;
-        mClasses = classes;
-        mContext = context;
-        mFileNames = fileNames;
-        mStoryDescriptions = descriptions;
-    }
+//
+//    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<Integer> images, ArrayList<Integer> dots,
+//                               ArrayList<String> colors, ArrayList<Class> classes, ArrayList<String> fileNames, ArrayList<String> descriptions) {
+//        mNames = names;
+//        mImages = images;
+//        mDots = dots;
+//        mColors = colors;
+//        mClasses = classes;
+//        mContext = context;
+//        mFileNames = fileNames;
+//        mStoryDescriptions = descriptions;
+//    }
 
     public RecyclerViewAdapter(Context context, ArrayList<Book> books) {
         mContext = context;
         mBooks = books;
-        Log.d(TAG, "###");
     }
 
     @Override
@@ -79,7 +78,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 //        holder.name.setText(mNames.get(position));
         holder.name.setText(mBooks.get(position).getTitle());
-        Log.d(TAG, "@@@@@");
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,9 +87,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //                intent.putExtra("description", mStoryDescriptions.get(position));
                 Intent intent = new Intent(mContext, Activity_title_page.class);
                 intent.putExtra("title", mBooks.get(position).getTitle());
-                intent.putExtra("image", mBooks.get(position).getImage());
+//                intent.putExtra("image", mBooks.get(position).getImage());
+                Bundle bundle = new Bundle();
+                bundle.putInt("image", mBooks.get(position).getImage());
+                intent.putExtras(bundle);
                 intent.putExtra("description", mBooks.get(position).getDescription());
-                Log.d(TAG, "#####");
                 mContext.startActivity(intent);
             }
         });
