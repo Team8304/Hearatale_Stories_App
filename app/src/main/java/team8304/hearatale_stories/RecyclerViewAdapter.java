@@ -18,7 +18,7 @@ import android.os.Bundle;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-
+import Model.Book;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -33,6 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<Class> mClasses = new ArrayList<>();
     private ArrayList<String> mFileNames = new ArrayList<>();
     private ArrayList<String> mStoryDescriptions = new ArrayList<>();
+    private ArrayList<Book> mBooks = new ArrayList<>();
 
     private Context mContext;
 
@@ -48,6 +49,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         mStoryDescriptions = descriptions;
     }
 
+    public RecyclerViewAdapter(Context context, ArrayList<Book> books) {
+        mContext = context;
+        mBooks = books;
+        Log.d(TAG, "###");
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
@@ -60,23 +67,31 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         Glide.with(mContext)
                 .asBitmap()
-                .load(mImages.get(position))
+//                .load(mImages.get(position))
+                .load(mBooks.get(position).getImage())
                 .into(holder.image);
 
         Glide.with(mContext)
                 .asBitmap()
-                .load(mDots.get(position))
+//                .load(mDots.get(position))
+                .load(mBooks.get(position).getDots())
                 .into(holder.dot);
 
-        holder.name.setText(mNames.get(position));
-
+//        holder.name.setText(mNames.get(position));
+        holder.name.setText(mBooks.get(position).getTitle());
+        Log.d(TAG, "@@@@@");
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, mClasses.get(position));
-                intent.putExtra("title", mNames.get(position));
-                intent.putExtra("image", mFileNames.get(position));
-                intent.putExtra("description", mStoryDescriptions.get(position));
+//                Intent intent = new Intent(mContext, mClasses.get(position));
+//                intent.putExtra("title", mNames.get(position));
+//                intent.putExtra("image", mFileNames.get(position));
+//                intent.putExtra("description", mStoryDescriptions.get(position));
+                Intent intent = new Intent(mContext, Activity_title_page.class);
+                intent.putExtra("title", mBooks.get(position).getTitle());
+                intent.putExtra("image", mBooks.get(position).getImage());
+                intent.putExtra("description", mBooks.get(position).getDescription());
+                Log.d(TAG, "#####");
                 mContext.startActivity(intent);
             }
         });
@@ -84,13 +99,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.dot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mColors.get(position).equalsIgnoreCase("grey")) {
+//                if (mColors.get(position).equalsIgnoreCase("grey")) {
+//                    Toast.makeText(view.getContext(), "Stories marked with a gray dot feature animals and other non-human protagonists. They will likely appeal equally to both boys and girls.", Toast.LENGTH_LONG).show();
+//                } else if (mColors.get(position).equalsIgnoreCase("green")) {
+//                    Toast.makeText(view.getContext(), "Stories marked with a green dot do not emphasize either gender. They may appeal equally to both boys and girls.", Toast.LENGTH_LONG).show();
+//                } else if (mColors.get(position).equalsIgnoreCase("red")) {
+//                    Toast.makeText(view.getContext(), "Stories marked with a pink dot emphasize female protagonists. They may appeal more to girls.", Toast.LENGTH_LONG).show();
+//                } else if (mColors.get(position).equalsIgnoreCase("blue")) {
+//                    Toast.makeText(view.getContext(), "Stories marked with a blue dot emphasize male protagonists. They may appeal more to boys.", Toast.LENGTH_LONG).show();
+//                }
+                if (mBooks.get(position).getColor().equalsIgnoreCase("grey")) {
                     Toast.makeText(view.getContext(), "Stories marked with a gray dot feature animals and other non-human protagonists. They will likely appeal equally to both boys and girls.", Toast.LENGTH_LONG).show();
-                } else if (mColors.get(position).equalsIgnoreCase("green")) {
+                } else if (mBooks.get(position).getColor().equalsIgnoreCase("green")) {
                     Toast.makeText(view.getContext(), "Stories marked with a green dot do not emphasize either gender. They may appeal equally to both boys and girls.", Toast.LENGTH_LONG).show();
-                } else if (mColors.get(position).equalsIgnoreCase("red")) {
+                } else if (mBooks.get(position).getColor().equalsIgnoreCase("red")) {
                     Toast.makeText(view.getContext(), "Stories marked with a pink dot emphasize female protagonists. They may appeal more to girls.", Toast.LENGTH_LONG).show();
-                } else if (mColors.get(position).equalsIgnoreCase("blue")) {
+                } else if (mBooks.get(position).getColor().equalsIgnoreCase("blue")) {
                     Toast.makeText(view.getContext(), "Stories marked with a blue dot emphasize male protagonists. They may appeal more to boys.", Toast.LENGTH_LONG).show();
                 }
             }
@@ -99,8 +123,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return mImages.size();
+        return mBooks.size();
     }
+//    @Override
+//    public int getItemCount() {
+//        return mBooks.size();
+//    }
 
     public class ViewHolder extends RecyclerView.ViewHolder  {
 

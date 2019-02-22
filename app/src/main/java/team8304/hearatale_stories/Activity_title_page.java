@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.content.res.Resources;
 import android.widget.ImageView;
 
+import android.util.Log;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -29,8 +30,7 @@ public class Activity_title_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_title_page);
-
-
+        Log.d("RecyclerViewAdapter", "%%%%%");
         // Set story title
         story_title = (TextView) findViewById(R.id.textView3);
         story_title.setMovementMethod(new ScrollingMovementMethod());
@@ -46,7 +46,7 @@ public class Activity_title_page extends AppCompatActivity {
         String mDrawableName = getIntent().getStringExtra("image");
         int resID = res.getIdentifier(mDrawableName, "drawable", getPackageName());
         story_image.setImageResource(resID);
-
+        Log.d("RecyclerViewAdapter", "*****");
 
         String data = "";
         StringBuffer sbuffer_2 = new StringBuffer();

@@ -8,8 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import java.util.ArrayList;
+import Model.Book;
 
 public class LibraryActivity extends AppCompatActivity {
 
@@ -23,6 +23,7 @@ public class LibraryActivity extends AppCompatActivity {
     private ArrayList<Integer> mDots = new ArrayList<>();
     private ArrayList<String> mColors = new ArrayList<>();
     private ArrayList<String> mStoryDescriptions = new ArrayList<>();
+    private ArrayList<Book> mBooks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,8 @@ public class LibraryActivity extends AppCompatActivity {
             }
         });
 
-        getImages();
+        //getImages();
+        initRecyclerView();
     }
 
     private void getImages(){
@@ -182,7 +184,9 @@ public class LibraryActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses, mFileTitles, mStoryDescriptions);
+        mBooks = getIntent().getParcelableArrayListExtra("books");
+//        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses, mFileTitles, mStoryDescriptions);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mBooks);
         recyclerView.setAdapter(adapter);
     }
 
