@@ -7,11 +7,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class BookActivity extends AppCompatActivity {
 
@@ -19,9 +23,11 @@ public class BookActivity extends AppCompatActivity {
     private SeekBar seekBar;
     private TextView elapsedTimeLabel;
     private TextView remainingTimeLabel;
+    private TextView storyContent;
     private MediaPlayer mp;
     private int totalTime;
     private String bookTitle;
+
 
 
     @Override
@@ -30,12 +36,31 @@ public class BookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book);
 
         bookTitle = getIntent().getExtras().getString("bookTitle");
-
+        storyContent = (TextView) findViewById(R.id.storyContentTextView);
+        storyContent.setMovementMethod(new ScrollingMovementMethod());
         playButton = (Button) findViewById(R.id.playButton);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
         Uri bookPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + ""
             + formatBookTitle(bookTitle));
+        Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
+                + formatBookTitle(bookTitle));
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        int i;
+        try {
+            InputStream inputStream = getContentResolver().openInputStream(storyContentPath);
+            i = inputStream.read();
+            while (i != -1)
+            {
+                byteArrayOutputStream.write(i);
+                i = inputStream.read();
+            }
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        storyContent.setText(byteArrayOutputStream.toString());
 
         mp = MediaPlayer.create(this, bookPath);
         mp.setLooping(false);
@@ -139,8 +164,10 @@ public class BookActivity extends AppCompatActivity {
     private String formatBookTitle(String title) {
         title = title.toLowerCase();
         title = title.replaceAll(" ", "_");
+        title = title.replaceAll("\\?", "");
+        title = title.replaceAll("'s", "s");
         Log.d("DEBUG", title);
         return title;
     }
 
-}
+}//
