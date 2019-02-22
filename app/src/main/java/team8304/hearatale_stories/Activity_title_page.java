@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.content.res.Resources;
 import android.widget.ImageView;
 
+import android.util.Log;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -29,8 +30,6 @@ public class Activity_title_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_title_page);
-
-
         // Set story title
         story_title = (TextView) findViewById(R.id.textView3);
         story_title.setMovementMethod(new ScrollingMovementMethod());
@@ -41,12 +40,17 @@ public class Activity_title_page extends AppCompatActivity {
         story_description.setMovementMethod(new ScrollingMovementMethod());
         story_description.setText(getIntent().getStringExtra("description"));
         // Set story image
-        Resources res = getResources();
+        Bundle bundle = getIntent().getExtras();
+        int pic = bundle.getInt("image");
         story_image = findViewById(R.id.imageView2);
-        String mDrawableName = getIntent().getStringExtra("image");
-        int resID = res.getIdentifier(mDrawableName, "drawable", getPackageName());
-        story_image.setImageResource(resID);
-
+        story_image.setImageResource(pic);
+//        story_image.setImageResource(getIntent().getIntExtra("image"));
+//        Resources res = getResources();
+//        story_image = findViewById(R.id.imageView2);
+//        String mDrawableName = getIntent().getStringExtra("image");
+//        int resID = res.getIdentifier(mDrawableName, "drawable", getPackageName());
+//        story_image.setImageResource(resID);
+        Log.d("RecyclerViewAdapter", "*****");
 
         String data = "";
         StringBuffer sbuffer_2 = new StringBuffer();
@@ -75,10 +79,10 @@ public class Activity_title_page extends AppCompatActivity {
         startActivity(playBookIntent);
     }
 
-    public void back_to_home_page () {
-        Intent intent = new Intent(Activity_title_page.this, LibraryActivity.class);
-//        startActivity(intent);
-        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivityIfNeeded(intent, 0);
-    }
+//    public void back_to_home_page () {
+//        Intent intent = new Intent(Activity_title_page.this, LibraryActivity.class);
+////        startActivity(intent);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//        startActivityIfNeeded(intent, 0);
+//    }
 }

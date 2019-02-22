@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import Model.Book;
 
 public class LibraryFavoriteActivity extends AppCompatActivity {
 
@@ -23,6 +24,8 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
     private ArrayList<Integer> mDots = new ArrayList<>();
     private ArrayList<String> mFileTitles = new ArrayList<>();
     private ArrayList<String> mStoryDescriptions = new ArrayList<>();
+    private ArrayList<Book> mBooks = new ArrayList<>();
+    private ArrayList<Book> mImagines = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LibraryFavoriteActivity.this, LibraryActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                mBooks = getIntent().getParcelableArrayListExtra("books");
+                intent.putParcelableArrayListExtra("books", mBooks);
                 startActivityIfNeeded(intent, 0);
             }
         });
@@ -44,6 +49,8 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LibraryFavoriteActivity.this, LibraryImagineActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                mImagines = getIntent().getParcelableArrayListExtra("imagines");
+                intent.putParcelableArrayListExtra("imagines", mImagines);
                 startActivityIfNeeded(intent, 0);
             }
         });
@@ -70,7 +77,8 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses, mFileTitles, mStoryDescriptions);
+//        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses, mFileTitles, mStoryDescriptions);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, null);
         recyclerView.setAdapter(adapter);
     }
 
