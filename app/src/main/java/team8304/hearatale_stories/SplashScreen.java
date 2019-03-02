@@ -28,6 +28,8 @@ public class SplashScreen extends AppCompatActivity {
         }, SPLASH_TIMEOUT);
     }
 
+
+
     private ArrayList<Book> createBooks() {
         String lionDesc = "A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion.";
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
