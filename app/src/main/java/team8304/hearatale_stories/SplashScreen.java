@@ -19,8 +19,13 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                createBooks();
+                for(Book b: mBooks) {
+                    b.buildQuiz(b.getTitle());
+                }
+
                 Intent navigateHomePage = new Intent(SplashScreen.this, Home_Page.class);
-                navigateHomePage.putParcelableArrayListExtra("books", createBooks());
+                navigateHomePage.putParcelableArrayListExtra("books", mBooks);
                 navigateHomePage.putParcelableArrayListExtra("imagines", createImagines());
                 startActivity(navigateHomePage);
                 finish();
