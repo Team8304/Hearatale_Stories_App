@@ -19,7 +19,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                createBooks();
+                mBooks = createBooks();
                 for(Book b: mBooks) {
                     b.buildQuiz(b.getTitle());
                 }
@@ -36,6 +36,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
     private ArrayList<Book> createBooks() {
+        ArrayList<Book> mBooks = new ArrayList<>();
         String lionDesc = "A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion.";
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
                 R.drawable.greydot, "grey"));

@@ -17,6 +17,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import Model.Book;
+
 public class BookActivity extends AppCompatActivity {
 
     private Button playButton;
@@ -27,6 +29,7 @@ public class BookActivity extends AppCompatActivity {
     private MediaPlayer mp;
     private int totalTime;
     private String bookTitle;
+    private Book currentBook;
 
 
 
@@ -35,14 +38,17 @@ public class BookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
-        bookTitle = getIntent().getExtras().getString("bookTitle");
+        currentBook = getIntent().getParcelableExtra("book");
+
+        //bookTitle = getIntent().getExtras().getString("bookTitle");
+        bookTitle = currentBook.getTitle();
         storyContent = (TextView) findViewById(R.id.storyContentTextView);
         storyContent.setMovementMethod(new ScrollingMovementMethod());
         playButton = (Button) findViewById(R.id.playButton);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
         Uri bookPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + ""
-            + formatBookTitle(bookTitle));
+                + formatBookTitle(bookTitle));
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
                 + formatBookTitle(bookTitle));
 
@@ -51,8 +57,7 @@ public class BookActivity extends AppCompatActivity {
         try {
             InputStream inputStream = getContentResolver().openInputStream(storyContentPath);
             i = inputStream.read();
-            while (i != -1)
-            {
+            while (i != -1) {
                 byteArrayOutputStream.write(i);
                 i = inputStream.read();
             }

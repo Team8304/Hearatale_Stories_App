@@ -16,6 +16,8 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import Model.Book;
+
 public class Activity_title_page extends AppCompatActivity {
     private Button back_button;
     private Button play_button;  //TODO
@@ -23,22 +25,26 @@ public class Activity_title_page extends AppCompatActivity {
     private TextView story_title;
     private TextView story_description;
     private ImageView story_image;
-
     private String bookTitle = "";
+    private Book currentBook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_title_page);
         // Set story title
+        currentBook = getIntent().getParcelableExtra("Book");
         story_title = (TextView) findViewById(R.id.textView3);
         story_title.setMovementMethod(new ScrollingMovementMethod());
-        story_title.setText(getIntent().getStringExtra("title"));
-        bookTitle = getIntent().getStringExtra("title");
+        //story_title.setText(getIntent().getStringExtra("title"));
+        story_title.setText(currentBook.getTitle());
+        //bookTitle = getIntent().getStringExtra("title");
+        bookTitle = currentBook.getTitle();
         // Set story description
         story_description = (TextView) findViewById(R.id.textView2);
         story_description.setMovementMethod(new ScrollingMovementMethod());
-        story_description.setText(getIntent().getStringExtra("description"));
+        //story_description.setText(getIntent().getStringExtra("description"));
+        story_description.setText(currentBook.getDescription());
         // Set story image
         Bundle bundle = getIntent().getExtras();
         int pic = bundle.getInt("image");
@@ -75,7 +81,7 @@ public class Activity_title_page extends AppCompatActivity {
 
     public void playBook(View view) {
         Intent playBookIntent = new Intent(this, BookActivity.class);
-        playBookIntent.putExtra("bookTitle", bookTitle);
+        playBookIntent.putExtra("book", currentBook);
         startActivity(playBookIntent);
     }
 

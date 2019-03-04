@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -87,7 +88,8 @@ public class Book implements Parcelable {
         StringBuilder text = new StringBuilder();
         BufferedReader reader;
         try{
-            File questionsFile = new File("./../../../res/raw/" + title + ".txt");
+            File questionsFile = new File("./../../../res/raw/questions_" +
+                                            title + ".txt");
             final InputStream file = new FileInputStream(questionsFile);
             reader = new BufferedReader(new InputStreamReader(file));
             String line = reader.readLine();
@@ -116,8 +118,8 @@ public class Book implements Parcelable {
                     }
                     questions.add(text.toString());
                     text.setLength(0);
-                    line = reader.readLine();
                 }
+                line = reader.readLine();
             }
         } catch(IOException ioe) {
             ioe.printStackTrace();
