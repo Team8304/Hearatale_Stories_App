@@ -74,8 +74,15 @@ public class Activity_title_page extends AppCompatActivity {
     }
 
     public void playBook(View view) {
+        String story_description = getIntent().getExtras().getString("description");
         Intent playBookIntent = new Intent(this, BookActivity.class);
+        Bundle get_bundle = getIntent().getExtras();
+        int pic = get_bundle.getInt("image");
+        Bundle bundle = new Bundle();
+        bundle.putInt("image", pic);
+        playBookIntent.putExtras(bundle);
         playBookIntent.putExtra("bookTitle", bookTitle);
+        playBookIntent.putExtra("description", story_description);
         startActivity(playBookIntent);
     }
 
