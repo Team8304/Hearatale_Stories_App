@@ -4,6 +4,7 @@ import android.os.Parcelable;
 import android.os.Parcel;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -72,14 +73,22 @@ public class Book implements Parcelable {
     }
 
     public void writeQuestionsAndAnswers(String path) {
+        File qAndA = new File(path);
+        Scanner inFile;
+        try {
+            inFile = new Scanner(qAndA);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return;
+        }
+
         int questionLineCount = 0;
-        Scanner inFile = new Scanner(path);
         while (inFile.hasNextLine()) {
-            if (questionLineCount == 0)
+            if (questionLineCount == 0) //if this line is a question
                 questions.add(inFile.nextLine());
-            else if (questionLineCount%5 != 0)
+            else if (questionLineCount%5 != 0) //if this line is an answer
                 answers.add(inFile.nextLine()); //idk if we want to add each answer choice to its own index in arraylist
-            else
+            else //this is a blank line
                 inFile.nextLine();
 
             questionLineCount++;
