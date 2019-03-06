@@ -32,12 +32,8 @@ public class BookActivity extends AppCompatActivity {
     private MediaPlayer mp;
     private int totalTime;
     private String bookTitle;
-<<<<<<< HEAD
     private Book currentBook;
-
-=======
     private AlertDialog alert11;
->>>>>>> master
 
 
     @Override
@@ -46,8 +42,6 @@ public class BookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book);
 
         currentBook = getIntent().getParcelableExtra("book");
-
-        //bookTitle = getIntent().getExtras().getString("bookTitle");
         bookTitle = currentBook.getTitle();
         storyContent = (TextView) findViewById(R.id.storyContentTextView);
         storyContent.setMovementMethod(new ScrollingMovementMethod());
@@ -145,14 +139,12 @@ public class BookActivity extends AppCompatActivity {
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     Intent end_story_Intent = new Intent(BookActivity.this, End_Story_Page.class);
-                                    String story_description = getIntent().getExtras().getString("description");
                                     Bundle get_bundle = getIntent().getExtras();
                                     int pic = get_bundle.getInt("image");
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("image", pic);
                                     end_story_Intent.putExtras(bundle);
-                                    end_story_Intent.putExtra("title", bookTitle);
-                                    end_story_Intent.putExtra("description", story_description);
+                                    end_story_Intent.putExtra("book", currentBook);
                                     startActivity(end_story_Intent);
                                     finish();
                                     dialog.dismiss();
@@ -210,10 +202,6 @@ public class BookActivity extends AppCompatActivity {
         Log.d("DEBUG", title);
         return title;
     }
-
-<<<<<<< HEAD
-}
-=======
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -222,5 +210,4 @@ public class BookActivity extends AppCompatActivity {
         }
     }
 
-}//
->>>>>>> master
+}
