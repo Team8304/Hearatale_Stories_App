@@ -1,10 +1,13 @@
 package team8304.hearatale_stories;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -29,8 +32,12 @@ public class BookActivity extends AppCompatActivity {
     private MediaPlayer mp;
     private int totalTime;
     private String bookTitle;
+<<<<<<< HEAD
     private Book currentBook;
 
+=======
+    private AlertDialog alert11;
+>>>>>>> master
 
 
     @Override
@@ -126,6 +133,35 @@ public class BookActivity extends AppCompatActivity {
 
             String remainTime = createTimeLabel(totalTime - currentPosition);
             remainingTimeLabel.setText("- " + remainTime);
+
+            if(!((Activity) BookActivity.this).isFinishing())
+            {
+                if (remainTime.equals("0:00")){
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(BookActivity.this);
+                    builder1.setMessage("You have completed the story!");
+                    builder1.setCancelable(true);
+                    builder1.setPositiveButton(
+                            "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent end_story_Intent = new Intent(BookActivity.this, End_Story_Page.class);
+                                    String story_description = getIntent().getExtras().getString("description");
+                                    Bundle get_bundle = getIntent().getExtras();
+                                    int pic = get_bundle.getInt("image");
+                                    Bundle bundle = new Bundle();
+                                    bundle.putInt("image", pic);
+                                    end_story_Intent.putExtras(bundle);
+                                    end_story_Intent.putExtra("title", bookTitle);
+                                    end_story_Intent.putExtra("description", story_description);
+                                    startActivity(end_story_Intent);
+                                    finish();
+                                    dialog.dismiss();
+                                }
+                            });
+                    alert11 = builder1.create();
+                    alert11.show();
+                }
+            }
         }
     };
 
@@ -175,4 +211,16 @@ public class BookActivity extends AppCompatActivity {
         return title;
     }
 
+<<<<<<< HEAD
 }
+=======
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (alert11 != null && alert11.isShowing()) {
+            alert11.dismiss();
+        }
+    }
+
+}//
+>>>>>>> master
