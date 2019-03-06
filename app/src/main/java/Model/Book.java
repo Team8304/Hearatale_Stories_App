@@ -3,8 +3,10 @@ package Model;
 import android.os.Parcelable;
 import android.os.Parcel;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Book implements Parcelable {
     private String title;
@@ -67,6 +69,22 @@ public class Book implements Parcelable {
 
     public void setAnswers(ArrayList<String> answers) {
         this.answers = answers;
+    }
+
+    public void writeQuestionsAndAnswers() {
+        int questionLineCount = 0;
+        Scanner inFile = new Scanner(new File("path/to/txtfile"));
+        while (inFile.hasNextLine()) {
+            if (questionLineCount == 0)
+                questions.add(inFile.nextLine());
+            else if (questionLineCount%5 != 0)
+                answers.add(inFile.nextLine()); //idk if we want to add each answer choice to its own index in arraylist
+            else
+                inFile.nextLine();
+
+            questionLineCount++;
+            questionLineCount = questionLineCount%6;
+        }
     }
 
     @Override
