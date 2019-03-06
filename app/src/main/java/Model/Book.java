@@ -71,9 +71,9 @@ public class Book implements Parcelable {
         this.answers = answers;
     }
 
-    public void writeQuestionsAndAnswers() {
+    public void writeQuestionsAndAnswers(String path) {
         int questionLineCount = 0;
-        Scanner inFile = new Scanner(new File("path/to/txtfile"));
+        Scanner inFile = new Scanner(path);
         while (inFile.hasNextLine()) {
             if (questionLineCount == 0)
                 questions.add(inFile.nextLine());
