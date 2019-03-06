@@ -40,5 +40,8 @@
         <activity android:name=".BookActivity"
             android:screenOrientation="landscape">
         </activity>
+        <activity android:name=".End_Story_Page"
+            android:screenOrientation="landscape">
+        </activity>
     </application>
 </manifest>
