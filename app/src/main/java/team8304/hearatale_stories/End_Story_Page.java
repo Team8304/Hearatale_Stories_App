@@ -58,13 +58,14 @@ public class End_Story_Page extends AppCompatActivity {
     public void back_to_story(View view) {
 
         Intent back_to_story_Intent = new Intent(this, Activity_title_page.class);
-        Bundle get_bundle = getIntent().getExtras();
-        int pic = get_bundle.getInt("image");
-        Bundle bundle = new Bundle();
-        bundle.putInt("image", pic);
-        back_to_story_Intent.putExtras(bundle);
-        back_to_story_Intent.putExtra("Book", currentBook);
-        startActivity(back_to_story_Intent);
+//        Bundle get_bundle = getIntent().getExtras();
+//        int pic = get_bundle.getInt("image");
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("image", pic);
+//        back_to_story_Intent.putExtras(bundle);
+//        back_to_story_Intent.putExtra("Book", currentBook);
+        back_to_story_Intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(back_to_story_Intent, 0);
         finish();
     }
 
