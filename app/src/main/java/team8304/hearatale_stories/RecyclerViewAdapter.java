@@ -81,17 +81,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(mContext, mClasses.get(position));
-//                intent.putExtra("title", mNames.get(position));
-//                intent.putExtra("image", mFileNames.get(position));
-//                intent.putExtra("description", mStoryDescriptions.get(position));
                 Intent intent = new Intent(mContext, Activity_title_page.class);
-                intent.putExtra("title", mBooks.get(position).getTitle());
-//                intent.putExtra("image", mBooks.get(position).getImage());
+                intent.putExtra("Book", mBooks.get(position));
+
                 Bundle bundle = new Bundle();
                 bundle.putInt("image", mBooks.get(position).getImage());
                 intent.putExtras(bundle);
-                intent.putExtra("description", mBooks.get(position).getDescription());
+//                intent.putExtra("description", mBooks.get(position).getDescription());
                 mContext.startActivity(intent);
             }
         });
