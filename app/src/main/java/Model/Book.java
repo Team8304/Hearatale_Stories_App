@@ -3,11 +3,22 @@ package Model;
 import android.os.Parcelable;
 import android.os.Parcel;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Book implements Parcelable {
     private String title;
@@ -26,7 +37,8 @@ public class Book implements Parcelable {
         this.color = color;
     }
 
-    public Book(String title, String description, Integer image, Integer dots, String color, ArrayList<String> questions, ArrayList<String> answers) {
+    public Book(String title, String description, Integer image, Integer dots, String color,
+                ArrayList<String> questions, ArrayList<String> answers) {
         this.title = title;
         this.description = description;
         this.image = image;
@@ -72,28 +84,55 @@ public class Book implements Parcelable {
         this.answers = answers;
     }
 
-    public void writeQuestionsAndAnswers(String path) {
-        File qAndA = new File(path);
-        Scanner inFile;
-        try {
-            inFile = new Scanner(qAndA);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return;
-        }
 
-        int questionLineCount = 0;
-        while (inFile.hasNextLine()) {
-            if (questionLineCount == 0) //if this line is a question
-                questions.add(inFile.nextLine());
-            else if (questionLineCount%5 != 0) //if this line is an answer
-                answers.add(inFile.nextLine()); //idk if we want to add each answer choice to its own index in arraylist
-            else //this is a blank line
-                inFile.nextLine();
+    public void buildQuiz(String bookTitle) {
+        ArrayList<String> questions = new ArrayList<>();
+        ArrayList<String> answers = new ArrayList<>();
 
-            questionLineCount++;
-            questionLineCount = questionLineCount%6;
+        String title = formatBookTitle(bookTitle);
+
+
+        StringBuilder text = new StringBuilder();
+        BufferedReader reader;
+        try{
+            File questionsFile = new File("./../../../res/raw/questions_" +
+                                            title + ".txt");
+            final InputStream file = new FileInputStream(questionsFile);
+            reader = new BufferedReader(new InputStreamReader(file));
+            String line = reader.readLine();
+
+            while(line != null) {
+                if (!(line.equals(""))) {
+                    text.append(line);
+
+                    ArrayList<String> randomized = new ArrayList<>();
+                    String answer1 = reader.readLine();
+                    String answer2 = reader.readLine();
+                    String answer3 = reader.readLine();
+                    String answer4 = reader.readLine();
+
+                    randomized.add(answer1);
+                    randomized.add(answer2);
+                    randomized.add(answer3);
+                    randomized.add(answer4);
+                    Collections.shuffle(randomized);
+
+                    answers.add(answer1);
+
+                    for (String s: randomized) {
+                        text.append('\n');
+                        text.append(s);
+                    }
+                    questions.add(text.toString());
+                    text.setLength(0);
+                }
+                line = reader.readLine();
+            }
+        } catch(IOException ioe) {
+            ioe.printStackTrace();
         }
+        this.questions = questions;
+        this.answers = answers;
     }
 
     @Override
@@ -133,4 +172,13 @@ public class Book implements Parcelable {
             return new Book[0];
         }
     };
+
+    private String formatBookTitle(String title) {
+        title = title.toLowerCase();
+        title = title.replaceAll(" ", "_");
+        title = title.replaceAll("\\?", "");
+        title = title.replaceAll("'s", "s");
+        return title;
+    }
+
 }

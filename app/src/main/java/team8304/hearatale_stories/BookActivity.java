@@ -20,6 +20,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import Model.Book;
+
 public class BookActivity extends AppCompatActivity {
 
     private Button playButton;
@@ -30,7 +32,9 @@ public class BookActivity extends AppCompatActivity {
     private MediaPlayer mp;
     private int totalTime;
     private String bookTitle;
+    private Book currentBook;
     private AlertDialog alert11;
+    private boolean popped;
 
 
     @Override
@@ -38,14 +42,16 @@ public class BookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
-        bookTitle = getIntent().getExtras().getString("bookTitle");
+        popped = false;
+        currentBook = getIntent().getParcelableExtra("book");
+        bookTitle = currentBook.getTitle();
         storyContent = (TextView) findViewById(R.id.storyContentTextView);
         storyContent.setMovementMethod(new ScrollingMovementMethod());
         playButton = (Button) findViewById(R.id.playButton);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
         Uri bookPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + ""
-            + formatBookTitle(bookTitle));
+                + formatBookTitle(bookTitle));
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
                 + formatBookTitle(bookTitle));
 
@@ -54,8 +60,7 @@ public class BookActivity extends AppCompatActivity {
         try {
             InputStream inputStream = getContentResolver().openInputStream(storyContentPath);
             i = inputStream.read();
-            while (i != -1)
-            {
+            while (i != -1) {
                 byteArrayOutputStream.write(i);
                 i = inputStream.read();
             }
@@ -127,7 +132,8 @@ public class BookActivity extends AppCompatActivity {
 
             if(!((Activity) BookActivity.this).isFinishing())
             {
-                if (remainTime.equals("0:00")){
+                if (remainTime.equals("0:00") && !popped){
+                    popped = true;
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(BookActivity.this);
                     builder1.setMessage("You have completed the story!");
                     builder1.setCancelable(true);
@@ -136,14 +142,12 @@ public class BookActivity extends AppCompatActivity {
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     Intent end_story_Intent = new Intent(BookActivity.this, End_Story_Page.class);
-                                    String story_description = getIntent().getExtras().getString("description");
                                     Bundle get_bundle = getIntent().getExtras();
                                     int pic = get_bundle.getInt("image");
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("image", pic);
                                     end_story_Intent.putExtras(bundle);
-                                    end_story_Intent.putExtra("title", bookTitle);
-                                    end_story_Intent.putExtra("description", story_description);
+                                    end_story_Intent.putExtra("book", currentBook);
                                     startActivity(end_story_Intent);
                                     finish();
                                     dialog.dismiss();
@@ -201,7 +205,6 @@ public class BookActivity extends AppCompatActivity {
         Log.d("DEBUG", title);
         return title;
     }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -210,4 +213,4 @@ public class BookActivity extends AppCompatActivity {
         }
     }
 
-}//
+}
