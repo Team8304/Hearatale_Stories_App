@@ -55,6 +55,7 @@ public class BookActivity extends AppCompatActivity {
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
                 + formatBookTitle(bookTitle));
 
+
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
         try {

@@ -1,13 +1,16 @@
 package Model;
 
+import android.content.Context;
 import android.os.Parcelable;
 import android.os.Parcel;
+import android.util.Log;
 
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,6 +22,8 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import android.R;
+
 
 public class Book implements Parcelable {
     private String title;
@@ -37,6 +42,7 @@ public class Book implements Parcelable {
         this.color = color;
     }
 
+
     public Book(String title, String description, Integer image, Integer dots, String color,
                 ArrayList<String> questions, ArrayList<String> answers) {
         this.title = title;
@@ -47,6 +53,7 @@ public class Book implements Parcelable {
         this.questions = questions;
         this.answers = answers;
     }
+
 
     public String getTitle() {
         return this.title;
@@ -84,57 +91,6 @@ public class Book implements Parcelable {
         this.answers = answers;
     }
 
-
-    public void buildQuiz(String bookTitle) {
-        ArrayList<String> questions = new ArrayList<>();
-        ArrayList<String> answers = new ArrayList<>();
-
-        String title = formatBookTitle(bookTitle);
-
-
-        StringBuilder text = new StringBuilder();
-        BufferedReader reader;
-        try{
-            File questionsFile = new File("./../../../res/raw/questions_" +
-                                            title + ".txt");
-            final InputStream file = new FileInputStream(questionsFile);
-            reader = new BufferedReader(new InputStreamReader(file));
-            String line = reader.readLine();
-
-            while(line != null) {
-                if (!(line.equals(""))) {
-                    text.append(line);
-
-                    ArrayList<String> randomized = new ArrayList<>();
-                    String answer1 = reader.readLine();
-                    String answer2 = reader.readLine();
-                    String answer3 = reader.readLine();
-                    String answer4 = reader.readLine();
-
-                    randomized.add(answer1);
-                    randomized.add(answer2);
-                    randomized.add(answer3);
-                    randomized.add(answer4);
-                    Collections.shuffle(randomized);
-
-                    answers.add(answer1);
-
-                    for (String s: randomized) {
-                        text.append('\n');
-                        text.append(s);
-                    }
-                    questions.add(text.toString());
-                    text.setLength(0);
-                }
-                line = reader.readLine();
-            }
-        } catch(IOException ioe) {
-            ioe.printStackTrace();
-        }
-        this.questions = questions;
-        this.answers = answers;
-    }
-
     @Override
     public int describeContents() {
         return hashCode();
@@ -148,6 +104,7 @@ public class Book implements Parcelable {
         color = in.readString();
         questions = in.readArrayList(ClassLoader.getSystemClassLoader()); //not 100% sure this is right
         answers = in.readArrayList(ClassLoader.getSystemClassLoader());
+
     }
 
     @Override
