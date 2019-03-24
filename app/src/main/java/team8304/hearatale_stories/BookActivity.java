@@ -19,6 +19,12 @@ import android.widget.TextView;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.ArrayList;
 
 import Model.Book;
 
@@ -34,6 +40,7 @@ public class BookActivity extends AppCompatActivity {
     private String bookTitle;
     private Book currentBook;
     private AlertDialog alert11;
+    private Button question;
 
 
     @Override
@@ -48,6 +55,10 @@ public class BookActivity extends AppCompatActivity {
         playButton = (Button) findViewById(R.id.playButton);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
+        // Question Part
+        question = (Button) findViewById(R.id.questionButton);
+        
+
         Uri bookPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + ""
                 + formatBookTitle(bookTitle));
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
@@ -73,6 +84,7 @@ public class BookActivity extends AppCompatActivity {
         mp.seekTo(0);
         mp.setVolume(1.0f, 1.0f);
         totalTime = mp.getDuration();
+
 
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setMax(totalTime);
@@ -114,6 +126,111 @@ public class BookActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    public void navigateToQuiz(View view) {
+        Intent startLibraryActivity = new Intent(this, QuizActivity.class);
+//        Queue<String> questions = new LinkedList<String>() {
+//            @Override
+//            public boolean add(String s) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean offer(String s) {
+//                return false;
+//            }
+//
+//            @Override
+//            public String remove() {
+//                return null;
+//            }
+//
+//            @Override
+//            public String poll() {
+//                return null;
+//            }
+//
+//            @Override
+//            public String element() {
+//                return null;
+//            }
+//
+//            @Override
+//            public String peek() {
+//                return null;
+//            }
+//
+//            @Override
+//            public int size() {
+//                return 0;
+//            }
+//
+//            @Override
+//            public boolean isEmpty() {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean contains(Object o) {
+//                return false;
+//            }
+//
+//            @Override
+//            public Iterator<String> iterator() {
+//                return null;
+//            }
+//
+//            @Override
+//            public Object[] toArray() {
+//                return new Object[0];
+//            }
+//
+//            @Override
+//            public <T> T[] toArray(T[] a) {
+//                return null;
+//            }
+//
+//            @Override
+//            public boolean remove(Object o) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean containsAll(Collection<?> c) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean addAll(Collection<? extends String> c) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean removeAll(Collection<?> c) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean retainAll(Collection<?> c) {
+//                return false;
+//            }
+//
+//            @Override
+//            public void clear() {
+//
+//            }
+//        };
+//        questions.add("What color is the ball?");
+//        Queue<String> answers = new LinkedList<>();
+//        answers.add("red");
+//        answers.add("yellow");
+//        answers.add("green");
+//        answers.add("brown");
+//        startLibraryActivity.putExtra("questions", (Serializable) questions);
+//        startLibraryActivity.putExtra("answers", (Serializable) answers);
+//        startLibraryActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(startLibraryActivity, 0);
     }
 
     private Handler handler = new Handler() {
@@ -192,6 +309,14 @@ public class BookActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         back_to_home_page(new View(this));
+    }
+
+
+    public void onQuestionPressed() { to_question_page(new View(this)); }
+
+    public void to_question_page(View view) {
+        Intent intent = new Intent(this, QuizActivity.class);
+        startActivity(intent);
     }
 
     private String formatBookTitle(String title) {
