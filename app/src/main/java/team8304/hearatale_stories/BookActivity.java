@@ -40,7 +40,11 @@ public class BookActivity extends AppCompatActivity {
     private String bookTitle;
     private Book currentBook;
     private AlertDialog alert11;
+//<<<<<<< HEAD
     private Button question;
+//=======
+    private boolean popped;
+//>>>>>>> master
 
 
     @Override
@@ -48,6 +52,7 @@ public class BookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
+        popped = false;
         currentBook = getIntent().getParcelableExtra("book");
         bookTitle = currentBook.getTitle();
         storyContent = (TextView) findViewById(R.id.storyContentTextView);
@@ -63,6 +68,7 @@ public class BookActivity extends AppCompatActivity {
                 + formatBookTitle(bookTitle));
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
                 + formatBookTitle(bookTitle));
+
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
@@ -247,7 +253,8 @@ public class BookActivity extends AppCompatActivity {
 
             if(!((Activity) BookActivity.this).isFinishing())
             {
-                if (remainTime.equals("0:00")){
+                if (remainTime.equals("0:00") && !popped){
+                    popped = true;
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(BookActivity.this);
                     builder1.setMessage("You have completed the story!");
                     builder1.setCancelable(true);

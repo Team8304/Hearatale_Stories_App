@@ -1,11 +1,21 @@
 package team8304.hearatale_stories;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
 import Model.Book;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SplashScreen extends AppCompatActivity {
     private static int SPLASH_TIMEOUT = 2500;
@@ -21,7 +31,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 mBooks = createBooks();
                 for(Book b: mBooks) {
-                    b.buildQuiz(b.getTitle());
+                    buildQuiz(b);
                 }
 
                 Intent navigateHomePage = new Intent(SplashScreen.this, Home_Page.class);
@@ -34,12 +44,72 @@ public class SplashScreen extends AppCompatActivity {
     }
 
 
+    private String formatBookTitle(String title) {
+        title = title.toLowerCase();
+        title = title.replaceAll(" ", "_");
+        title = title.replaceAll("\\?", "");
+        title = title.replaceAll("'s", "s");
+        return title;
+    }
+
+    public void buildQuiz(Book book) {
+        ArrayList<String> questions = new ArrayList<>();
+        ArrayList<String> answers = new ArrayList<>();
+
+        String title = formatBookTitle(book.getTitle());
+
+        String fileName = "questions_" + title;
+
+        Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + fileName);
+
+        StringBuilder text = new StringBuilder();
+        BufferedReader reader;
+        try{
+            final InputStream file = getContentResolver().openInputStream(storyContentPath);
+
+            reader = new BufferedReader(new InputStreamReader(file));
+            String line = reader.readLine();
+
+            while(line != null) {
+                if (!(line.equals(""))) {
+                    text.append(line);
+
+                    ArrayList<String> randomized = new ArrayList<>();
+                    String answer1 = reader.readLine();
+                    String answer2 = reader.readLine();
+                    String answer3 = reader.readLine();
+                    String answer4 = reader.readLine();
+
+                    randomized.add(answer1);
+                    randomized.add(answer2);
+                    randomized.add(answer3);
+                    randomized.add(answer4);
+                    Collections.shuffle(randomized);
+
+                    answers.add(answer1);
+
+                    for (String s: randomized) {
+                        text.append('\n');
+                        text.append(s);
+                    }
+                    questions.add(text.toString());
+                    text.setLength(0);
+                }
+                line = reader.readLine();
+            }
+        } catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
+        book.setQuestions(questions);
+        book.setAnswers(answers);
+    }
 
     private ArrayList<Book> createBooks() {
         ArrayList<Book> mBooks = new ArrayList<>();
+
         String lionDesc = "A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion.";
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
-                R.drawable.greydot, "grey"));
+                R.drawable.greydot, "grey")); //getApplicationContext(), resourceId));
         String littleredhen = "Lazy animals refuse to help the hen plant the seed, harvest the grain, or bake the bread, so the hen refuses to share the baked bread with the lazy animals.";
         mBooks.add(new Book("The Little Red Hen", littleredhen, R.drawable.little_red_hen,
                 R.drawable.greydot, "grey"));
@@ -105,4 +175,6 @@ public class SplashScreen extends AppCompatActivity {
 
         return mImagines;
     }
+
+
 }
