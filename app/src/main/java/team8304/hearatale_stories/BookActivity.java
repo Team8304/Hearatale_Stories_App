@@ -14,6 +14,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import java.io.ByteArrayOutputStream;
@@ -28,7 +29,8 @@ public class BookActivity extends AppCompatActivity {
     private SeekBar seekBar;
     private TextView elapsedTimeLabel;
     private TextView remainingTimeLabel;
-    private TextView storyContent;
+    //private TextView storyContent;
+    private ImageView storyImage;
     private MediaPlayer mp;
     private int totalTime;
     private String bookTitle;
@@ -45,8 +47,9 @@ public class BookActivity extends AppCompatActivity {
         popped = false;
         currentBook = getIntent().getParcelableExtra("book");
         bookTitle = currentBook.getTitle();
-        storyContent = (TextView) findViewById(R.id.storyContentTextView);
-        storyContent.setMovementMethod(new ScrollingMovementMethod());
+        storyImage = (ImageView) findViewById(R.id.storyImage);
+        //storyContent = (TextView) findViewById(R.id.storyContentTextView);
+        //storyContent.setMovementMethod(new ScrollingMovementMethod());
         playButton = (Button) findViewById(R.id.playButton);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
@@ -55,8 +58,9 @@ public class BookActivity extends AppCompatActivity {
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
                 + formatBookTitle(bookTitle));
 
+        storyImage.setImageResource(R.drawable.if_a_shoe_wanted_to_be_a_car_01);
 
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        /*ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
         try {
             InputStream inputStream = getContentResolver().openInputStream(storyContentPath);
@@ -68,8 +72,8 @@ public class BookActivity extends AppCompatActivity {
             inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        storyContent.setText(byteArrayOutputStream.toString());
+        }*/
+        //storyContent.setText(byteArrayOutputStream.toString());
 
         mp = MediaPlayer.create(this, bookPath);
         mp.setLooping(false);
@@ -131,6 +135,15 @@ public class BookActivity extends AppCompatActivity {
             String remainTime = createTimeLabel(totalTime - currentPosition);
             remainingTimeLabel.setText("- " + remainTime);
 
+            if (getTime(currentPosition) < 10) {
+                storyImage.setImageResource(R.drawable.if_a_shoe_wanted_to_be_a_car_01);
+            }
+
+            if (getTime(currentPosition) > 10) {
+                int id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + " 0" + String.valueOf(2), "raw", getPackageName());
+                storyImage.setImageResource(R.drawable.if_a_shoe_wanted_to_be_a_car_02);
+            }
+
             if(!((Activity) BookActivity.this).isFinishing())
             {
                 if (remainTime.equals("0:00") && !popped){
@@ -172,6 +185,11 @@ public class BookActivity extends AppCompatActivity {
 
         return timeLabel;
     }
+
+    public int getTime(int position) {
+        return (position / 1000 / 60) + (position / 1000 % 60);
+    }
+
 
     public void playButtonClick(View view) {
         if (!mp.isPlaying()) {
