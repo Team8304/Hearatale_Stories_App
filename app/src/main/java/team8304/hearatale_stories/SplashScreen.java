@@ -1,5 +1,6 @@
 package team8304.hearatale_stories;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
@@ -29,6 +30,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                mImagines = createImagines();
                 mBooks = createBooks();
                 for(Book b: mBooks) {
                     buildQuiz(b);
@@ -36,7 +38,7 @@ public class SplashScreen extends AppCompatActivity {
 
                 Intent navigateHomePage = new Intent(SplashScreen.this, Home_Page.class);
                 navigateHomePage.putParcelableArrayListExtra("books", mBooks);
-                navigateHomePage.putParcelableArrayListExtra("imagines", createImagines());
+                navigateHomePage.putParcelableArrayListExtra("imagines", mImagines);
                 startActivity(navigateHomePage);
                 finish();
             }
@@ -138,10 +140,29 @@ public class SplashScreen extends AppCompatActivity {
         mBooks.add(new Book("Little Red Riding Hood", redriding, R.drawable.little_red_riding_hood,
                 R.drawable.reddot, "red"));
 
+        /*String imagePath;
+        ArrayList<Integer> images = new ArrayList<>();
+        Context context = R.layout.activity_splash_screen.getApplicationContext();
+        Integer id;
+        int numPages = 4;
+        for (int i = 0; i < mBooks.size(); i++) {
+            //add ArrayList of pictures for each story
+            for (int j = 0; j < numPages; j++) {
+                //imagePath = "android.resource://" + getPackageName() + "/raw/" + "" + formatBookTitle(mBooks.get(i).getTitle()) + "0" + j;//need to handle if any stories have >9 pages
+                imagePath = "android.resource://" + getPackageName() + "/raw/" + "" + formatBookTitle(mBooks.get(i).getTitle()) + "0" + j;
+                id = context.getResources().getIdentifier(imagePath, "drawable", context.getPackageName());
+                images.add(id);
+            }
+            mBooks.get(i).setImages(images);
+            images.clear();
+        }*/
+
         return mBooks;
     }
 
     private ArrayList<Book> createImagines() {
+        ArrayList<Book> mImagines = new ArrayList<>();
+
         String shoe = "Imagine a shoe wanting to be like a car, and what a child might find in the home to help.";
         mImagines.add(new Book("If a Shoe Wanted to be a Car", shoe,
                 R.drawable.shoe, R.drawable.whitespace, "white"));
@@ -172,6 +193,25 @@ public class SplashScreen extends AppCompatActivity {
         String bubbles = "Imagine blowing bubbles in a sink or bathtub.";
         mImagines.add(new Book("Do You Like Bubbles", bubbles,
                 R.drawable.bubbles, R.drawable.whitespace, "white"));
+
+        String imagePath;
+        ArrayList<Integer> images = new ArrayList<>();
+        //Context context = R.layout.activity_splash_screen.getApplicationContext();
+        Integer id;
+        int numPages = 4;
+        for (int i = 0; i < 1; i++) {
+            //add ArrayList of pictures for each story
+            for (int j = 1; j < numPages + 1; j++) {
+                //imagePath = "android.resource://" + getPackageName() + "/raw/" + "" + formatBookTitle(mBooks.get(i).getTitle()) + "0" + j;//need to handle if any stories have >9 pages
+                //imagePath = "android.resource://" + getPackageName() + "/raw/" + "" + formatBookTitle(mImagines.get(i).getTitle()) + "0" + j;
+                //id = context.getResources().getIdentifier(imagePath, "raw", context.getPackageName());
+                id = getResources().getIdentifier(formatBookTitle(formatBookTitle(mImagines.get(i).getTitle())) + " 0" + String.valueOf(j), "raw", getPackageName());
+                Log.e("HEEEYYYY!", "id: " + String.valueOf(id));
+                images.add(id);
+            }
+            mImagines.get(i).setImages(images);
+            images.clear();
+        }
 
         return mImagines;
     }

@@ -33,6 +33,8 @@ public class Book implements Parcelable {
     private String color;
     private ArrayList<String> questions;
     private ArrayList<String> answers;
+    private ArrayList<Integer> images;
+    private int numPages;
 
     public Book(String title, String description, Integer image, Integer dots, String color) {
         this.title = title;
@@ -40,6 +42,15 @@ public class Book implements Parcelable {
         this.image = image;
         this.dots = dots;
         this.color = color;
+    }
+
+    public Book(String title, String description, Integer image, Integer dots, String color, int numPages) {
+        this.title = title;
+        this.description = description;
+        this.image = image;
+        this.dots = dots;
+        this.color = color;
+        this.numPages = numPages;
     }
 
 
@@ -91,6 +102,22 @@ public class Book implements Parcelable {
         this.answers = answers;
     }
 
+    public ArrayList<Integer> getImages() {
+         return this.images;
+    }
+
+    public void setImages(ArrayList<Integer> images) {
+        this.images = images;
+    }
+
+    public int getNumPages() {
+        return this.numPages;
+    }
+
+    public void setNumPages(int numPages) {
+        this.numPages = numPages;
+    }
+
     @Override
     public int describeContents() {
         return hashCode();
@@ -104,6 +131,7 @@ public class Book implements Parcelable {
         color = in.readString();
         questions = in.readArrayList(ClassLoader.getSystemClassLoader()); //not 100% sure this is right
         answers = in.readArrayList(ClassLoader.getSystemClassLoader());
+        images = in.readArrayList(ClassLoader.getSystemClassLoader());
 
     }
 
@@ -116,6 +144,7 @@ public class Book implements Parcelable {
         dest.writeString(color);
         dest.writeList(questions);
         dest.writeList(answers);
+        dest.writeList(images);
     }
 
     public static final Parcelable.Creator<Book> CREATOR = new Parcelable.Creator<Book>() {
