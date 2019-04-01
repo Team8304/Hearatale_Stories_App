@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -25,6 +26,7 @@ import Model.Book;
 public class BookActivity extends AppCompatActivity {
 
     private Button playButton;
+    private Button experienceButton;
     private SeekBar seekBar;
     private TextView elapsedTimeLabel;
     private TextView remainingTimeLabel;
@@ -48,6 +50,7 @@ public class BookActivity extends AppCompatActivity {
         storyContent = (TextView) findViewById(R.id.storyContentTextView);
         storyContent.setMovementMethod(new ScrollingMovementMethod());
         playButton = (Button) findViewById(R.id.playButton);
+        experienceButton = (Button) findViewById(R.id.button10);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
         Uri bookPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + ""
@@ -55,6 +58,16 @@ public class BookActivity extends AppCompatActivity {
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
                 + formatBookTitle(bookTitle));
 
+
+        //home experience button
+        experienceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent experience_intent = new Intent(getApplicationContext(), HomeExperienceActivity.class);
+                experience_intent.putExtra("book", currentBook);
+                startActivity(experience_intent);
+            }
+        });
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
@@ -192,6 +205,7 @@ public class BookActivity extends AppCompatActivity {
         mp.stop();
         finish();
     }
+
 
     @Override
     public void onBackPressed() {
