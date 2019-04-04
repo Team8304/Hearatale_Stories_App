@@ -40,11 +40,8 @@ public class BookActivity extends AppCompatActivity {
     private String bookTitle;
     private Book currentBook;
     private AlertDialog alert11;
-//<<<<<<< HEAD
-    private Button question;
-//=======
+    private Button quizButton;
     private boolean popped;
-//>>>>>>> master
 
 
     @Override
@@ -61,7 +58,19 @@ public class BookActivity extends AppCompatActivity {
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
         // Question Part
-        question = (Button) findViewById(R.id.questionButton);
+        quizButton = (Button) findViewById(R.id.questionButton);
+        quizButton.setText("Quiz");
+        quizButton.setVisibility(View.INVISIBLE);
+        quizButton.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                quizButton.setVisibility(View.VISIBLE);
+            }
+        }, 1000 * 5);
+
+//        public void showNow() {
+//
+//        }
         
 
         Uri bookPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + ""
@@ -136,106 +145,6 @@ public class BookActivity extends AppCompatActivity {
 
     public void navigateToQuiz(View view) {
         Intent startLibraryActivity = new Intent(this, QuizActivity.class);
-//        Queue<String> questions = new LinkedList<String>() {
-//            @Override
-//            public boolean add(String s) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean offer(String s) {
-//                return false;
-//            }
-//
-//            @Override
-//            public String remove() {
-//                return null;
-//            }
-//
-//            @Override
-//            public String poll() {
-//                return null;
-//            }
-//
-//            @Override
-//            public String element() {
-//                return null;
-//            }
-//
-//            @Override
-//            public String peek() {
-//                return null;
-//            }
-//
-//            @Override
-//            public int size() {
-//                return 0;
-//            }
-//
-//            @Override
-//            public boolean isEmpty() {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean contains(Object o) {
-//                return false;
-//            }
-//
-//            @Override
-//            public Iterator<String> iterator() {
-//                return null;
-//            }
-//
-//            @Override
-//            public Object[] toArray() {
-//                return new Object[0];
-//            }
-//
-//            @Override
-//            public <T> T[] toArray(T[] a) {
-//                return null;
-//            }
-//
-//            @Override
-//            public boolean remove(Object o) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean containsAll(Collection<?> c) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean addAll(Collection<? extends String> c) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean removeAll(Collection<?> c) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean retainAll(Collection<?> c) {
-//                return false;
-//            }
-//
-//            @Override
-//            public void clear() {
-//
-//            }
-//        };
-//        questions.add("What color is the ball?");
-//        Queue<String> answers = new LinkedList<>();
-//        answers.add("red");
-//        answers.add("yellow");
-//        answers.add("green");
-//        answers.add("brown");
-//        startLibraryActivity.putExtra("questions", (Serializable) questions);
-//        startLibraryActivity.putExtra("answers", (Serializable) answers);
-//        startLibraryActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivityIfNeeded(startLibraryActivity, 0);
     }
 
