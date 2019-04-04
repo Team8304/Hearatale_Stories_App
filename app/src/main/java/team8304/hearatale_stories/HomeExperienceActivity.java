@@ -34,6 +34,7 @@ public class HomeExperienceActivity extends Activity {
     private String bookTitle;
     private Button backButton;
     private Button nextButton;
+    private Button closeButton;
     private MediaPlayer mp;
 
     @Override
@@ -91,12 +92,24 @@ public class HomeExperienceActivity extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int) (width * 0.9), (int) (height * 0.8));
+        getWindow().setLayout((int) (width * 0.9), (int) (height * 0.9));
+        getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
-        params.x = 0;
-        params.y = -20;
+        params.x = -90;
+        params.y = 30;
         getWindow().setAttributes(params);
+
+
+        closeButton = findViewById(R.id.button13);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mp.stop();
+                finish();
+                HomeExperienceActivity.super.onBackPressed();
+            }
+        });
 
 
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -112,9 +125,9 @@ public class HomeExperienceActivity extends Activity {
                     backButton.setVisibility(View.GONE); //SHOW the button
                     nextButton.setVisibility(View.VISIBLE);
                 }
-                mp.stop();
+                mp.reset();
                 try {
-                    mp.setDataSource(getApplicationContext(), Uri.parse(path_arr.get(1)));
+                    mp.setDataSource(getApplicationContext(), Uri.parse(path_arr.get(counter)));
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                 } catch (SecurityException e) {
@@ -147,6 +160,25 @@ public class HomeExperienceActivity extends Activity {
                     backButton.setVisibility(View.VISIBLE);
                     nextButton.setVisibility(View.VISIBLE);
                 }
+                mp.reset();
+                try {
+                    mp.setDataSource(getApplicationContext(), Uri.parse(path_arr.get(counter)));
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                } catch (SecurityException e) {
+                    e.printStackTrace();
+                } catch (IllegalStateException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }try {
+                    mp.prepare();
+                } catch (IllegalStateException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mp.start();
             }
         });
 
