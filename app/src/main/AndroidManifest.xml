@@ -13,15 +13,13 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".LibraryFavoriteActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".LibraryImagineActivity"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".LibraryActivity"
-            android:screenOrientation="landscape">
-         </activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".Home_Page"
             android:screenOrientation="landscape" />
@@ -37,6 +35,7 @@
         <activity
             android:name=".Activity_title_page"
             android:screenOrientation="landscape" />
+
         <activity android:name=".BookActivity"
             android:screenOrientation="landscape">
         </activity>
@@ -46,5 +45,16 @@
         <activity android:name=".QuizActivity"
             android:screenOrientation="landscape">
         </activity>
+
+        <!--<activity-->
+            <!--android:name=".BookActivity"-->
+            <!--android:screenOrientation="landscape"></activity>-->
+        <!--<activity-->
+            <!--android:name=".End_Story_Page"-->
+            <!--android:screenOrientation="landscape"></activity>-->
+        <activity android:name=".HomeExperienceActivity"
+            android:theme="@style/AppTheme.home_experience_pop"></activity>
+
     </application>
+
 </manifest>
