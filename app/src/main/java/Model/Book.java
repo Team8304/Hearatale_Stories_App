@@ -33,6 +33,7 @@ public class Book implements Parcelable {
     private String color;
     private ArrayList<String> questions;
     private ArrayList<String> answers;
+    private String isStory;
 
     public Book(String title, String description, Integer image, Integer dots, String color) {
         this.title = title;
@@ -40,6 +41,8 @@ public class Book implements Parcelable {
         this.image = image;
         this.dots = dots;
         this.color = color;
+        this.questions = null;
+        this.answers = null;
     }
 
 
@@ -82,6 +85,7 @@ public class Book implements Parcelable {
     public ArrayList<String> getAnswers() {
         return this.answers;
     }
+
 
     public void setQuestions(ArrayList<String> questions) {
         this.questions = questions;

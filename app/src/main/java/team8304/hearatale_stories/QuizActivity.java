@@ -6,17 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
-import android.util.Log;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class QuizActivity extends AppCompatActivity {
-    private TextView questionNumber;
     private TextView question;
     private Button answer1;
     private Button answer2;
@@ -28,138 +21,120 @@ public class QuizActivity extends AppCompatActivity {
     private String answer;
     private boolean firstTry;
     private boolean secondTry;
-    private String questions[];
-    private String answerChoices[][];
-    private String answers[];
-
-    private static final String TAG = "QuizActivity";
+    private ArrayList<String> questions;
+    private ArrayList<String> answers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-
-        questionNumber = (TextView) findViewById(R.id.qNumTextView);
+        // Assign buttons
         question = (TextView) findViewById(R.id.questionTextView);
         answer1 = (Button) findViewById(R.id.answer1Button);
         answer2 = (Button) findViewById(R.id.answer2Button);
         answer3 = (Button) findViewById(R.id.answer3Button);
         answer4 = (Button) findViewById(R.id.answer4Button);
-
-        // Create Array of questions
-//        Queue<String> questions = new LinkedList<>();
-//        ((LinkedList<String>) questions).add("What is 1?");
-//        ((LinkedList<String>) questions).add("What is 2?");
-//        ((LinkedList<String>) questions).add("What is 3?");
-        questions = new String[]{"First Question", "Second Question", "Third Question"};
-
-        // Create Double Array of AnswerChoices
-//        ArrayList<ArrayList> answers = new ArrayList<>();
-//        ArrayList<String> one = new ArrayList<>();
-//        ArrayList<String> two = new ArrayList<>();
-//        ArrayList<String> three = new ArrayList<>();
-        answerChoices = new String[][]{
-                {"1", "2", "3", "4"},
-                {"1", "2", "3", "4"},
-                {"1", "2", "3", "4"}
-        };
-
-        // Create Array of Answers
-        answers = new String[]{"1", "2", "3"};
+        // Get passed question/answers
+        questions = getIntent().getStringArrayListExtra("questions");
+        answers = getIntent().getStringArrayListExtra("answers");
+        // Set up screen with first question
         updateQuestion();
-        if (questions.length != 0) {
-            answer1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (answer1.getText() == answer) {
-                        Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
-                        counter++;
-                        updateQuestion();
-                    } else if (tries < 2) {
-                        Toast.makeText(QuizActivity.this, "Wrong! Try Again", Toast.LENGTH_SHORT).show();
-                        tries++;
-                    } else {
-                        Toast.makeText(QuizActivity.this, "Wrong Again. You suck kiddo", Toast.LENGTH_SHORT).show();
-                        counter++;
-                        updateQuestion();
-                    }
+        answer1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answer1.getText().equals(answer)) {
+                    Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                    counter++;
+                    updateQuestion();
+                } else if (tries < 2) {
+                    Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
+                    tries++;
+                } else {
+                    Toast.makeText(QuizActivity.this, "Incorrect, Next Question", Toast.LENGTH_SHORT).show();
+                    counter++;
+                    updateQuestion();
                 }
-            });
-            answer2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (answer2.getText() == answer) {
-                        Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
-                        counter++;
-                        updateQuestion();
-                    } else if (tries < 2) {
-                        Toast.makeText(QuizActivity.this, "Wrong! Try Again", Toast.LENGTH_SHORT).show();
-                        tries++;
-                    } else {
-                        Toast.makeText(QuizActivity.this, "Wrong Again. You suck kiddo", Toast.LENGTH_SHORT).show();
-                        counter++;
-                        updateQuestion();
-                    }
+            }
+        });
+        answer2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answer2.getText().equals(answer)) {
+                    Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                    counter++;
+                    updateQuestion();
+                } else if (tries < 2) {
+                    Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
+                    tries++;
+                } else {
+                    Toast.makeText(QuizActivity.this, "Incorrect, Next Question", Toast.LENGTH_SHORT).show();
+                    counter++;
+                    updateQuestion();
                 }
-            });
-            answer3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (answer3.getText() == answer) {
-                        Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
-                        counter++;
-//                        if (counter >= questions.length) {
-//                            QuizActivity.super.onBackPressed();
-//                        }
-                        updateQuestion();
-                    } else if (tries < 2) {
-                        Toast.makeText(QuizActivity.this, "Wrong! Try Again", Toast.LENGTH_SHORT).show();
-                        tries++;
-                    } else {
-                        Toast.makeText(QuizActivity.this, "Wrong Again. You suck kiddo", Toast.LENGTH_SHORT).show();
-                        counter++;
-                        updateQuestion();
-                    }
+            }
+        });
+        answer3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answer3.getText().equals(answer)) {
+                    Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                    counter++;
+                    updateQuestion();
+                } else if (tries < 2) {
+                    Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
+                    tries++;
+                } else {
+                    Toast.makeText(QuizActivity.this, "Incorrect, Next Question", Toast.LENGTH_SHORT).show();
+                    counter++;
+                    updateQuestion();
                 }
-            });
-            answer4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (answer4.getText() == answer) {
-                        Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
-                        counter++;
-                        updateQuestion();
-                    } else if (tries < 2) {
-                        Toast.makeText(QuizActivity.this, "Wrong! Try Again", Toast.LENGTH_SHORT).show();
-                        tries++;
-                    } else {
-                        Toast.makeText(QuizActivity.this, "Wrong Again. You suck kiddo", Toast.LENGTH_SHORT).show();
-                        counter++;
-                        updateQuestion();
-                    }
+            }
+        });
+        answer4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answer4.getText().equals(answer)) {
+                    Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                    counter++;
+                    updateQuestion();
+                } else if (tries < 2) {
+                    Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
+                    tries++;
+                } else {
+                    Toast.makeText(QuizActivity.this, "Incorrect, Next Question", Toast.LENGTH_SHORT).show();
+                    counter++;
+                    updateQuestion();
                 }
-            });
-        }
+            }
+        });
 
         back_button = findViewById(R.id.button10);
-        back_button.setText("Back");
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 QuizActivity.super.onBackPressed();
-//                back_to_home_page();
             }
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, BookActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(intent, 0);
+    }
+
     private void updateQuestion() {
-        questionNumber.setText(Integer.toString(counter + 1));
-        question.setText(questions[counter]);
-        answer1.setText(answerChoices[counter][0]);
-        answer2.setText(answerChoices[counter][1]);
-        answer3.setText(answerChoices[counter][2]);
-        answer4.setText(answerChoices[counter][3]);
-        answer = answers[counter];
+        if (counter == questions.size()) {
+            QuizActivity.super.onBackPressed();
+        }
+        String[] lines = questions.get(counter).split("\\r?\\n");
+        question.setText(lines[0]);
+        answer1.setText(lines[1]);
+        answer2.setText(lines[2]);
+        answer3.setText(lines[3]);
+        answer4.setText(lines[4]);
+        answer = answers.get(counter);
         tries = 1;
     }
 }

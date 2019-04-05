@@ -20,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -42,7 +43,8 @@ public class BookActivity extends AppCompatActivity {
     private AlertDialog alert11;
     private Button quizButton;
     private boolean popped;
-
+    private ArrayList<String> currentQuestions;
+    private ArrayList<String> currentAnswers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,17 +62,20 @@ public class BookActivity extends AppCompatActivity {
         // Question Part
         quizButton = (Button) findViewById(R.id.questionButton);
         quizButton.setText("Quiz");
-        quizButton.setVisibility(View.INVISIBLE);
-        quizButton.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                quizButton.setVisibility(View.VISIBLE);
-            }
-        }, 1000 * 5);
+        quizButton.setVisibility(View.VISIBLE);
+        if (currentBook.getAnswers() == null) {
+            quizButton.setVisibility(View.INVISIBLE);
+        }
+//        quizButton.setVisibility(View.INVISIBLE);
+//            quizButton.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    quizButton.setVisibility(View.VISIBLE);
+//                }
+//            }, 1000 * 5);
 
-//        public void showNow() {
-//
-//        }
+        currentQuestions = currentBook.getQuestions();
+        currentAnswers = currentBook.getAnswers();
         
 
         Uri bookPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + ""
@@ -145,6 +150,9 @@ public class BookActivity extends AppCompatActivity {
 
     public void navigateToQuiz(View view) {
         Intent startLibraryActivity = new Intent(this, QuizActivity.class);
+        startLibraryActivity.putStringArrayListExtra("questions", currentQuestions);
+        startLibraryActivity.putStringArrayListExtra("answers", currentAnswers);
+
         startActivityIfNeeded(startLibraryActivity, 0);
     }
 
