@@ -45,6 +45,8 @@ public class BookActivity extends AppCompatActivity {
     private boolean popped;
     private ArrayList<String> currentQuestions;
     private ArrayList<String> currentAnswers;
+    private int questionCounter = 0;
+    private static final String TAG = "QuizActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,10 +152,15 @@ public class BookActivity extends AppCompatActivity {
 
     public void navigateToQuiz(View view) {
         Intent startLibraryActivity = new Intent(this, QuizActivity.class);
-        startLibraryActivity.putStringArrayListExtra("questions", currentQuestions);
+        questionCounter = getIntent().getIntExtra("counter", 0);
+        ArrayList<String> q = new ArrayList<>(currentQuestions.subList(questionCounter, currentQuestions.size()));
+//        startLibraryActivity.putStringArrayListExtra("questions", currentQuestions);
+        System.out.println("!!!: " + questionCounter);
+        startLibraryActivity.putStringArrayListExtra("questions", q);
         startLibraryActivity.putStringArrayListExtra("answers", currentAnswers);
-
         startActivityIfNeeded(startLibraryActivity, 0);
+        mp.pause();
+        playButton.setBackgroundResource(R.drawable.play_button);
     }
 
     private Handler handler = new Handler() {

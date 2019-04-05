@@ -33,7 +33,6 @@ public class Book implements Parcelable {
     private String color;
     private ArrayList<String> questions;
     private ArrayList<String> answers;
-    private String isStory;
 
     public Book(String title, String description, Integer image, Integer dots, String color) {
         this.title = title;
