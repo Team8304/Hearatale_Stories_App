@@ -1,8 +1,17 @@
 package Model;
 
+import android.content.Context;
 import android.os.Parcelable;
 import android.os.Parcel;
+import android.util.Log;
 
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,6 +22,8 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import android.R;
+
 
 public class Book implements Parcelable {
     private String title;
@@ -22,6 +33,8 @@ public class Book implements Parcelable {
     private String color;
     private ArrayList<String> questions;
     private ArrayList<String> answers;
+    private int numPages;
+    private ArrayList<Integer> times;
 
     public Book(String title, String description, Integer image, Integer dots, String color) {
         this.title = title;
@@ -29,6 +42,27 @@ public class Book implements Parcelable {
         this.image = image;
         this.dots = dots;
         this.color = color;
+        this.questions = null;
+        this.answers = null;
+    }
+
+    public Book(String title, String description, Integer image, Integer dots, String color, int numPages) {
+        this.title = title;
+        this.description = description;
+        this.image = image;
+        this.dots = dots;
+        this.color = color;
+        this.numPages = numPages;
+    }
+
+    public Book(String title, String description, Integer image, Integer dots, String color, int numPages, ArrayList<Integer> times) {
+        this.title = title;
+        this.description = description;
+        this.image = image;
+        this.dots = dots;
+        this.color = color;
+        this.numPages = numPages;
+        this.times = times;
     }
 
     public Book(String title, String description, Integer image, Integer dots, String color,
@@ -41,6 +75,7 @@ public class Book implements Parcelable {
         this.questions = questions;
         this.answers = answers;
     }
+
 
     public String getTitle() {
         return this.title;
@@ -78,54 +113,16 @@ public class Book implements Parcelable {
         this.answers = answers;
     }
 
-    public void buildQuiz(String bookTitle) {
-        ArrayList<String> questions = new ArrayList<>();
-        ArrayList<String> answers = new ArrayList<>();
+    public int getNumPages() {
+        return this.numPages;
+    }
 
-        String title = formatBookTitle(bookTitle);
+    public void setNumPages(int numPages) {
+        this.numPages = numPages;
+    }
 
-
-        StringBuilder text = new StringBuilder();
-        BufferedReader reader;
-        try{
-            File questionsFile = new File("./../../../res/raw/questions_" +
-                                            title + ".txt");
-            final InputStream file = new FileInputStream(questionsFile);
-            reader = new BufferedReader(new InputStreamReader(file));
-            String line = reader.readLine();
-
-            while(line != null) {
-                if (!(line.equals(""))) {
-                    text.append(line);
-
-                    ArrayList<String> randomized = new ArrayList<>();
-                    String answer1 = reader.readLine();
-                    String answer2 = reader.readLine();
-                    String answer3 = reader.readLine();
-                    String answer4 = reader.readLine();
-
-                    randomized.add(answer1);
-                    randomized.add(answer2);
-                    randomized.add(answer3);
-                    randomized.add(answer4);
-                    Collections.shuffle(randomized);
-
-                    answers.add(answer1);
-
-                    for (String s: randomized) {
-                        text.append('\n');
-                        text.append(s);
-                    }
-                    questions.add(text.toString());
-                    text.setLength(0);
-                }
-                line = reader.readLine();
-            }
-        } catch(IOException ioe) {
-            ioe.printStackTrace();
-        }
-        this.questions = questions;
-        this.answers = answers;
+    public ArrayList<Integer> getTimes() {
+        return this.times;
     }
 
     @Override
@@ -141,6 +138,8 @@ public class Book implements Parcelable {
         color = in.readString();
         questions = in.readArrayList(ClassLoader.getSystemClassLoader()); //not 100% sure this is right
         answers = in.readArrayList(ClassLoader.getSystemClassLoader());
+        numPages = in.readInt();
+        times = in.readArrayList(ClassLoader.getSystemClassLoader());
     }
 
     @Override
@@ -152,6 +151,8 @@ public class Book implements Parcelable {
         dest.writeString(color);
         dest.writeList(questions);
         dest.writeList(answers);
+        dest.writeInt(numPages);
+        dest.writeList(times);
     }
 
     public static final Parcelable.Creator<Book> CREATOR = new Parcelable.Creator<Book>() {

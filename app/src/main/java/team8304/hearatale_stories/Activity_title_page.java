@@ -56,7 +56,6 @@ public class Activity_title_page extends AppCompatActivity {
 //        String mDrawableName = getIntent().getStringExtra("image");
 //        int resID = res.getIdentifier(mDrawableName, "drawable", getPackageName());
 //        story_image.setImageResource(resID);
-        Log.d("RecyclerViewAdapter", "*****");
 
         String data = "";
         StringBuffer sbuffer_2 = new StringBuffer();
