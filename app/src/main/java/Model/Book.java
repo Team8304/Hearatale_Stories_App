@@ -138,7 +138,8 @@ public class Book implements Parcelable {
         color = in.readString();
         questions = in.readArrayList(ClassLoader.getSystemClassLoader()); //not 100% sure this is right
         answers = in.readArrayList(ClassLoader.getSystemClassLoader());
-
+        numPages = in.readInt();
+        times = in.readArrayList(ClassLoader.getSystemClassLoader());
     }
 
     @Override
@@ -150,6 +151,8 @@ public class Book implements Parcelable {
         dest.writeString(color);
         dest.writeList(questions);
         dest.writeList(answers);
+        dest.writeInt(numPages);
+        dest.writeList(times);
     }
 
     public static final Parcelable.Creator<Book> CREATOR = new Parcelable.Creator<Book>() {

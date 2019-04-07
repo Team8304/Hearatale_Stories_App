@@ -146,9 +146,14 @@ public class SplashScreen extends AppCompatActivity {
     private ArrayList<Book> createImagines() {
         ArrayList<Book> mImagines = new ArrayList<>();
 
+        ArrayList<Integer> times = new ArrayList<>();
+        times.add(42);
+        times.add(66);
+        times.add(85);
+
         String shoe = "Imagine a shoe wanting to be like a car, and what a child might find in the home to help.";
         mImagines.add(new Book("If a Shoe Wanted to be a Car", shoe,
-                R.drawable.shoe, R.drawable.whitespace, "white", 4));
+                R.drawable.shoe, R.drawable.whitespace, "white", 4, times));
         String pump = "Imagine swinging as high as trees, birds, clouds, or even higher, what it might feel like, what you might see.";
         mImagines.add(new Book("Do you pump your legs when you swing?", pump,
                 R.drawable.pump, R.drawable.whitespace, "white", 4));

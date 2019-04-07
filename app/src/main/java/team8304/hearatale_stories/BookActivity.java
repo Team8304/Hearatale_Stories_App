@@ -201,15 +201,10 @@ public class BookActivity extends AppCompatActivity {
             String remainTime = createTimeLabel(totalTime - currentPosition);
             remainingTimeLabel.setText("- " + remainTime);
 
-            //add picture change times to book object
             int numPages = currentBook.getNumPages();
-            ArrayList<Integer> times = new ArrayList<Integer>(numPages);
-            //these are the times for If a shoes wanted to be a car
-            times.add(42);
-            times.add(66);
-            times.add(85);
-            //once we add the times for each story, replace with:
-            //times = currentBook.getTimes();
+
+            //list of time changes
+            ArrayList<Integer> times = currentBook.getTimes();
 
             //makes sure we have always have the correct currentPage (handles scrolling and normal playback)
             foundCurrentPage = false;
