@@ -112,7 +112,7 @@ public class BookActivity extends AppCompatActivity {
             }
         });
 
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        /*ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
         try {
             InputStream inputStream = getContentResolver().openInputStream(storyContentPath);
@@ -203,9 +203,9 @@ public class BookActivity extends AppCompatActivity {
 
             //add picture change times to book object
             ArrayList<Integer> times = new ArrayList<Integer>();
-            times.add(10);
             times.add(20);
-            times.add(30);
+            times.add(50);
+            times.add(85);
 
             int numPages = 4; //this will be in the book object too
 
