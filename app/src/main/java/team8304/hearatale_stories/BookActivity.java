@@ -202,72 +202,55 @@ public class BookActivity extends AppCompatActivity {
             remainingTimeLabel.setText("- " + remainTime);
 
             //add picture change times to book object
-            ArrayList<Integer> times = new ArrayList<Integer>();
-            times.add(20);
-            times.add(50);
+            int numPages = currentBook.getNumPages();
+            ArrayList<Integer> times = new ArrayList<Integer>(numPages);
+            //these are the times for If a shoes wanted to be a car
+            times.add(42);
+            times.add(66);
             times.add(85);
-
-            int numPages = 4; //this will be in the book object too
+            //once we add the times for each story, replace with:
+            //times = currentBook.getTimes();
 
             //makes sure we have always have the correct currentPage (handles scrolling and normal playback)
             foundCurrentPage = false;
-            while(!foundCurrentPage) {
-                //if (currentPage == numPages) {
-                if (getTime(currentPosition) > times.get(times.size()-1) || currentPage == numPages) {
-                    if (getTime(currentPosition) > times.get(currentPage-2)) {
+            int currTime = getTime(currentPosition);
+            for (int i = 0; (i < times.size()) && (foundCurrentPage == false); i++) {
+                //first page
+                if (i == 0) {
+                    if (currTime < times.get(i)) {
+                        currentPage = 1;
                         foundCurrentPage = true;
-                    } else {
-                        currentPage--;
                     }
-                } else if (getTime(currentPosition) < times.get(currentPage-1)) {
-                    if (currentPage == 1) {
-                        foundCurrentPage = true;
-                    } else {
-                        if (getTime(currentPosition) > times.get(currentPage-2)) {
-                            foundCurrentPage = true;
-                        } else {
-                            currentPage--;
-                        }
-                    }
-                } else if (getTime(currentPosition) > times.get(currentPage-1)) {
-                    if (currentPage == numPages) {
-                        foundCurrentPage = true;
-                    } else {
-                        if (getTime(currentPosition) < times.get(currentPage)) {
-                            foundCurrentPage = true;
-                        } else {
-                            currentPage++;
-                        }
-                    }
-                } else if (getTime(currentPosition) == times.get(currentPage-1)) {
-                    currentPage++;
-                    foundCurrentPage = true;
                 }
+                //last page and second to last page
+                else if (i == times.size()-1) {
+                    if (currTime >= times.get(i)) {
+                        currentPage = times.size()+1;
+                        foundCurrentPage = true;
+                    } else if (currTime >= times.get(i-1) && currTime < times.get(i)) {
+                        currentPage = times.size();
+                        foundCurrentPage = true;
+                    }
+                }
+                //middle page
+                else {
+                    if (currTime >= times.get(i-1) && currTime < times.get(i)) {
+                        currentPage = i + 1;
+                        foundCurrentPage = true;
+                    }
+                }
+
             }
 
-            int id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage), "drawable", getPackageName());
-            Log.e("YOOOOOOO!!!!",String.valueOf(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage)));
+            int id2;
+            if (currentPage < 10) {
+                id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage), "drawable", getPackageName());
+                Log.e("YOOOOOOO!!!!", String.valueOf(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage)));
+            } else {
+                id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + "_" + String.valueOf(currentPage), "drawable", getPackageName());
+            }
             storyImage.setImageResource(id2);
 
-            /*
-            if (getTime(currentPosition) < 10) {
-                storyImage.setImageResource(R.drawable.if_a_shoe_wanted_to_be_a_car_01);
-            }
-
-            if (getTime(currentPosition) > 10 && getTime(currentPosition) < 20) {
-                int id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + "_0" + String.valueOf(2), "drawable", getPackageName());
-                //int id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + " 0" + String.valueOf(2), "raw", getPackageName());
-                Log.e("YOOOOOOO!!!!",String.valueOf(formatBookTitle(bookTitle) + "_0" + String.valueOf(2)));
-                storyImage.setImageResource(id2);
-            }
-
-            if (getTime(currentPosition) > 20 && getTime(currentPosition) < 30) {
-                storyImage.setImageResource(currentBook.getImages().get(2));
-            }
-
-            if (getTime(currentPosition) > 30) {
-                storyImage.setImageResource(currentBook.getImages().get(3));
-            }*/
 
             if(!((Activity) BookActivity.this).isFinishing())
             {
@@ -312,7 +295,7 @@ public class BookActivity extends AppCompatActivity {
     }
 
     public int getTime(int position) {
-        return (position / 1000 / 60) + (position / 1000 % 60);
+        return 60*(position / 1000 / 60) + (position / 1000 % 60);
     }
 
 
