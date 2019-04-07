@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +21,12 @@ import android.widget.TextView;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.ArrayList;
 
 import Model.Book;
@@ -27,6 +34,7 @@ import Model.Book;
 public class BookActivity extends AppCompatActivity {
 
     private Button playButton;
+    private Button experienceButton;
     private SeekBar seekBar;
     private TextView elapsedTimeLabel;
     private TextView remainingTimeLabel;
@@ -37,9 +45,16 @@ public class BookActivity extends AppCompatActivity {
     private String bookTitle;
     private Book currentBook;
     private AlertDialog alert11;
+    private Button quizButton;
     private boolean popped;
+
     private int currentPage;
     private boolean foundCurrentPage;
+
+    private ArrayList<String> currentQuestions;
+    private ArrayList<String> currentAnswers;
+    private int questionCounter = 0;
+    private static final String TAG = "QuizActivity";
 
 
     @Override
@@ -55,8 +70,28 @@ public class BookActivity extends AppCompatActivity {
         //storyContent = (TextView) findViewById(R.id.storyContentTextView);
         //storyContent.setMovementMethod(new ScrollingMovementMethod());
         playButton = (Button) findViewById(R.id.playButton);
+        experienceButton = (Button) findViewById(R.id.button10);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
+        // Question Part
+        quizButton = (Button) findViewById(R.id.questionButton);
+        quizButton.setText("Quiz");
+        quizButton.setVisibility(View.VISIBLE);
+        if (currentBook.getAnswers() == null) {
+            quizButton.setVisibility(View.INVISIBLE);
+        }
+//        quizButton.setVisibility(View.INVISIBLE);
+//            quizButton.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    quizButton.setVisibility(View.VISIBLE);
+//                }
+//            }, 1000 * 5);
+
+        currentQuestions = currentBook.getQuestions();
+        currentAnswers = currentBook.getAnswers();
+        
+
         Uri bookPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + ""
                 + formatBookTitle(bookTitle));
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
@@ -66,7 +101,18 @@ public class BookActivity extends AppCompatActivity {
 
         storyImage.setImageResource(R.drawable.if_a_shoe_wanted_to_be_a_car_01);
 
-        /*ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        //home experience button
+        experienceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent experience_intent = new Intent(getApplicationContext(), HomeExperienceActivity.class);
+                experience_intent.putExtra("book", currentBook);
+                startActivity(experience_intent);
+            }
+        });
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
         try {
             InputStream inputStream = getContentResolver().openInputStream(storyContentPath);
@@ -86,6 +132,7 @@ public class BookActivity extends AppCompatActivity {
         mp.seekTo(0);
         mp.setVolume(1.0f, 1.0f);
         totalTime = mp.getDuration();
+
 
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setMax(totalTime);
@@ -127,6 +174,19 @@ public class BookActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    public void navigateToQuiz(View view) {
+        Intent startLibraryActivity = new Intent(this, QuizActivity.class);
+        questionCounter = getIntent().getIntExtra("counter", 0);
+        ArrayList<String> q = new ArrayList<>(currentQuestions.subList(questionCounter, currentQuestions.size()));
+//        startLibraryActivity.putStringArrayListExtra("questions", currentQuestions);
+        System.out.println("!!!: " + questionCounter);
+        startLibraryActivity.putStringArrayListExtra("questions", q);
+        startLibraryActivity.putStringArrayListExtra("answers", currentAnswers);
+        startActivityIfNeeded(startLibraryActivity, 0);
+        mp.pause();
+        playButton.setBackgroundResource(R.drawable.play_button);
     }
 
     private Handler handler = new Handler() {
@@ -276,9 +336,18 @@ public class BookActivity extends AppCompatActivity {
         finish();
     }
 
+
     @Override
     public void onBackPressed() {
         back_to_home_page(new View(this));
+    }
+
+
+    public void onQuestionPressed() { to_question_page(new View(this)); }
+
+    public void to_question_page(View view) {
+        Intent intent = new Intent(this, QuizActivity.class);
+        startActivity(intent);
     }
 
     private String formatBookTitle(String title) {

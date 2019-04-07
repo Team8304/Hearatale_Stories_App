@@ -42,6 +42,8 @@ public class Book implements Parcelable {
         this.image = image;
         this.dots = dots;
         this.color = color;
+        this.questions = null;
+        this.answers = null;
     }
 
     public Book(String title, String description, Integer image, Integer dots, String color, int numPages) {
@@ -93,6 +95,7 @@ public class Book implements Parcelable {
     public ArrayList<String> getAnswers() {
         return this.answers;
     }
+
 
     public void setQuestions(ArrayList<String> questions) {
         this.questions = questions;
