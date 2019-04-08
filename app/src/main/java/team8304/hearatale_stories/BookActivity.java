@@ -99,7 +99,7 @@ public class BookActivity extends AppCompatActivity {
         currentPage = 1;
         foundCurrentPage = true;
 
-        storyImage.setImageResource(R.drawable.if_a_shoe_wanted_to_be_a_car_01);
+        storyImage.setImageResource(getResources().getIdentifier(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage), "drawable", getPackageName()));
 
         //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         //home experience button
@@ -184,6 +184,7 @@ public class BookActivity extends AppCompatActivity {
         System.out.println("!!!: " + questionCounter);
         startLibraryActivity.putStringArrayListExtra("questions", q);
         startLibraryActivity.putStringArrayListExtra("answers", currentAnswers);
+        startLibraryActivity.putExtra("bookTitle", formatBookTitle(bookTitle));
         startActivityIfNeeded(startLibraryActivity, 0);
         mp.pause();
         playButton.setBackgroundResource(R.drawable.play_button);
