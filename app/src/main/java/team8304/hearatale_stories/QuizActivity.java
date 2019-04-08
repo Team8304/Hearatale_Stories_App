@@ -138,6 +138,8 @@ public class QuizActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(this, BookActivity.class);
         intent.putExtra("counter", counter);
+
+        Log.d(TAG, "@@@: " + Integer.toString(counter));
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         mp.stop();
         startActivityIfNeeded(intent, 0);

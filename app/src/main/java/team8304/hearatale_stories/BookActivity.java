@@ -47,7 +47,7 @@ public class BookActivity extends AppCompatActivity {
     private boolean popped;
     private ArrayList<String> currentQuestions;
     private ArrayList<String> currentAnswers;
-    private int questionCounter = 0;
+    private int questionCounter;
     private static final String TAG = "QuizActivity";
 
     @Override
@@ -71,6 +71,7 @@ public class BookActivity extends AppCompatActivity {
         if (currentBook.getAnswers() == null) {
             quizButton.setVisibility(View.INVISIBLE);
         }
+        questionCounter = getIntent().getIntExtra("counter", 0);
 //        quizButton.setVisibility(View.INVISIBLE);
 //            quizButton.postDelayed(new Runnable() {
 //                @Override
@@ -165,7 +166,7 @@ public class BookActivity extends AppCompatActivity {
 
     public void navigateToQuiz(View view) {
         Intent startLibraryActivity = new Intent(this, QuizActivity.class);
-        questionCounter = getIntent().getIntExtra("counter", 0);
+
         ArrayList<String> q = new ArrayList<>(currentQuestions.subList(questionCounter, currentQuestions.size()));
 //        startLibraryActivity.putStringArrayListExtra("questions", currentQuestions);
         System.out.println("!!!: " + questionCounter);
