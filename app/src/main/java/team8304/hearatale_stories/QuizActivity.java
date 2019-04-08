@@ -1,6 +1,8 @@
 package team8304.hearatale_stories;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class QuizActivity extends AppCompatActivity {
@@ -25,6 +29,9 @@ public class QuizActivity extends AppCompatActivity {
     private ArrayList<String> questions;
     private ArrayList<String> answers;
     private static final String TAG = "QuizActivity";
+    private String bookTitle = "";
+    private MediaPlayer mp;
+    private String questionPath = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +46,16 @@ public class QuizActivity extends AppCompatActivity {
         // Get passed question/answers
         questions = getIntent().getStringArrayListExtra("questions");
         answers = getIntent().getStringArrayListExtra("answers");
+        bookTitle = getIntent().getStringExtra("bookTitle");
         // Set up screen with first question
+        mp = MediaPlayer.create(this, Uri.parse("android.resource://" + getPackageName()
+                + "/raw/q1_" + bookTitle));
+        mp.setLooping(false);
+        mp.seekTo(0);
+        mp.setVolume(2.0f, 2.0f);
+        mp.start();
         updateQuestion();
+
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,6 +139,7 @@ public class QuizActivity extends AppCompatActivity {
         Intent intent = new Intent(this, BookActivity.class);
         intent.putExtra("counter", counter);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        mp.stop();
         startActivityIfNeeded(intent, 0);
     }
 
@@ -142,6 +158,21 @@ public class QuizActivity extends AppCompatActivity {
             answer4.setText(lines[4]);
             answer = answers.get(counter);
             tries = 1;
+
+            String questionNum =  lines[0].substring(0, 2);
+            questionNum = questionNum.replaceAll("\\.", "");
+
+            questionPath = "android.resource://" + getPackageName() + "/raw/" + "q" +
+                    questionNum + "_" + bookTitle;
+            Log.d("Test", questionPath);
+            mp.reset();
+            try {
+                mp.setDataSource(getApplicationContext(), Uri.parse(questionPath));
+                mp.prepare();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mp.start();
         }
     }
 }
