@@ -49,7 +49,7 @@ public class QuizActivity extends AppCompatActivity {
         bookTitle = getIntent().getStringExtra("bookTitle");
         // Set up screen with first question
         mp = MediaPlayer.create(this, Uri.parse("android.resource://" + getPackageName()
-                + "/raw/q1_" + bookTitle));
+                + "/raw/" + bookTitle));
         mp.setLooping(false);
         mp.seekTo(0);
         mp.setVolume(2.0f, 2.0f);
