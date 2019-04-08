@@ -99,7 +99,7 @@ public class BookActivity extends AppCompatActivity {
         currentPage = 1;
         foundCurrentPage = true;
 
-        storyImage.setImageResource(R.drawable.if_a_shoe_wanted_to_be_a_car_01);
+        storyImage.setImageResource(getResources().getIdentifier(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage), "drawable", getPackageName()));
 
         //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         //home experience button
