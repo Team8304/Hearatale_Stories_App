@@ -184,6 +184,7 @@ public class BookActivity extends AppCompatActivity {
         System.out.println("!!!: " + questionCounter);
         startLibraryActivity.putStringArrayListExtra("questions", q);
         startLibraryActivity.putStringArrayListExtra("answers", currentAnswers);
+        startLibraryActivity.putExtra("bookTitle", formatBookTitle(bookTitle));
         startActivityIfNeeded(startLibraryActivity, 0);
         mp.pause();
         playButton.setBackgroundResource(R.drawable.play_button);
