@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import java.io.ByteArrayOutputStream;
@@ -37,7 +38,8 @@ public class BookActivity extends AppCompatActivity {
     private SeekBar seekBar;
     private TextView elapsedTimeLabel;
     private TextView remainingTimeLabel;
-    private TextView storyContent;
+    //private TextView storyContent;
+    private ImageView storyImage;
     private MediaPlayer mp;
     private int totalTime;
     private String bookTitle;
@@ -45,21 +47,28 @@ public class BookActivity extends AppCompatActivity {
     private AlertDialog alert11;
     private Button quizButton;
     private boolean popped;
+
+    private int currentPage;
+    private boolean foundCurrentPage;
+
     private ArrayList<String> currentQuestions;
     private ArrayList<String> currentAnswers;
     private int questionCounter;
     private static final String TAG = "QuizActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
+
         popped = false;
         currentBook = getIntent().getParcelableExtra("book");
         bookTitle = currentBook.getTitle();
-        storyContent = (TextView) findViewById(R.id.storyContentTextView);
-        storyContent.setMovementMethod(new ScrollingMovementMethod());
+        storyImage = (ImageView) findViewById(R.id.storyImage);
+        //storyContent = (TextView) findViewById(R.id.storyContentTextView);
+        //storyContent.setMovementMethod(new ScrollingMovementMethod());
         playButton = (Button) findViewById(R.id.playButton);
         experienceButton = (Button) findViewById(R.id.button10);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
@@ -90,8 +99,12 @@ public class BookActivity extends AppCompatActivity {
                 + formatBookTitle(bookTitle));
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
                 + formatBookTitle(bookTitle));
+        currentPage = 1;
+        foundCurrentPage = true;
 
+        storyImage.setImageResource(getResources().getIdentifier(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage), "drawable", getPackageName()));
 
+        //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         //home experience button
         experienceButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +115,7 @@ public class BookActivity extends AppCompatActivity {
             }
         });
 
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        /*ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
         try {
             InputStream inputStream = getContentResolver().openInputStream(storyContentPath);
@@ -114,8 +127,8 @@ public class BookActivity extends AppCompatActivity {
             inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        storyContent.setText(byteArrayOutputStream.toString());
+        }*/
+        //storyContent.setText(byteArrayOutputStream.toString());
 
         mp = MediaPlayer.create(this, bookPath);
         mp.setLooping(false);
@@ -192,6 +205,52 @@ public class BookActivity extends AppCompatActivity {
             String remainTime = createTimeLabel(totalTime - currentPosition);
             remainingTimeLabel.setText("- " + remainTime);
 
+            int numPages = currentBook.getNumPages();
+
+            //list of time changes
+            ArrayList<Integer> times = currentBook.getTimes();
+
+            //makes sure we have always have the correct currentPage (handles scrolling and normal playback)
+            foundCurrentPage = false;
+            int currTime = getTime(currentPosition);
+            for (int i = 0; (i < times.size()) && (foundCurrentPage == false); i++) {
+                //first page
+                if (i == 0) {
+                    if (currTime < times.get(i)) {
+                        currentPage = 1;
+                        foundCurrentPage = true;
+                    }
+                }
+                //last page and second to last page
+                else if (i == times.size()-1) {
+                    if (currTime >= times.get(i)) {
+                        currentPage = times.size()+1;
+                        foundCurrentPage = true;
+                    } else if (currTime >= times.get(i-1) && currTime < times.get(i)) {
+                        currentPage = times.size();
+                        foundCurrentPage = true;
+                    }
+                }
+                //middle page
+                else {
+                    if (currTime >= times.get(i-1) && currTime < times.get(i)) {
+                        currentPage = i + 1;
+                        foundCurrentPage = true;
+                    }
+                }
+
+            }
+
+            int id2;
+            if (currentPage < 10) {
+                id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage), "drawable", getPackageName());
+                Log.e("YOOOOOOO!!!!", String.valueOf(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage)));
+            } else {
+                id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + "_" + String.valueOf(currentPage), "drawable", getPackageName());
+            }
+            storyImage.setImageResource(id2);
+
+
             if(!((Activity) BookActivity.this).isFinishing())
             {
                 if (remainTime.equals("0:00") && !popped){
@@ -233,6 +292,11 @@ public class BookActivity extends AppCompatActivity {
 
         return timeLabel;
     }
+
+    public int getTime(int position) {
+        return 60*(position / 1000 / 60) + (position / 1000 % 60);
+    }
+
 
     public void playButtonClick(View view) {
         if (!mp.isPlaying()) {

@@ -33,6 +33,8 @@ public class Book implements Parcelable {
     private String color;
     private ArrayList<String> questions;
     private ArrayList<String> answers;
+    private int numPages;
+    private ArrayList<Integer> times;
 
     public Book(String title, String description, Integer image, Integer dots, String color) {
         this.title = title;
@@ -44,6 +46,24 @@ public class Book implements Parcelable {
         this.answers = null;
     }
 
+    public Book(String title, String description, Integer image, Integer dots, String color, int numPages) {
+        this.title = title;
+        this.description = description;
+        this.image = image;
+        this.dots = dots;
+        this.color = color;
+        this.numPages = numPages;
+    }
+
+    public Book(String title, String description, Integer image, Integer dots, String color, int numPages, ArrayList<Integer> times) {
+        this.title = title;
+        this.description = description;
+        this.image = image;
+        this.dots = dots;
+        this.color = color;
+        this.numPages = numPages;
+        this.times = times;
+    }
 
     public Book(String title, String description, Integer image, Integer dots, String color,
                 ArrayList<String> questions, ArrayList<String> answers) {
@@ -85,13 +105,24 @@ public class Book implements Parcelable {
         return this.answers;
     }
 
-
     public void setQuestions(ArrayList<String> questions) {
         this.questions = questions;
     }
 
     public void setAnswers(ArrayList<String> answers) {
         this.answers = answers;
+    }
+
+    public int getNumPages() {
+        return this.numPages;
+    }
+
+    public void setNumPages(int numPages) {
+        this.numPages = numPages;
+    }
+
+    public ArrayList<Integer> getTimes() {
+        return this.times;
     }
 
     @Override
@@ -107,7 +138,8 @@ public class Book implements Parcelable {
         color = in.readString();
         questions = in.readArrayList(ClassLoader.getSystemClassLoader()); //not 100% sure this is right
         answers = in.readArrayList(ClassLoader.getSystemClassLoader());
-
+        numPages = in.readInt();
+        times = in.readArrayList(ClassLoader.getSystemClassLoader());
     }
 
     @Override
@@ -119,6 +151,8 @@ public class Book implements Parcelable {
         dest.writeString(color);
         dest.writeList(questions);
         dest.writeList(answers);
+        dest.writeInt(numPages);
+        dest.writeList(times);
     }
 
     public static final Parcelable.Creator<Book> CREATOR = new Parcelable.Creator<Book>() {
