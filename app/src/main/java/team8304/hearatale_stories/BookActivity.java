@@ -68,10 +68,12 @@ public class BookActivity extends AppCompatActivity {
         quizButton = (Button) findViewById(R.id.questionButton);
         quizButton.setText("Quiz");
         quizButton.setVisibility(View.VISIBLE);
+        // Check is book object is imagine
         if (currentBook.getAnswers() == null) {
             quizButton.setVisibility(View.INVISIBLE);
         }
         questionCounter = getIntent().getIntExtra("counter", 0);
+        Log.d(TAG, "***: " + Integer.toString(questionCounter));
 //        quizButton.setVisibility(View.INVISIBLE);
 //            quizButton.postDelayed(new Runnable() {
 //                @Override
@@ -166,7 +168,7 @@ public class BookActivity extends AppCompatActivity {
 
     public void navigateToQuiz(View view) {
         Intent startLibraryActivity = new Intent(this, QuizActivity.class);
-
+        questionCounter = getIntent().getIntExtra("counter", 0);
         ArrayList<String> q = new ArrayList<>(currentQuestions.subList(questionCounter, currentQuestions.size()));
 //        startLibraryActivity.putStringArrayListExtra("questions", currentQuestions);
         System.out.println("!!!: " + questionCounter);

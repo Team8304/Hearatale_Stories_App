@@ -142,14 +142,14 @@ public class QuizActivity extends AppCompatActivity {
         Log.d(TAG, "@@@: " + Integer.toString(counter));
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         mp.stop();
-        startActivityIfNeeded(intent, 0);
+        startActivity(intent);
     }
 
     private void updateQuestion() {
         if (counter == questions.size()) {
             Intent intent = new Intent(this, BookActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            startActivityIfNeeded(intent, 0);
+            startActivity(intent);
         }
         if (counter < questions.size()) {
             String[] lines = questions.get(counter).split("\\r?\\n");
