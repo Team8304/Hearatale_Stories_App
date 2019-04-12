@@ -137,15 +137,17 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, BookActivity.class);
-        intent.putExtra("counter", counter);
-
-        Log.d(TAG, "@@@: " + Integer.toString(counter));
+//        intent.putExtra("counter", counter);
+//
+//        Log.d(TAG, "@@@: " + Integer.toString(counter));
+        BookActivity.questionCounter--;
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         mp.stop();
         startActivity(intent);
     }
 
     private void updateQuestion() {
+        BookActivity.questionCounter++;
         if (counter == questions.size()) {
             Intent intent = new Intent(this, BookActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
