@@ -9,6 +9,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -70,6 +71,9 @@ public class HomeExperienceActivity extends Activity {
         text_buffer.removeAll(Collections.singleton(null));
         text_buffer.removeAll(Collections.singleton(""));
         backButton.setVisibility(View.GONE);
+        if (text_buffer.size() == 1) {
+            nextButton.setVisibility(View.GONE);
+        }
         content.setText(text_buffer.get(0));
         counter = 0;
 
@@ -98,7 +102,10 @@ public class HomeExperienceActivity extends Activity {
         params.gravity = Gravity.CENTER;
         params.x = -90;
         params.y = 30;
+
         getWindow().setAttributes(params);
+
+
 
 
         closeButton = findViewById(R.id.button13);
@@ -192,5 +199,13 @@ public class HomeExperienceActivity extends Activity {
         title = title.replaceAll("'s", "s");
         Log.d("DEBUG", title);
         return title;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if(event.getAction() == MotionEvent.ACTION_OUTSIDE){
+            System.out.println("TOuch outside the dialog ******************** ");
+        }
+        return false;
     }
 }
