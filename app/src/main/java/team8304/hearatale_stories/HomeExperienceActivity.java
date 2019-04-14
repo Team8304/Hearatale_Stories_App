@@ -79,12 +79,12 @@ public class HomeExperienceActivity extends Activity {
 
         String path;
         for (int i = 0; i < text_buffer.size(); i++) {
-            path = "android.resource://" + getPackageName() + "/raw/" + "audio_"
+            path = "android.resource://" + getPackageName() + "/raw/" + "experience_"
                     + formatBookTitle(bookTitle) + "_" + Integer.toString(i+1);
             path_arr.add(path);
         }
 
-        Log.d("sadasd", path_arr.get(0));
+
         mp = MediaPlayer.create(this, Uri.parse(path_arr.get(0)));
         mp.setLooping(false);
         mp.setVolume(2.0f, 2.0f);

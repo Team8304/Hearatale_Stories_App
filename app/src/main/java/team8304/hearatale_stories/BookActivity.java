@@ -20,6 +20,8 @@ import android.widget.TextView;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import Model.Book;
 
@@ -37,6 +39,10 @@ public class BookActivity extends AppCompatActivity {
     private Book currentBook;
     private AlertDialog alert11;
     private boolean popped;
+    private String bookllist[] = new String [] {"rumplestiltskin", "the boy who cried wolf",
+            "the elves and shoemaker", "the gingerbread man", "the lion and the_mouse",
+            "the little red_hen", "the tale of peter rabbit", "the three billy goats gruff",
+            "the three little pigs", "little red riding hood"};
 
 
     @Override
@@ -58,18 +64,27 @@ public class BookActivity extends AppCompatActivity {
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
                 + formatBookTitle(bookTitle));
 
+        Log.d("bookTitle", formatBookTitle(bookTitle));
 
         //home experience button
         experienceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mp.pause();
-                playButton.setBackgroundResource(R.drawable.play_button);
+                if(mp.isPlaying()) {
+                    mp.pause();
+                    playButton.setBackgroundResource(R.drawable.play_button);
+                }
                 Intent experience_intent = new Intent(getApplicationContext(), HomeExperienceActivity.class);
                 experience_intent.putExtra("book", currentBook);
                 startActivity(experience_intent);
             }
         });
+
+
+        //hide the home experience button if the book is imagine
+        if (!Arrays.asList(bookllist).contains(bookTitle)) {
+            experienceButton.setVisibility(View.GONE); //SHOW the button
+        }
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
