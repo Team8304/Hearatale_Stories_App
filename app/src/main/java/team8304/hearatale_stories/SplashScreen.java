@@ -154,9 +154,12 @@ public class SplashScreen extends AppCompatActivity {
         String shoe = "Imagine a shoe wanting to be like a car, and what a child might find in the home to help.";
         mImagines.add(new Book("If a Shoe Wanted to be a Car", shoe,
                 R.drawable.shoe, R.drawable.whitespace, "white", 4, times));
+
+        times.clear();
+
         String pump = "Imagine swinging as high as trees, birds, clouds, or even higher, what it might feel like, what you might see.";
         mImagines.add(new Book("Do you pump your legs when you swing?", pump,
-                R.drawable.pump, R.drawable.whitespace, "white", 4));
+                R.drawable.pump, R.drawable.whitespace, "white", 4, times));
         String window = "Imagine wandering into a world where everything is upside down and backwards.";
         mImagines.add(new Book("Upside Down Windows", window,
                 R.drawable.window, R.drawable.whitespace, "white", 4));
