@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Arrays;
 
 public class SplashScreen extends AppCompatActivity {
     private static int SPLASH_TIMEOUT = 2500;
@@ -116,7 +117,7 @@ public class SplashScreen extends AppCompatActivity {
 
         String lionDesc = "A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion.";
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
-                R.drawable.greydot, "grey", 4, times));
+                R.drawable.greydot, "grey", 4));
         String littleredhen = "Lazy animals refuse to help the hen plant the seed, harvest the grain, or bake the bread, so the hen refuses to share the baked bread with the lazy animals.";
         mBooks.add(new Book("The Little Red Hen", littleredhen, R.drawable.little_red_hen,
                 R.drawable.greydot, "grey", 4));
@@ -135,15 +136,21 @@ public class SplashScreen extends AppCompatActivity {
         String peterRabbit = "Peter disobeys his mother and enters Mr. MacGregor’s garden, where he is almost captured and put into a pie; Peter escapes and returns to his mother who scolds him.";
         mBooks.add(new Book("The Tale of Peter Rabbit", peterRabbit, R.drawable.peter_rabbit,
                 R.drawable.greydot, "grey", 4));
+
         String ginger = "The Gingerbread Man speaks rudely, brags, and outruns all the people and animals until the fox’s help, is tricked and swallowed.";
         mBooks.add(new Book("The Gingerbread Man", ginger, R.drawable.gingerbread_man,
-                R.drawable.greendot, "green", 4));
+                R.drawable.greendot, "green", 4, new ArrayList<Integer>(Arrays.asList(5, 60, 80)),
+                new ArrayList<Integer>(Arrays.asList(5, 80, 138)), 5));
+
         String rumple = "A cruel man spins straw into gold to save a girl’s life, demanding her first child in payment; when she’s queen she saves her child by learning the man’s secret name.";
         mBooks.add(new Book("Rumplestiltskin", rumple, R.drawable.rumplestiltskin,
                 R.drawable.reddot, "red", 4));
+
+
         String redriding = "A girl speaks to a wolf and leaves the proper path; the wolf swallows the grandmother and girl, but a huntsman kills the wolf, opens the wolf’s belly, and rescues both of them.";
         mBooks.add(new Book("Little Red Riding Hood", redriding, R.drawable.little_red_riding_hood,
-                R.drawable.reddot, "red", 4));
+                R.drawable.reddot, "red", 4, new ArrayList<Integer>(Arrays.asList(5, 32, 67, 73, 117)),
+                new ArrayList<Integer>(Arrays.asList(67, 153, 245, 343, 420, 510)), 5));
 
         return mBooks;
     }
@@ -158,7 +165,7 @@ public class SplashScreen extends AppCompatActivity {
 
         String shoe = "Imagine a shoe wanting to be like a car, and what a child might find in the home to help.";
         mImagines.add(new Book("If a Shoe Wanted to be a Car", shoe,
-                R.drawable.shoe, R.drawable.whitespace, "white", 4, times));
+                R.drawable.shoe, R.drawable.whitespace, "white", 4));
         String pump = "Imagine swinging as high as trees, birds, clouds, or even higher, what it might feel like, what you might see.";
         mImagines.add(new Book("Do you pump your legs when you swing?", pump,
                 R.drawable.pump, R.drawable.whitespace, "white", 4));
