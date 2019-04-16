@@ -152,7 +152,7 @@ public class SplashScreen extends AppCompatActivity {
         mImagines.add(new Book("Upside Down Windows", window,
                 R.drawable.window, R.drawable.whitespace, "white"));
         String blink = "Imagine blinking to become very tiny and what you might be able to do if you were very, very small.";
-        mImagines.add(new Book("The Special One-Eye Blink\n", blink,
+        mImagines.add(new Book("The Special One Eye Blink", blink,
                 R.drawable.blink, R.drawable.whitespace, "white"));
         String angel = "Imagine what you’d say if a little angel asked your advice on how to be a tiny bit mischievous.";
         mImagines.add(new Book("If a Naughty Angel", angel,
@@ -164,7 +164,7 @@ public class SplashScreen extends AppCompatActivity {
         mImagines.add(new Book("Nobody's Better Than You", nobody,
                 R.drawable.nobodys_better_than_you, R.drawable.whitespace, "white"));
         String dirt = "Imagine some of the things you might help a sad, lonely, bored piece of dirt become.";
-        mImagines.add(new Book("If a Piece of Dirt...", dirt,
+        mImagines.add(new Book("If a Piece of Dirt", dirt,
                 R.drawable.dirt, R.drawable.whitespace, "white"));
         String fairy = "Imagine the kind of home fairies might create for themselves if they wanted.";
         mImagines.add(new Book("The Imaginary Fairy Palace", fairy,
