@@ -39,10 +39,10 @@ public class BookActivity extends AppCompatActivity {
     private Book currentBook;
     private AlertDialog alert11;
     private boolean popped;
-    private String bookllist[] = new String [] {"rumplestiltskin", "the boy who cried wolf",
-            "the elves and shoemaker", "the gingerbread man", "the lion and the_mouse",
-            "the little red_hen", "the tale of peter rabbit", "the three billy goats gruff",
-            "the three little pigs", "little red riding hood"};
+    private String bookllist[] = new String [] {"rumplestiltskin", "the_boy_who_cried_wolf",
+            "the_elves_and_shoemaker", "the_gingerbread_man", "the_lion_and_the_mouse",
+            "the_little_red_hen", "the_tale_of_peter_rabbit", "the_three_billy_goats_gruff",
+            "the_three_little_pigs", "little_red_riding_hood"};
 
 
     @Override
@@ -82,7 +82,7 @@ public class BookActivity extends AppCompatActivity {
 
 
         //hide the home experience button if the book is imagine
-        if (!Arrays.asList(bookllist).contains(bookTitle)) {
+        if (!Arrays.asList(bookllist).contains(formatBookTitle(bookTitle))) {
             experienceButton.setVisibility(View.GONE); //SHOW the button
         }
 
