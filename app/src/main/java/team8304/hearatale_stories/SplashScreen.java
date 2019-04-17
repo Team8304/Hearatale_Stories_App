@@ -109,9 +109,18 @@ public class SplashScreen extends AppCompatActivity {
     private ArrayList<Book> createBooks() {
         ArrayList<Book> mBooks = new ArrayList<>();
 
+        ArrayList<Integer> times = new ArrayList<>();
+        times.add(4);
+        times.add(32);
+        times.add(50);
+        times.add(63);
+        times.add(95);
+        times.add(117);
+        times.add(150);
+
         String lionDesc = "A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion.";
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
-                R.drawable.greydot, "grey", 4));
+                R.drawable.greydot, "grey", 4, times));
         String littleredhen = "Lazy animals refuse to help the hen plant the seed, harvest the grain, or bake the bread, so the hen refuses to share the baked bread with the lazy animals.";
         mBooks.add(new Book("The Little Red Hen", littleredhen, R.drawable.little_red_hen,
                 R.drawable.greydot, "grey", 4));
