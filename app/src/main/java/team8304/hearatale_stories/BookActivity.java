@@ -106,6 +106,8 @@ public class BookActivity extends AppCompatActivity {
         experienceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mp.pause();
+                playButton.setBackgroundResource(R.drawable.play_button);
                 Intent experience_intent = new Intent(getApplicationContext(), HomeExperienceActivity.class);
                 experience_intent.putExtra("book", currentBook);
                 startActivity(experience_intent);
