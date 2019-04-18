@@ -137,18 +137,90 @@ public class SplashScreen extends AppCompatActivity {
         mBooks.add(new Book("The Three Billy Goats Gruff", billygoat, R.drawable.three_billy_goats_gruff,
                 R.drawable.greydot, "grey", 4));
         String peterRabbit = "Peter disobeys his mother and enters Mr. MacGregor’s garden, where he is almost captured and put into a pie; Peter escapes and returns to his mother who scolds him.";
+        times.clear();
+        times.add(22);
+        times.add(47);
+        times.add(61);
+        times.add(68);
+        times.add(80);
+        times.add(92);
+        times.add(97);
+        times.add(105);
+        times.add(119);
+        times.add(131);
+        times.add(152);
+        times.add(167);
+        times.add(176);
+        times.add(188);
+        times.add(204);
+        times.add(217);
+        times.add(231);
+        times.add(276);
+        times.add(315);
+        times.add(353);
+        times.add(372);
+        times.add(382);
+        times.add(414);
+        times.add(435);
         mBooks.add(new Book("The Tale of Peter Rabbit", peterRabbit, R.drawable.peter_rabbit,
-                R.drawable.greydot, "grey", 4));
+                R.drawable.greydot, "grey", 4, times));
         String ginger = "The Gingerbread Man speaks rudely, brags, and outruns all the people and animals until the fox’s help, is tricked and swallowed.";
+//        times.clear();
+//        times.add(1);
+//        times.add(44);
+//        times.add(93);
+//        times.add(120);
+//        times.add(164);
+//        times.add(200);
+//        times.add(220);
+//        times.add(242);
+//        times.add(253);
+//        times.add(279);
+//        times.add(305);
+//        times.add(340);
+//        times.add(366);
         mBooks.add(new Book("The Gingerbread Man", ginger, R.drawable.gingerbread_man,
-                R.drawable.greendot, "green", 4));
+                R.drawable.greendot, "green", 4, times));
         String rumple = "A cruel man spins straw into gold to save a girl’s life, demanding her first child in payment; when she’s queen she saves her child by learning the man’s secret name.";
+        times.clear();
+//        times.add(3);
+//        times.add(31);
+//        times.add(69);
+//        times.add(99);
+//        times.add(148);
+//        times.add(171);
+//        times.add(198);
+//        times.add(231);
+//        times.add(261);
+//        times.add(296);
+//        times.add(324);
+//        times.add(340);
+//        times.add(358);
+//        times.add(380);
+//        times.add(400);
+//        times.add(428);
+//        times.add(455);
+//        times.add(485);
         mBooks.add(new Book("Rumplestiltskin", rumple, R.drawable.rumplestiltskin,
-                R.drawable.reddot, "red", 4));
+                R.drawable.reddot, "red", 4, times));
         String redriding = "A girl speaks to a wolf and leaves the proper path; the wolf swallows the grandmother and girl, but a huntsman kills the wolf, opens the wolf’s belly, and rescues both of them.";
+//        times.clear();
+//        times.add(6);
+//        times.add(32);
+//        times.add(56);
+//        times.add(61);
+//        times.add(99);
+//        times.add(151);
+//        times.add(181);
+//        times.add(207);
+//        times.add(226);
+//        times.add(268);
+//        times.add(302);
+//        times.add(331);
+//        times.add(364);
+//        times.add(387);
         mBooks.add(new Book("Little Red Riding Hood", redriding, R.drawable.little_red_riding_hood,
-                R.drawable.reddot, "red", 4));
-
+                R.drawable.reddot, "red", 4, times));
         return mBooks;
     }
 
