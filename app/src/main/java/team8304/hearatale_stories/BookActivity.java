@@ -243,7 +243,6 @@ public class BookActivity extends AppCompatActivity {
             int id2;
             if (currentPage < 10) {
                 id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage), "drawable", getPackageName());
-                Log.e("YOOOOOOO!!!!", String.valueOf(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage)));
             } else {
                 id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + "_" + String.valueOf(currentPage), "drawable", getPackageName());
             }
