@@ -1,5 +1,6 @@
 package team8304.hearatale_stories;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
@@ -29,6 +30,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                mImagines = createImagines();
                 mBooks = createBooks();
                 for(Book b: mBooks) {
                     buildQuiz(b);
@@ -36,7 +38,7 @@ public class SplashScreen extends AppCompatActivity {
 
                 Intent navigateHomePage = new Intent(SplashScreen.this, Home_Page.class);
                 navigateHomePage.putParcelableArrayListExtra("books", mBooks);
-                navigateHomePage.putParcelableArrayListExtra("imagines", createImagines());
+                navigateHomePage.putParcelableArrayListExtra("imagines", mImagines);
                 startActivity(navigateHomePage);
                 finish();
             }
@@ -107,71 +109,159 @@ public class SplashScreen extends AppCompatActivity {
     private ArrayList<Book> createBooks() {
         ArrayList<Book> mBooks = new ArrayList<>();
 
+        ArrayList<Integer> times = new ArrayList<>();
+        times.add(4);
+        times.add(32);
+        times.add(50);
+        times.add(63);
+        times.add(95);
+        times.add(117);
+        times.add(150);
+
         String lionDesc = "A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion.";
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
-                R.drawable.greydot, "grey")); //getApplicationContext(), resourceId));
+                R.drawable.greydot, "grey", 4, times));
         String littleredhen = "Lazy animals refuse to help the hen plant the seed, harvest the grain, or bake the bread, so the hen refuses to share the baked bread with the lazy animals.";
         mBooks.add(new Book("The Little Red Hen", littleredhen, R.drawable.little_red_hen,
-                R.drawable.greydot, "grey"));
+                R.drawable.greydot, "grey", 4));
         String boywolf = "Bored watching over the sheep, a boy causes excitement by lying that a wolf threatens; when a real wolf attacks, the people think the boy’s lying and won’t come to help him.";
         mBooks.add(new Book("The Boy Who Cried Wolf", boywolf, R.drawable.boy_who_cried_wolf,
-                R.drawable.bluedot, "blue"));
+                R.drawable.bluedot, "blue", 4));
         String elves = "By secretly making shoes, two elves save a poor shoemaker and his wife; the man and wife make clothes to reward the elves, who leave when their help is no longer needed.";
         mBooks.add(new Book("The Elves and Shoemaker", elves, R.drawable.elves_and_shoemaker,
-                R.drawable.greendot, "green"));
+                R.drawable.greendot, "green", 4));
         String littlepigs = "Two pigs squander their money and build shabby houses; their smarter brother saves and works hard to build a brick house which protects them all from the big bad wolf.";
         mBooks.add(new Book("The Three Little Pigs", littlepigs, R.drawable.three_little_pigs,
-                R.drawable.greydot, "grey"));
+                R.drawable.greydot, "grey", 4));
         String billygoat = "Two billy goats trick a mean troll into waiting for their brother; with his horns the big brother knocks the troll off the bridge.";
         mBooks.add(new Book("The Three Billy Goats Gruff", billygoat, R.drawable.three_billy_goats_gruff,
-                R.drawable.greydot, "grey"));
+                R.drawable.greydot, "grey", 4));
         String peterRabbit = "Peter disobeys his mother and enters Mr. MacGregor’s garden, where he is almost captured and put into a pie; Peter escapes and returns to his mother who scolds him.";
+        times.clear();
+        times.add(22);
+        times.add(47);
+        times.add(61);
+        times.add(68);
+        times.add(80);
+        times.add(92);
+        times.add(97);
+        times.add(105);
+        times.add(119);
+        times.add(131);
+        times.add(152);
+        times.add(167);
+        times.add(176);
+        times.add(188);
+        times.add(204);
+        times.add(217);
+        times.add(231);
+        times.add(276);
+        times.add(315);
+        times.add(353);
+        times.add(372);
+        times.add(382);
+        times.add(414);
+        times.add(435);
         mBooks.add(new Book("The Tale of Peter Rabbit", peterRabbit, R.drawable.peter_rabbit,
-                R.drawable.greydot, "grey"));
+                R.drawable.greydot, "grey", 4, times));
         String ginger = "The Gingerbread Man speaks rudely, brags, and outruns all the people and animals until the fox’s help, is tricked and swallowed.";
+//        times.clear();
+//        times.add(1);
+//        times.add(44);
+//        times.add(93);
+//        times.add(120);
+//        times.add(164);
+//        times.add(200);
+//        times.add(220);
+//        times.add(242);
+//        times.add(253);
+//        times.add(279);
+//        times.add(305);
+//        times.add(340);
+//        times.add(366);
         mBooks.add(new Book("The Gingerbread Man", ginger, R.drawable.gingerbread_man,
-                R.drawable.greendot, "green"));
+                R.drawable.greendot, "green", 4, times));
         String rumple = "A cruel man spins straw into gold to save a girl’s life, demanding her first child in payment; when she’s queen she saves her child by learning the man’s secret name.";
+        times.clear();
+//        times.add(3);
+//        times.add(31);
+//        times.add(69);
+//        times.add(99);
+//        times.add(148);
+//        times.add(171);
+//        times.add(198);
+//        times.add(231);
+//        times.add(261);
+//        times.add(296);
+//        times.add(324);
+//        times.add(340);
+//        times.add(358);
+//        times.add(380);
+//        times.add(400);
+//        times.add(428);
+//        times.add(455);
+//        times.add(485);
         mBooks.add(new Book("Rumplestiltskin", rumple, R.drawable.rumplestiltskin,
-                R.drawable.reddot, "red"));
+                R.drawable.reddot, "red", 4, times));
         String redriding = "A girl speaks to a wolf and leaves the proper path; the wolf swallows the grandmother and girl, but a huntsman kills the wolf, opens the wolf’s belly, and rescues both of them.";
+//        times.clear();
+//        times.add(6);
+//        times.add(32);
+//        times.add(56);
+//        times.add(61);
+//        times.add(99);
+//        times.add(151);
+//        times.add(181);
+//        times.add(207);
+//        times.add(226);
+//        times.add(268);
+//        times.add(302);
+//        times.add(331);
+//        times.add(364);
+//        times.add(387);
         mBooks.add(new Book("Little Red Riding Hood", redriding, R.drawable.little_red_riding_hood,
-                R.drawable.reddot, "red"));
-
+                R.drawable.reddot, "red", 4, times));
         return mBooks;
     }
 
     private ArrayList<Book> createImagines() {
+        ArrayList<Book> mImagines = new ArrayList<>();
+
+        ArrayList<Integer> times = new ArrayList<>();
+        times.add(42);
+        times.add(66);
+        times.add(85);
+
         String shoe = "Imagine a shoe wanting to be like a car, and what a child might find in the home to help.";
         mImagines.add(new Book("If a Shoe Wanted to be a Car", shoe,
-                R.drawable.shoe, R.drawable.whitespace, "white"));
+                R.drawable.shoe, R.drawable.whitespace, "white", 4, times));
         String pump = "Imagine swinging as high as trees, birds, clouds, or even higher, what it might feel like, what you might see.";
         mImagines.add(new Book("Do you pump your legs when you swing?", pump,
-                R.drawable.pump, R.drawable.whitespace, "white"));
+                R.drawable.pump, R.drawable.whitespace, "white", 4));
         String window = "Imagine wandering into a world where everything is upside down and backwards.";
         mImagines.add(new Book("Upside Down Windows", window,
-                R.drawable.window, R.drawable.whitespace, "white"));
+                R.drawable.window, R.drawable.whitespace, "white", 4));
         String blink = "Imagine blinking to become very tiny and what you might be able to do if you were very, very small.";
-        mImagines.add(new Book("The Special One-Eye Blink\n", blink,
+        mImagines.add(new Book("The Special One Eye Blink", blink,
                 R.drawable.blink, R.drawable.whitespace, "white"));
         String angel = "Imagine what you’d say if a little angel asked your advice on how to be a tiny bit mischievous.";
         mImagines.add(new Book("If a Naughty Angel", angel,
-                R.drawable.angel, R.drawable.whitespace, "white"));
+                R.drawable.angel, R.drawable.whitespace, "white", 4));
         String kitten = "Imagine what it might be like to be a kitten.";
         mImagines.add(new Book("If you Decide to be a Kitten", kitten,
-                R.drawable.if_you_decide_to_be_a_kitten, R.drawable.whitespace, "white"));
+                R.drawable.if_you_decide_to_be_a_kitten, R.drawable.whitespace, "white", 4));
         String nobody = "Always remember, nobody’s better than you.";
         mImagines.add(new Book("Nobody's Better Than You", nobody,
-                R.drawable.nobodys_better_than_you, R.drawable.whitespace, "white"));
+                R.drawable.nobodys_better_than_you, R.drawable.whitespace, "white", 4));
         String dirt = "Imagine some of the things you might help a sad, lonely, bored piece of dirt become.";
-        mImagines.add(new Book("If a Piece of Dirt...", dirt,
+        mImagines.add(new Book("If a Piece of Dirt", dirt,
                 R.drawable.dirt, R.drawable.whitespace, "white"));
         String fairy = "Imagine the kind of home fairies might create for themselves if they wanted.";
         mImagines.add(new Book("The Imaginary Fairy Palace", fairy,
-                R.drawable.palace, R.drawable.whitespace, "white"));
+                R.drawable.palace, R.drawable.whitespace, "white", 4));
         String bubbles = "Imagine blowing bubbles in a sink or bathtub.";
         mImagines.add(new Book("Do You Like Bubbles", bubbles,
-                R.drawable.bubbles, R.drawable.whitespace, "white"));
+                R.drawable.bubbles, R.drawable.whitespace, "white", 4));
 
         return mImagines;
     }
