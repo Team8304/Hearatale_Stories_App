@@ -122,87 +122,87 @@ public class SplashScreen extends AppCompatActivity {
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
                 R.drawable.greydot, "grey", 4, times));
 
-        times.clear();
-        times.add(25);
-        times.add(56);
-        times.add(67);
-        times.add(97);
-        times.add(126);
-        times.add(159);
+        ArrayList<Integer> times2 = new ArrayList<>();
+        times2.add(25);
+        times2.add(56);
+        times2.add(67);
+        times2.add(97);
+        times2.add(126);
+        times2.add(159);
 
         String littleredhen = "Lazy animals refuse to help the hen plant the seed, harvest the grain, or bake the bread, so the hen refuses to share the baked bread with the lazy animals.";
         mBooks.add(new Book("The Little Red Hen", littleredhen, R.drawable.little_red_hen,
-                R.drawable.greydot, "grey", 4, times));
+                R.drawable.greydot, "grey", 4, times2));
 
-        times.clear();
-        times.add(3);
-        times.add(36);
-        times.add(82);
-        times.add(110);
-        times.add(146);
-        times.add(186);
-        times.add(217);
-        times.add(231);
+        ArrayList<Integer> times3 = new ArrayList<>();
+        times3.add(3);
+        times3.add(36);
+        times3.add(82);
+        times3.add(110);
+        times3.add(146);
+        times3.add(186);
+        times3.add(217);
+        times3.add(231);
 
         String boywolf = "Bored watching over the sheep, a boy causes excitement by lying that a wolf threatens; when a real wolf attacks, the people think the boy’s lying and won’t come to help him.";
         mBooks.add(new Book("The Boy Who Cried Wolf", boywolf, R.drawable.boy_who_cried_wolf,
-                R.drawable.bluedot, "blue", 4, times));
+                R.drawable.bluedot, "blue", 4, times3));
 
-        times.clear();
-        times.add(27);
-        times.add(67);
-        times.add(102);
-        times.add(140);
-        times.add(162);
-        times.add(193);
-        times.add(209);
-        times.add(238);
-        times.add(261);
-        times.add(290);
-        times.add(359);
-        times.add(373);
+        ArrayList<Integer> times4 = new ArrayList<>();
+        times4.add(27);
+        times4.add(67);
+        times4.add(102);
+        times4.add(140);
+        times4.add(162);
+        times4.add(193);
+        times4.add(209);
+        times4.add(238);
+        times4.add(261);
+        times4.add(290);
+        times4.add(359);
+        times4.add(373);
 
 
         String elves = "By secretly making shoes, two elves save a poor shoemaker and his wife; the man and wife make clothes to reward the elves, who leave when their help is no longer needed.";
         mBooks.add(new Book("The Elves and Shoemaker", elves, R.drawable.elves_and_shoemaker,
-                R.drawable.greendot, "green", 4, times));
+                R.drawable.greendot, "green", 4, times4));
 
-        times.clear();
-        times.add(27);
-        times.add(67);
-        times.add(102);
-        times.add(140);
-        times.add(162);
-        times.add(193);
-        times.add(209);
-        times.add(238);
-        times.add(261);
-        times.add(290);
-        times.add(359);
-        times.add(373);
+        ArrayList<Integer> times5 = new ArrayList<>();
+        times5.add(27);
+        times5.add(67);
+        times5.add(102);
+        times5.add(140);
+        times5.add(162);
+        times5.add(193);
+        times5.add(209);
+        times5.add(238);
+        times5.add(261);
+        times5.add(290);
+        times5.add(359);
+        times5.add(373);
 
         String littlepigs = "Two pigs squander their money and build shabby houses; their smarter brother saves and works hard to build a brick house which protects them all from the big bad wolf.";
         mBooks.add(new Book("The Three Little Pigs", littlepigs, R.drawable.three_little_pigs,
-                R.drawable.greydot, "grey", 4, times));
+                R.drawable.greydot, "grey", 4, times5));
 
-        times.clear();
-        times.add(2);
-        times.add(38);
-        times.add(57);
-        times.add(69);
-        times.add(87);
-        times.add(107);
-        times.add(168);
-        times.add(216);
-        times.add(263);
-        times.add(283);
-        times.add(317);
-        times.add(367);
-        times.add(390);
+        ArrayList<Integer> times6 = new ArrayList<>();
+        times6.add(2);
+        times6.add(38);
+        times6.add(57);
+        times6.add(69);
+        times6.add(87);
+        times6.add(107);
+        times6.add(168);
+        times6.add(216);
+        times6.add(263);
+        times6.add(283);
+        times6.add(317);
+        times6.add(367);
+        times6.add(390);
 
         String billygoat = "Two billy goats trick a mean troll into waiting for their brother; with his horns the big brother knocks the troll off the bridge.";
         mBooks.add(new Book("The Three Billy Goats Gruff", billygoat, R.drawable.three_billy_goats_gruff,
-                R.drawable.greydot, "grey", 4, times));
+                R.drawable.greydot, "grey", 4, times6));
         String peterRabbit = "Peter disobeys his mother and enters Mr. MacGregor’s garden, where he is almost captured and put into a pie; Peter escapes and returns to his mother who scolds him.";
         mBooks.add(new Book("The Tale of Peter Rabbit", peterRabbit, R.drawable.peter_rabbit,
                 R.drawable.greydot, "grey", 4, times));
