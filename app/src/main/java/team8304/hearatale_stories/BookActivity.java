@@ -21,6 +21,8 @@ import android.widget.TextView;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.Collection;
@@ -47,6 +49,10 @@ public class BookActivity extends AppCompatActivity {
     private AlertDialog alert11;
     private Button quizButton;
     private boolean popped;
+    private String bookllist[] = new String [] {"rumplestiltskin", "the_boy_who_cried_wolf",
+            "the_elves_and_shoemaker", "the_gingerbread_man", "the_lion_and_the_mouse",
+            "the_little_red_hen", "the_tale_of_peter_rabbit", "the_three_billy_goats_gruff",
+            "the_three_little_pigs", "little_red_riding_hood"};
 
     private int currentPage;
     private boolean foundCurrentPage;
@@ -99,6 +105,7 @@ public class BookActivity extends AppCompatActivity {
         currentQuestions = currentBook.getQuestions();
         currentAnswers = currentBook.getAnswers();
 
+
         Uri bookPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + ""
                 + formatBookTitle(bookTitle));
         Uri storyContentPath = Uri.parse("android.resource://" + getPackageName() + "/raw/" + "story_"
@@ -113,12 +120,23 @@ public class BookActivity extends AppCompatActivity {
         experienceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(mp.isPlaying()) {
+                    mp.pause();
+                    playButton.setBackgroundResource(R.drawable.play_button);
+                }
                 Intent experience_intent = new Intent(getApplicationContext(), HomeExperienceActivity.class);
                 experience_intent.putExtra("book", currentBook);
                 startActivity(experience_intent);
             }
         });
 
+
+        //hide the home experience button if the book is imagine
+        if (!Arrays.asList(bookllist).contains(formatBookTitle(bookTitle))) {
+            experienceButton.setVisibility(View.GONE); //SHOW the button
+        }
+
+//        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         /*ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
         try {
