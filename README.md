@@ -1,4 +1,4 @@
-# Hearatale_Stories_App
+# Brainy Stories
 
 Release Notes
 - New features: quizzes come in increments now!
