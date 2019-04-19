@@ -3,7 +3,7 @@
 Release Notes
 - New features: quizzes come in increments now!
 - Bugs fixed: removed the favorites tab, which crashes the app if selected.
-- Known bugs and defects -- you should also include here any functionality you promised the customer but is missing in the release
+- Known bugs and defects: reward and zoo functionality will not be included upon release. 
 
 Install Guide
 - Prerequisites: Android Studio w/ an emulator w/ Android 9, API 28
