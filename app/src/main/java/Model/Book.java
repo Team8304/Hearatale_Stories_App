@@ -73,17 +73,17 @@ public class Book implements Parcelable {
         this.increment = increment;
     }
 
-    //7 inputs
-//    public Book(String title, String description, Integer image, Integer dots, String color,
-//                ArrayList<String> questions, ArrayList<String> answers) {
-//        this.title = title;
-//        this.description = description;
-//        this.image = image;
-//        this.dots = dots;
-//        this.color = color;
-//        this.questions = questions;
-//        this.answers = answers;
-//    }
+//    7 inputs
+    public Book(String title, String description, Integer image, Integer dots, String color, int numPages,
+                ArrayList<Integer> times) {
+        this.title = title;
+        this.description = description;
+        this.image = image;
+        this.dots = dots;
+        this.color = color;
+        this.numPages = numPages;
+        this.times = times;
+    }
 
 
     public String getTitle() {
