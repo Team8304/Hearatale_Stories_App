@@ -122,46 +122,40 @@ public class SplashScreen extends AppCompatActivity {
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
                 R.drawable.greydot, "grey", 4, times));
 
-        ArrayList<Integer> times2 = new ArrayList<>();
-        times2.add(25);
-        times2.add(56);
-        times2.add(67);
-        times2.add(97);
-        times2.add(126);
-        times2.add(159);
+        ArrayList<Integer> timesHen = new ArrayList<>();
+        timesHen.add(25);
+        timesHen.add(56);
+        timesHen.add(67);
+        timesHen.add(97);
+        timesHen.add(126);
+        timesHen.add(159);
 
         String littleredhen = "Lazy animals refuse to help the hen plant the seed, harvest the grain, or bake the bread, so the hen refuses to share the baked bread with the lazy animals.";
         mBooks.add(new Book("The Little Red Hen", littleredhen, R.drawable.little_red_hen,
-                R.drawable.greydot, "grey", 4, times2));
+                R.drawable.greydot, "grey", 4, timesHen));
 
-        ArrayList<Integer> times3 = new ArrayList<>();
-        times3.add(3);
-        times3.add(36);
-        times3.add(82);
-        times3.add(110);
-        times3.add(146);
-        times3.add(186);
-        times3.add(217);
-        times3.add(231);
+        ArrayList<Integer> timeswolf = new ArrayList<>();
+        timeswolf.add(3);
+        timeswolf.add(36);
+        timeswolf.add(82);
+        timeswolf.add(110);
+        timeswolf.add(146);
+        timeswolf.add(186);
+        timeswolf.add(217);
+        timeswolf.add(231);
 
         String boywolf = "Bored watching over the sheep, a boy causes excitement by lying that a wolf threatens; when a real wolf attacks, the people think the boy’s lying and won’t come to help him.";
         mBooks.add(new Book("The Boy Who Cried Wolf", boywolf, R.drawable.boy_who_cried_wolf,
-                R.drawable.bluedot, "blue", 4, times3));
+                R.drawable.bluedot, "blue", 4, timeswolf));
 
         ArrayList<Integer> times4 = new ArrayList<>();
-        times4.add(27);
+        times4.add(5);
         times4.add(67);
-        times4.add(102);
-        times4.add(140);
-        times4.add(162);
-        times4.add(193);
-        times4.add(209);
-        times4.add(238);
-        times4.add(261);
-        times4.add(290);
-        times4.add(359);
-        times4.add(373);
-
+        times4.add(101);
+        times4.add(132);
+        times4.add(154);
+        times4.add(214);
+        times4.add(298);
 
         String elves = "By secretly making shoes, two elves save a poor shoemaker and his wife; the man and wife make clothes to reward the elves, who leave when their help is no longer needed.";
         mBooks.add(new Book("The Elves and Shoemaker", elves, R.drawable.elves_and_shoemaker,
@@ -229,9 +223,7 @@ public class SplashScreen extends AppCompatActivity {
         times1.add(382);
         times1.add(414);
         times1.add(435);
-        mBooks.add(new Book("The Tale of Peter Rabbit", peterRabbit, R.drawable.peter_rabbit,
-]
-                R.drawable.greydot, "grey", 4, times1));
+        mBooks.add(new Book("The Tale of Peter Rabbit", peterRabbit, R.drawable.peter_rabbit, R.drawable.greydot, "grey", 4, times1));
 
         String ginger = "The Gingerbread Man speaks rudely, brags, and outruns all the people and animals until the fox’s help, is tricked and swallowed.";
         ArrayList<Integer> times2 = new ArrayList<>();
@@ -275,6 +267,7 @@ public class SplashScreen extends AppCompatActivity {
         times.add(485);
         mBooks.add(new Book("Rumplestiltskin", rumple, R.drawable.rumplestiltskin,
                 R.drawable.reddot, "red", 4, times));
+
         String redriding = "A girl speaks to a wolf and leaves the proper path; the wolf swallows the grandmother and girl, but a huntsman kills the wolf, opens the wolf’s belly, and rescues both of them.";
         ArrayList<Integer> times3 = new ArrayList<>();
         times3.clear();
