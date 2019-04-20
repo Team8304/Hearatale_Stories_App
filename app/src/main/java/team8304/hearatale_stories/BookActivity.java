@@ -213,8 +213,6 @@ public class BookActivity extends AppCompatActivity {
 //                questionEnd += currentBook.getIncrement();
 //            }
 //        }
-        System.out.println("QuizPosition:" + currentBook.getQuizTimes().get(quizPosition));
-        System.out.println("CurrentPosition:" + getTime(mp.getCurrentPosition()));
 
         if (currentBook.getQuizTimes().get(quizPosition) < getTime(mp.getCurrentPosition())) {
             questionEnd += currentBook.getIncrement();

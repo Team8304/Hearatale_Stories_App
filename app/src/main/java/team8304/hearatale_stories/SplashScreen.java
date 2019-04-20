@@ -126,18 +126,21 @@ public class SplashScreen extends AppCompatActivity {
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
                 R.drawable.greydot, "grey", 4, times));
         String littleredhen = "Lazy animals refuse to help the hen plant the seed, harvest the grain, or bake the bread, so the hen refuses to share the baked bread with the lazy animals.";
+        ArrayList<Integer> henQuiz = new ArrayList<>(Arrays.asList(54, 130, 190));
         mBooks.add(new Book("The Little Red Hen", littleredhen, R.drawable.little_red_hen,
                 R.drawable.greydot, "grey", 4));
         String boywolf = "Bored watching over the sheep, a boy causes excitement by lying that a wolf threatens; when a real wolf attacks, the people think the boy’s lying and won’t come to help him.";
         mBooks.add(new Book("The Boy Who Cried Wolf", boywolf, R.drawable.boy_who_cried_wolf,
                 R.drawable.bluedot, "blue", 4));
         String elves = "By secretly making shoes, two elves save a poor shoemaker and his wife; the man and wife make clothes to reward the elves, who leave when their help is no longer needed.";
+        ArrayList<Integer> elvesQuiz = new ArrayList<>(Arrays.asList(100, 240, 315, 370));
         mBooks.add(new Book("The Elves and Shoemaker", elves, R.drawable.elves_and_shoemaker,
                 R.drawable.greendot, "green", 4));
         String littlepigs = "Two pigs squander their money and build shabby houses; their smarter brother saves and works hard to build a brick house which protects them all from the big bad wolf.";
         mBooks.add(new Book("The Three Little Pigs", littlepigs, R.drawable.three_little_pigs,
                 R.drawable.greydot, "grey", 4));
         String billygoat = "Two billy goats trick a mean troll into waiting for their brother; with his horns the big brother knocks the troll off the bridge.";
+        ArrayList<Integer> billyQuiz = new ArrayList<>(Arrays.asList(80, 170, 240, 310, 390));
         mBooks.add(new Book("The Three Billy Goats Gruff", billygoat, R.drawable.three_billy_goats_gruff,
                 R.drawable.greydot, "grey", 4));
         String peterRabbit = "Peter disobeys his mother and enters Mr. MacGregor’s garden, where he is almost captured and put into a pie; Peter escapes and returns to his mother who scolds him.";
@@ -186,7 +189,7 @@ public class SplashScreen extends AppCompatActivity {
         times2.add(380);
         times2.add(435);
         mBooks.add(new Book("The Gingerbread Man", ginger, R.drawable.gingerbread_man,
-                R.drawable.greendot, "green", 4, times2));
+                R.drawable.greendot, "green", 4, times2, new ArrayList<Integer>(Arrays.asList(78, 140, 250, 320, 395, 465)), 5));
         String rumple = "A cruel man spins straw into gold to save a girl’s life, demanding her first child in payment; when she’s queen she saves her child by learning the man’s secret name.";
         times.clear();
         times.add(3);
@@ -227,7 +230,7 @@ public class SplashScreen extends AppCompatActivity {
         times3.add(364);
         times3.add(387);
         mBooks.add(new Book("Little Red Riding Hood", redriding, R.drawable.little_red_riding_hood,
-                R.drawable.reddot, "red", 4, times3));
+                R.drawable.reddot, "red", 4, times3, new ArrayList<Integer>(Arrays.asList(70, 150, 240, 360, 405, 515)), 5));
         return mBooks;
     }
 
