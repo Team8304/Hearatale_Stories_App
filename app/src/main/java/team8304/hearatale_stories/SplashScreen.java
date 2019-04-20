@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Arrays;
 
 public class SplashScreen extends AppCompatActivity {
     private static int SPLASH_TIMEOUT = 2500;
@@ -110,6 +111,9 @@ public class SplashScreen extends AppCompatActivity {
         ArrayList<Book> mBooks = new ArrayList<>();
 
         ArrayList<Integer> times = new ArrayList<>();
+        times.add(42);
+        times.add(66);
+        times.add(85);
         times.add(4);
         times.add(32);
         times.add(50);
@@ -131,6 +135,7 @@ public class SplashScreen extends AppCompatActivity {
         timesHen.add(159);
 
         String littleredhen = "Lazy animals refuse to help the hen plant the seed, harvest the grain, or bake the bread, so the hen refuses to share the baked bread with the lazy animals.";
+        ArrayList<Integer> henQuiz = new ArrayList<>(Arrays.asList(54, 130, 190));
         mBooks.add(new Book("The Little Red Hen", littleredhen, R.drawable.little_red_hen,
                 R.drawable.greydot, "grey", 4, timesHen));
 
@@ -158,6 +163,7 @@ public class SplashScreen extends AppCompatActivity {
         times4.add(298);
 
         String elves = "By secretly making shoes, two elves save a poor shoemaker and his wife; the man and wife make clothes to reward the elves, who leave when their help is no longer needed.";
+        ArrayList<Integer> elvesQuiz = new ArrayList<>(Arrays.asList(100, 240, 315, 370));
         mBooks.add(new Book("The Elves and Shoemaker", elves, R.drawable.elves_and_shoemaker,
                 R.drawable.greendot, "green", 4, times4));
 
@@ -195,6 +201,7 @@ public class SplashScreen extends AppCompatActivity {
         times6.add(390);
 
         String billygoat = "Two billy goats trick a mean troll into waiting for their brother; with his horns the big brother knocks the troll off the bridge.";
+        ArrayList<Integer> billyQuiz = new ArrayList<>(Arrays.asList(80, 170, 240, 310, 390));
         mBooks.add(new Book("The Three Billy Goats Gruff", billygoat, R.drawable.three_billy_goats_gruff,
                 R.drawable.greydot, "grey", 4, times6));
         String peterRabbit = "Peter disobeys his mother and enters Mr. MacGregor’s garden, where he is almost captured and put into a pie; Peter escapes and returns to his mother who scolds him.";
@@ -244,7 +251,7 @@ public class SplashScreen extends AppCompatActivity {
         times2.add(435);
         mBooks.add(new Book("The Gingerbread Man", ginger, R.drawable.gingerbread_man,
 
-                R.drawable.greendot, "green", 4, times2));
+                R.drawable.greendot, "green", 4, times2, new ArrayList<Integer>(Arrays.asList(78, 140, 250, 320, 395, 465)), 5));
         String rumple = "A cruel man spins straw into gold to save a girl’s life, demanding her first child in payment; when she’s queen she saves her child by learning the man’s secret name.";
         times.clear();
         times.add(3);
@@ -287,7 +294,7 @@ public class SplashScreen extends AppCompatActivity {
         times3.add(387);
         mBooks.add(new Book("Little Red Riding Hood", redriding, R.drawable.little_red_riding_hood,
 
-                R.drawable.reddot, "red", 4, times3));
+                R.drawable.reddot, "red", 4, times3, new ArrayList<Integer>(Arrays.asList(70, 150, 240, 360, 405, 515)), 5));
         return mBooks;
     }
 
@@ -304,6 +311,7 @@ public class SplashScreen extends AppCompatActivity {
                 R.drawable.shoe, R.drawable.whitespace, "white", 4, times));
 
         times.clear();
+
 
         String pump = "Imagine swinging as high as trees, birds, clouds, or even higher, what it might feel like, what you might see.";
         mImagines.add(new Book("Do you pump your legs when you swing?", pump,
