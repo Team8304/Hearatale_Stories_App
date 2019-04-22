@@ -138,7 +138,7 @@ public class SplashScreen extends AppCompatActivity {
         String littleredhen = "Lazy animals refuse to help the hen plant the seed, harvest the grain, or bake the bread, so the hen refuses to share the baked bread with the lazy animals.";
         ArrayList<Integer> henQuiz = new ArrayList<>(Arrays.asList(54, 130, 190));
         mBooks.add(new Book("The Little Red Hen", littleredhen, R.drawable.little_red_hen,
-                R.drawable.greydot, "grey", 4, timesHen));
+                R.drawable.greydot, "grey", 4, timesHen, henQuiz, 5));
 
         ArrayList<Integer> timeswolf = new ArrayList<>();
         timeswolf.add(3);
@@ -166,7 +166,7 @@ public class SplashScreen extends AppCompatActivity {
         String elves = "By secretly making shoes, two elves save a poor shoemaker and his wife; the man and wife make clothes to reward the elves, who leave when their help is no longer needed.";
         ArrayList<Integer> elvesQuiz = new ArrayList<>(Arrays.asList(100, 240, 315, 370));
         mBooks.add(new Book("The Elves and Shoemaker", elves, R.drawable.elves_and_shoemaker,
-                R.drawable.greendot, "green", 4, times4));
+                R.drawable.greendot, "green", 4, times4, elvesQuiz, 4));
 
         ArrayList<Integer> times5 = new ArrayList<>();
         times5.add(27);
@@ -204,7 +204,7 @@ public class SplashScreen extends AppCompatActivity {
         String billygoat = "Two billy goats trick a mean troll into waiting for their brother; with his horns the big brother knocks the troll off the bridge.";
         ArrayList<Integer> billyQuiz = new ArrayList<>(Arrays.asList(80, 170, 240, 310, 390));
         mBooks.add(new Book("The Three Billy Goats Gruff", billygoat, R.drawable.three_billy_goats_gruff,
-                R.drawable.greydot, "grey", 4, times6));
+                R.drawable.greydot, "grey", 4, times6, billyQuiz, 6));
         String peterRabbit = "Peter disobeys his mother and enters Mr. MacGregor’s garden, where he is almost captured and put into a pie; Peter escapes and returns to his mother who scolds him.";
         ArrayList<Integer> times1 = new ArrayList<>();
         times1.add(22);
