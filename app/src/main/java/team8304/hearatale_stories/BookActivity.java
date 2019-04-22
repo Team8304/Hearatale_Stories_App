@@ -215,7 +215,7 @@ public class BookActivity extends AppCompatActivity {
 //        }
 
         if (currentBook.getQuizTimes().get(quizPosition) < getTime(mp.getCurrentPosition())) {
-//            questionEnd += currentBook.getIncrement();
+            questionEnd += currentBook.getIncrement();
             quizPosition++;
         }
 //        if (questionCounter >= questionEnd) { quizPosition++; }
@@ -224,7 +224,8 @@ public class BookActivity extends AppCompatActivity {
         }
         ArrayList<String> q = new ArrayList<>(currentQuestions.subList(questionCounter, questionEnd));
         startLibraryActivity.putStringArrayListExtra("questions", q);
-        startLibraryActivity.putStringArrayListExtra("answers", currentAnswers);
+        ArrayList<String> a = new ArrayList<>(currentAnswers.subList(questionCounter, questionEnd));
+        startLibraryActivity.putStringArrayListExtra("answers", a);
         startLibraryActivity.putExtra("bookTitle", formatBookTitle(bookTitle));
         startActivityIfNeeded(startLibraryActivity, 0);
         mp.pause();
@@ -279,16 +280,18 @@ public class BookActivity extends AppCompatActivity {
 
             }
             if (currentBook.getQuizTimes() != null) {
+                if (quizPosition >= currentBook.getQuizTimes().size()) { quizPosition--; }
                 if (currentBook.getQuizTimes().get(quizPosition) < getTime(mp.getCurrentPosition()) || questionCounter < questionEnd) {
                     quizButton.setVisibility(View.VISIBLE);
                 } else {
                     quizButton.setVisibility(View.INVISIBLE);
                 }
-                if (currentBook.getQuizTimes().get(quizPosition) < getTime(mp.getCurrentPosition())) {
-                    questionEnd += currentBook.getIncrement();
-                    //                quizPosition++;
-                }
+//                if (currentBook.getQuizTimes().get(quizPosition) < getTime(mp.getCurrentPosition())) {
+//                    questionEnd += currentBook.getIncrement();
+//                    //                quizPosition++;
+//                }
             }
+            if (questionCounter == currentBook.getQuestions().size()) { quizButton.setVisibility(View.INVISIBLE); }
 
             int id2;
             if (currentPage < 10) {
