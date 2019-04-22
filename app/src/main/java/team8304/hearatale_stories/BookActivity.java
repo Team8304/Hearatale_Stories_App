@@ -209,13 +209,13 @@ public class BookActivity extends AppCompatActivity {
         Intent startLibraryActivity = new Intent(this, QuizActivity.class);
 //        startLibraryActivity.putStringArrayListExtra("questions", currentQuestions);
 //        for (int time : currentBook.getQuizTimes()) {
-//            if (getTime(mp.getCurrentPosition()) > time) {
+//            if (time < getTime(mp.getCurrentPosition()) ) {
 //                questionEnd += currentBook.getIncrement();
 //            }
 //        }
 
         if (currentBook.getQuizTimes().get(quizPosition) < getTime(mp.getCurrentPosition())) {
-            questionEnd += currentBook.getIncrement();
+//            questionEnd += currentBook.getIncrement();
             quizPosition++;
         }
 //        if (questionCounter >= questionEnd) { quizPosition++; }
@@ -283,6 +283,10 @@ public class BookActivity extends AppCompatActivity {
                 quizButton.setVisibility(View.VISIBLE);
             } else {
                 quizButton.setVisibility(View.INVISIBLE);
+            }
+            if (currentBook.getQuizTimes().get(quizPosition) < getTime(mp.getCurrentPosition())) {
+                questionEnd += currentBook.getIncrement();
+//                quizPosition++;
             }
 
             int id2;

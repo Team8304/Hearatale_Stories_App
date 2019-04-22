@@ -170,7 +170,7 @@ public class SplashScreen extends AppCompatActivity {
         times1.add(414);
         times1.add(435);
         mBooks.add(new Book("The Tale of Peter Rabbit", peterRabbit, R.drawable.peter_rabbit,
-                R.drawable.greydot, "grey", 4, times1));
+                R.drawable.greydot, "grey", 4, times1, new ArrayList<Integer>(Arrays.asList(71, 133, 246, 355, 440)), 6));
         String ginger = "The Gingerbread Man speaks rudely, brags, and outruns all the people and animals until the fox’s help, is tricked and swallowed.";
         ArrayList<Integer> times2 = new ArrayList<>();
         times2.clear();
@@ -211,7 +211,7 @@ public class SplashScreen extends AppCompatActivity {
         times.add(455);
         times.add(485);
         mBooks.add(new Book("Rumplestiltskin", rumple, R.drawable.rumplestiltskin,
-                R.drawable.reddot, "red", 4, times));
+                R.drawable.reddot, "red", 4, times, new ArrayList<Integer>(Arrays.asList(69, 148, 238, 313, 400, 495)), 5));
         String redriding = "A girl speaks to a wolf and leaves the proper path; the wolf swallows the grandmother and girl, but a huntsman kills the wolf, opens the wolf’s belly, and rescues both of them.";
         ArrayList<Integer> times3 = new ArrayList<>();
         times3.clear();
