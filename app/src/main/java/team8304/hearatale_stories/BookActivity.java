@@ -278,7 +278,7 @@ public class BookActivity extends AppCompatActivity {
                 }
 
             }
-            if (currentBook.getQuizTimes() != null) {
+            if (currentBook.getAnswers() != null) {
                 if (currentBook.getQuizTimes().get(quizPosition) < getTime(mp.getCurrentPosition()) || questionCounter < questionEnd) {
                     quizButton.setVisibility(View.VISIBLE);
                 } else {
