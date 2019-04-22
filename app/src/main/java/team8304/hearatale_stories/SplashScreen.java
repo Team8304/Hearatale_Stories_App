@@ -252,7 +252,6 @@ public class SplashScreen extends AppCompatActivity {
         times2.add(380);
         times2.add(435);
         mBooks.add(new Book("The Gingerbread Man", ginger, R.drawable.gingerbread_man,
-
                 R.drawable.greendot, "green", 4, times2, new ArrayList<Integer>(Arrays.asList(78, 140, 250, 320, 395, 465)), 5));
         String rumple = "A cruel man spins straw into gold to save a girl’s life, demanding her first child in payment; when she’s queen she saves her child by learning the man’s secret name.";
         times.clear();
@@ -314,34 +313,121 @@ public class SplashScreen extends AppCompatActivity {
 
         times.clear();
 
+        ArrayList<Integer> times2 = new ArrayList<>();
+        times2.add(5);
+        times2.add(33);
+        times2.add(57);
+        times2.add(69);
+        times2.add(73);
 
         String pump = "Imagine swinging as high as trees, birds, clouds, or even higher, what it might feel like, what you might see.";
         mImagines.add(new Book("Do you pump your legs when you swing?", pump,
-                R.drawable.pump, R.drawable.whitespace, "white", 4, times));
+                R.drawable.pump, R.drawable.whitespace, "white", 4, times2));
+
+        ArrayList<Integer> times3 = new ArrayList<>();
+        times3.add(4);
+        times3.add(33);
+        times3.add(58);
+        times3.add(85);
+
         String window = "Imagine wandering into a world where everything is upside down and backwards.";
         mImagines.add(new Book("Upside Down Windows", window,
-                R.drawable.window, R.drawable.whitespace, "white", 4));
+                R.drawable.window, R.drawable.whitespace, "white", 4, times3));
+
+        ArrayList<Integer> times4 = new ArrayList<>();
+        times4.add(4);
+        times4.add(35);
+        times4.add(55);
+        times4.add(79);
+        times4.add(104);
+
         String blink = "Imagine blinking to become very tiny and what you might be able to do if you were very, very small.";
         mImagines.add(new Book("The Special One Eye Blink", blink,
-                R.drawable.blink, R.drawable.whitespace, "white"));
+                R.drawable.blink, R.drawable.whitespace, "white", 4, times4));
+
+        ArrayList<Integer> times5 = new ArrayList<>();
+        times5.add(3);
+        times5.add(45);
+        times5.add(64);
+        times5.add(96);
+        times5.add(130);
+
+
         String angel = "Imagine what you’d say if a little angel asked your advice on how to be a tiny bit mischievous.";
         mImagines.add(new Book("If a Naughty Angel", angel,
-                R.drawable.angel, R.drawable.whitespace, "white", 4));
+                R.drawable.angel, R.drawable.whitespace, "white", 4, times5));
+
+        ArrayList<Integer> times6 = new ArrayList<>();
+        times6.add(3);
+        times6.add(21);
+        times6.add(38);
+        times6.add(49);
+        times6.add(60);
+        times6.add(78);
+        times6.add(96);
+        times6.add(110);
+        times6.add(121);
+        times6.add(141);
+        
         String kitten = "Imagine what it might be like to be a kitten.";
         mImagines.add(new Book("If you Decide to be a Kitten", kitten,
-                R.drawable.if_you_decide_to_be_a_kitten, R.drawable.whitespace, "white", 4));
+                R.drawable.if_you_decide_to_be_a_kitten, R.drawable.whitespace, "white", 4, times6));
+
+        ArrayList<Integer> times7 = new ArrayList<>();
+        times7.add(3);
+        times7.add(12);
+        times7.add(19);
+        times7.add(31);
+        times7.add(38);
+        times7.add(47);
+        times7.add(50);
+        times7.add(57);
+        times7.add(78);
+        times7.add(88);
+        times7.add(107);
+        times7.add(117);
+        times7.add(141);
+
+        
         String nobody = "Always remember, nobody’s better than you.";
         mImagines.add(new Book("Nobody's Better Than You", nobody,
-                R.drawable.nobodys_better_than_you, R.drawable.whitespace, "white", 4));
+                R.drawable.nobodys_better_than_you, R.drawable.whitespace, "white", 4, times7));
+
+        ArrayList<Integer> times8 = new ArrayList<>();
+        times8.add(6);
+        times8.add(26);
+        times8.add(53);
+        times8.add(71);
+        times8.add(103);
+        times8.add(145);
+        
         String dirt = "Imagine some of the things you might help a sad, lonely, bored piece of dirt become.";
         mImagines.add(new Book("If a Piece of Dirt", dirt,
-                R.drawable.dirt, R.drawable.whitespace, "white"));
+                R.drawable.dirt, R.drawable.whitespace, "white", 4, times8));
+
+        ArrayList<Integer> times9 = new ArrayList<>();
+        times9.add(6);
+        times9.add(43);
+        times9.add(94);
+        times9.add(123);
+        times9.add(152);
+        
         String fairy = "Imagine the kind of home fairies might create for themselves if they wanted.";
         mImagines.add(new Book("The Imaginary Fairy Palace", fairy,
-                R.drawable.palace, R.drawable.whitespace, "white", 4));
+                R.drawable.palace, R.drawable.whitespace, "white", 4, times9));
+
+        ArrayList<Integer> times1 = new ArrayList<>();
+        times1.add(2);
+        times1.add(13);
+        times1.add(40);
+        times1.add(65);
+        times1.add(102);
+        times1.add(122);
+        times1.add(127);
+        
         String bubbles = "Imagine blowing bubbles in a sink or bathtub.";
         mImagines.add(new Book("Do You Like Bubbles", bubbles,
-                R.drawable.bubbles, R.drawable.whitespace, "white", 4));
+                R.drawable.bubbles, R.drawable.whitespace, "white", 4, times1));
 
         return mImagines;
     }
