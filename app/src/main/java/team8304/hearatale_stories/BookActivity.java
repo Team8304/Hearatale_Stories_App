@@ -280,8 +280,9 @@ public class BookActivity extends AppCompatActivity {
 
             }
 
-            if (quizPosition >= currentBook.getQuizTimes().size()) { quizPosition--; }
             if (currentBook.getAnswers() != null) {
+                if (quizPosition >= currentBook.getQuizTimes().size()) { quizPosition--; }
+
                 if (currentBook.getQuizTimes().get(quizPosition) < getTime(mp.getCurrentPosition()) || questionCounter < questionEnd) {
                     quizButton.setVisibility(View.VISIBLE);
                 } else {
@@ -291,8 +292,9 @@ public class BookActivity extends AppCompatActivity {
 //                    questionEnd += currentBook.getIncrement();
 //                    //                quizPosition++;
 //                }
+                if (questionCounter == currentBook.getQuestions().size()) { quizButton.setVisibility(View.INVISIBLE); }
             }
-            if (questionCounter == currentBook.getQuestions().size()) { quizButton.setVisibility(View.INVISIBLE); }
+
 
             int id2;
             if (currentPage < 10) {
