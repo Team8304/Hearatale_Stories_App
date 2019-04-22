@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Arrays;
 
@@ -125,24 +126,85 @@ public class SplashScreen extends AppCompatActivity {
         String lionDesc = "A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion.";
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
                 R.drawable.greydot, "grey", 4, times));
+
+        ArrayList<Integer> timesHen = new ArrayList<>();
+        timesHen.add(25);
+        timesHen.add(56);
+        timesHen.add(67);
+        timesHen.add(97);
+        timesHen.add(126);
+        timesHen.add(159);
+
         String littleredhen = "Lazy animals refuse to help the hen plant the seed, harvest the grain, or bake the bread, so the hen refuses to share the baked bread with the lazy animals.";
         ArrayList<Integer> henQuiz = new ArrayList<>(Arrays.asList(54, 130, 190));
         mBooks.add(new Book("The Little Red Hen", littleredhen, R.drawable.little_red_hen,
-                R.drawable.greydot, "grey", 4));
+                R.drawable.greydot, "grey", 4, timesHen, henQuiz, 5));
+
+        ArrayList<Integer> timeswolf = new ArrayList<>();
+        timeswolf.add(3);
+        timeswolf.add(36);
+        timeswolf.add(82);
+        timeswolf.add(110);
+        timeswolf.add(146);
+        timeswolf.add(186);
+        timeswolf.add(217);
+        timeswolf.add(231);
+
         String boywolf = "Bored watching over the sheep, a boy causes excitement by lying that a wolf threatens; when a real wolf attacks, the people think the boy’s lying and won’t come to help him.";
         mBooks.add(new Book("The Boy Who Cried Wolf", boywolf, R.drawable.boy_who_cried_wolf,
-                R.drawable.bluedot, "blue", 4));
+                R.drawable.bluedot, "blue", 4, timeswolf));
+
+        ArrayList<Integer> times4 = new ArrayList<>();
+        times4.add(5);
+        times4.add(67);
+        times4.add(101);
+        times4.add(132);
+        times4.add(154);
+        times4.add(214);
+        times4.add(298);
+
         String elves = "By secretly making shoes, two elves save a poor shoemaker and his wife; the man and wife make clothes to reward the elves, who leave when their help is no longer needed.";
         ArrayList<Integer> elvesQuiz = new ArrayList<>(Arrays.asList(100, 240, 315, 370));
         mBooks.add(new Book("The Elves and Shoemaker", elves, R.drawable.elves_and_shoemaker,
-                R.drawable.greendot, "green", 4));
+                R.drawable.greendot, "green", 4, times4, elvesQuiz, 4));
+
+        ArrayList<Integer> times5 = new ArrayList<>();
+        times5.add(27);
+        times5.add(67);
+        times5.add(102);
+        times5.add(140);
+        times5.add(162);
+        times5.add(193);
+        times5.add(209);
+        times5.add(238);
+        times5.add(261);
+        times5.add(290);
+        times5.add(359);
+        times5.add(373);
+
         String littlepigs = "Two pigs squander their money and build shabby houses; their smarter brother saves and works hard to build a brick house which protects them all from the big bad wolf.";
         mBooks.add(new Book("The Three Little Pigs", littlepigs, R.drawable.three_little_pigs,
-                R.drawable.greydot, "grey", 4));
+                R.drawable.greydot, "grey", 4, times5));
+
+        ArrayList<Integer> times6 = new ArrayList<>();
+        times6.add(2);
+        times6.add(38);
+        times6.add(57);
+        times6.add(69);
+        times6.add(87);
+        times6.add(107);
+        times6.add(168);
+        times6.add(216);
+        times6.add(263);
+        times6.add(283);
+        times6.add(317);
+        times6.add(367);
+        times6.add(390);
+
         String billygoat = "Two billy goats trick a mean troll into waiting for their brother; with his horns the big brother knocks the troll off the bridge.";
         ArrayList<Integer> billyQuiz = new ArrayList<>(Arrays.asList(80, 170, 240, 310, 390));
         mBooks.add(new Book("The Three Billy Goats Gruff", billygoat, R.drawable.three_billy_goats_gruff,
-                R.drawable.greydot, "grey", 4));
+                R.drawable.greydot, "grey", 4, times6, billyQuiz, 6));
         String peterRabbit = "Peter disobeys his mother and enters Mr. MacGregor’s garden, where he is almost captured and put into a pie; Peter escapes and returns to his mother who scolds him.";
         ArrayList<Integer> times1 = new ArrayList<>();
         times1.add(22);
@@ -171,6 +233,7 @@ public class SplashScreen extends AppCompatActivity {
         times1.add(435);
         mBooks.add(new Book("The Tale of Peter Rabbit", peterRabbit, R.drawable.peter_rabbit,
                 R.drawable.greydot, "grey", 4, times1, new ArrayList<Integer>(Arrays.asList(71, 133, 246, 355, 440)), 6));
+
         String ginger = "The Gingerbread Man speaks rudely, brags, and outruns all the people and animals until the fox’s help, is tricked and swallowed.";
         ArrayList<Integer> times2 = new ArrayList<>();
         times2.clear();
@@ -189,6 +252,7 @@ public class SplashScreen extends AppCompatActivity {
         times2.add(380);
         times2.add(435);
         mBooks.add(new Book("The Gingerbread Man", ginger, R.drawable.gingerbread_man,
+
                 R.drawable.greendot, "green", 4, times2, new ArrayList<Integer>(Arrays.asList(78, 140, 250, 320, 395, 465)), 5));
         String rumple = "A cruel man spins straw into gold to save a girl’s life, demanding her first child in payment; when she’s queen she saves her child by learning the man’s secret name.";
         times.clear();
@@ -212,6 +276,7 @@ public class SplashScreen extends AppCompatActivity {
         times.add(485);
         mBooks.add(new Book("Rumplestiltskin", rumple, R.drawable.rumplestiltskin,
                 R.drawable.reddot, "red", 4, times, new ArrayList<Integer>(Arrays.asList(69, 148, 238, 313, 400, 495)), 5));
+
         String redriding = "A girl speaks to a wolf and leaves the proper path; the wolf swallows the grandmother and girl, but a huntsman kills the wolf, opens the wolf’s belly, and rescues both of them.";
         ArrayList<Integer> times3 = new ArrayList<>();
         times3.clear();
@@ -230,6 +295,7 @@ public class SplashScreen extends AppCompatActivity {
         times3.add(364);
         times3.add(387);
         mBooks.add(new Book("Little Red Riding Hood", redriding, R.drawable.little_red_riding_hood,
+
                 R.drawable.reddot, "red", 4, times3, new ArrayList<Integer>(Arrays.asList(70, 150, 240, 360, 405, 515)), 5));
         return mBooks;
     }
@@ -244,10 +310,14 @@ public class SplashScreen extends AppCompatActivity {
 
         String shoe = "Imagine a shoe wanting to be like a car, and what a child might find in the home to help.";
         mImagines.add(new Book("If a Shoe Wanted to be a Car", shoe,
-                R.drawable.shoe, R.drawable.whitespace, "white", 4));
+                R.drawable.shoe, R.drawable.whitespace, "white", 4, times));
+
+        times.clear();
+
+
         String pump = "Imagine swinging as high as trees, birds, clouds, or even higher, what it might feel like, what you might see.";
         mImagines.add(new Book("Do you pump your legs when you swing?", pump,
-                R.drawable.pump, R.drawable.whitespace, "white", 4));
+                R.drawable.pump, R.drawable.whitespace, "white", 4, times));
         String window = "Imagine wandering into a world where everything is upside down and backwards.";
         mImagines.add(new Book("Upside Down Windows", window,
                 R.drawable.window, R.drawable.whitespace, "white", 4));
