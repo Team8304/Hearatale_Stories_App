@@ -59,8 +59,13 @@ public class BookActivity extends AppCompatActivity {
 
     private ArrayList<String> currentQuestions;
     private ArrayList<String> currentAnswers;
-    private int questionCounter = 0;
+
     private static final String TAG = "QuizActivity";
+
+    public static int questionCounter = 0;
+    public static int questionEnd = 0;
+
+    public int quizPosition = 0;
 
 
     @Override
@@ -82,10 +87,11 @@ public class BookActivity extends AppCompatActivity {
         // Question Part
         quizButton = (Button) findViewById(R.id.questionButton);
         quizButton.setText("Quiz");
-        quizButton.setVisibility(View.VISIBLE);
-        if (currentBook.getAnswers() == null) {
-            quizButton.setVisibility(View.INVISIBLE);
-        }
+        quizButton.setVisibility(View.INVISIBLE);
+        // Check is book object is imagine
+//        if (currentBook.getAnswers() == null) {
+//            quizButton.setVisibility(View.INVISIBLE);
+//        }
 //        quizButton.setVisibility(View.INVISIBLE);
 //            quizButton.postDelayed(new Runnable() {
 //                @Override
@@ -93,6 +99,8 @@ public class BookActivity extends AppCompatActivity {
 //                    quizButton.setVisibility(View.VISIBLE);
 //                }
 //            }, 1000 * 5);
+
+//        ArrayList<Integer> qTimes = currentBook.getQuizTimes();
 
         currentQuestions = currentBook.getQuestions();
         currentAnswers = currentBook.getAnswers();
@@ -191,14 +199,30 @@ public class BookActivity extends AppCompatActivity {
                 }
             }
         }).start();
+//        if (questionCounter == questionEnd) {
+//            quizPosition++;
+//        }
+
     }
 
     public void navigateToQuiz(View view) {
         Intent startLibraryActivity = new Intent(this, QuizActivity.class);
-        questionCounter = getIntent().getIntExtra("counter", 0);
-        ArrayList<String> q = new ArrayList<>(currentQuestions.subList(questionCounter, currentQuestions.size()));
 //        startLibraryActivity.putStringArrayListExtra("questions", currentQuestions);
-        System.out.println("!!!: " + questionCounter);
+//        for (int time : currentBook.getQuizTimes()) {
+//            if (getTime(mp.getCurrentPosition()) > time) {
+//                questionEnd += currentBook.getIncrement();
+//            }
+//        }
+
+        if (currentBook.getQuizTimes().get(quizPosition) < getTime(mp.getCurrentPosition())) {
+            questionEnd += currentBook.getIncrement();
+            quizPosition++;
+        }
+//        if (questionCounter >= questionEnd) { quizPosition++; }
+        if (questionEnd > currentBook.getQuestions().size()) {
+            questionEnd = currentBook.getQuestions().size();
+        }
+        ArrayList<String> q = new ArrayList<>(currentQuestions.subList(questionCounter, questionEnd));
         startLibraryActivity.putStringArrayListExtra("questions", q);
         startLibraryActivity.putStringArrayListExtra("answers", currentAnswers);
         startLibraryActivity.putExtra("bookTitle", formatBookTitle(bookTitle));
@@ -255,10 +279,15 @@ public class BookActivity extends AppCompatActivity {
 
             }
 
+            if (currentBook.getQuizTimes().get(quizPosition) < getTime(mp.getCurrentPosition()) || questionCounter < questionEnd) {
+                quizButton.setVisibility(View.VISIBLE);
+            } else {
+                quizButton.setVisibility(View.INVISIBLE);
+            }
+
             int id2;
             if (currentPage < 10) {
                 id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage), "drawable", getPackageName());
-                Log.e("YOOOOOOO!!!!", String.valueOf(formatBookTitle(bookTitle) + "_0" + String.valueOf(currentPage)));
             } else {
                 id2 = getResources().getIdentifier(formatBookTitle(bookTitle) + "_" + String.valueOf(currentPage), "drawable", getPackageName());
             }
@@ -329,6 +358,8 @@ public class BookActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivityIfNeeded(intent, 0);
         mp.stop();
+        questionCounter = 0;
+        questionEnd = 0;
         finish();
     }
 
@@ -339,12 +370,12 @@ public class BookActivity extends AppCompatActivity {
     }
 
 
-    public void onQuestionPressed() { to_question_page(new View(this)); }
-
-    public void to_question_page(View view) {
-        Intent intent = new Intent(this, QuizActivity.class);
-        startActivity(intent);
-    }
+//    public void onQuestionPressed() { to_question_page(new View(this)); }
+//
+//    public void to_question_page(View view) {
+//        Intent intent = new Intent(this, QuizActivity.class);
+//        startActivity(intent);
+//    }
 
     private String formatBookTitle(String title) {
         title = title.toLowerCase();

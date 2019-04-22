@@ -81,6 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@android:color/holo_purple"
         android:onClick="navigateToQuiz"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"

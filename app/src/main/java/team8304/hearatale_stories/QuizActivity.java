@@ -67,7 +67,7 @@ public class QuizActivity extends AppCompatActivity {
                     Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                     tries++;
                 } else {
-                    Toast.makeText(QuizActivity.this, "Incorrect, Next Question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QuizActivity.this, "Aww You'll get the Next One! Next Question", Toast.LENGTH_SHORT).show();
                     counter++;
                     updateQuestion();
                 }
@@ -84,7 +84,7 @@ public class QuizActivity extends AppCompatActivity {
                     Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                     tries++;
                 } else {
-                    Toast.makeText(QuizActivity.this, "Incorrect, Next Question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QuizActivity.this, "Aww You'll get the Next One! Next Question", Toast.LENGTH_SHORT).show();
                     counter++;
                     updateQuestion();
                 }
@@ -101,7 +101,7 @@ public class QuizActivity extends AppCompatActivity {
                     Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                     tries++;
                 } else {
-                    Toast.makeText(QuizActivity.this, "Incorrect, Next Question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QuizActivity.this, "Aww You'll get the Next One! Next Question", Toast.LENGTH_SHORT).show();
                     counter++;
                     updateQuestion();
                 }
@@ -118,7 +118,7 @@ public class QuizActivity extends AppCompatActivity {
                     Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                     tries++;
                 } else {
-                    Toast.makeText(QuizActivity.this, "Incorrect, Next Question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QuizActivity.this, "Aww You'll get the Next One! Next Question", Toast.LENGTH_SHORT).show();
                     counter++;
                     updateQuestion();
                 }
@@ -137,17 +137,24 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, BookActivity.class);
-        intent.putExtra("counter", counter);
+        BookActivity.questionCounter--;
+
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         mp.stop();
-        startActivityIfNeeded(intent, 0);
+        startActivity(intent);
+        finish();
     }
 
     private void updateQuestion() {
+        BookActivity.questionCounter++;
+
         if (counter == questions.size()) {
             Intent intent = new Intent(this, BookActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            startActivityIfNeeded(intent, 0);
+            BookActivity.questionCounter--;
+            System.out.println("QuestCounter:" + BookActivity.questionCounter);
+            System.out.println("QuestEnd:" + BookActivity.questionEnd);
+            startActivity(intent);
         }
         if (counter < questions.size()) {
             String[] lines = questions.get(counter).split("\\r?\\n");

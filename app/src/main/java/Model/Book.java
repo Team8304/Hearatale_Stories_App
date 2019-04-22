@@ -35,7 +35,10 @@ public class Book implements Parcelable {
     private ArrayList<String> answers;
     private int numPages;
     private ArrayList<Integer> times;
+    private ArrayList<Integer> quizTimes;
+    private int increment;
 
+    // 5 inputs
     public Book(String title, String description, Integer image, Integer dots, String color) {
         this.title = title;
         this.description = description;
@@ -46,6 +49,7 @@ public class Book implements Parcelable {
         this.answers = null;
     }
 
+    // 6 inputs
     public Book(String title, String description, Integer image, Integer dots, String color, int numPages) {
         this.title = title;
         this.description = description;
@@ -55,7 +59,9 @@ public class Book implements Parcelable {
         this.numPages = numPages;
     }
 
-    public Book(String title, String description, Integer image, Integer dots, String color, int numPages, ArrayList<Integer> times) {
+    // 9 inputs
+    public Book(String title, String description, Integer image, Integer dots, String color,
+                int numPages, ArrayList<Integer> times, ArrayList<Integer> quizTimes, int increment) {
         this.title = title;
         this.description = description;
         this.image = image;
@@ -63,17 +69,20 @@ public class Book implements Parcelable {
         this.color = color;
         this.numPages = numPages;
         this.times = times;
+        this.quizTimes = quizTimes;
+        this.increment = increment;
     }
 
-    public Book(String title, String description, Integer image, Integer dots, String color,
-                ArrayList<String> questions, ArrayList<String> answers) {
+//    7 inputs
+    public Book(String title, String description, Integer image, Integer dots, String color, int numPages,
+                ArrayList<Integer> times) {
         this.title = title;
         this.description = description;
         this.image = image;
         this.dots = dots;
         this.color = color;
-        this.questions = questions;
-        this.answers = answers;
+        this.numPages = numPages;
+        this.times = times;
     }
 
 
@@ -125,6 +134,10 @@ public class Book implements Parcelable {
         return this.times;
     }
 
+    public ArrayList<Integer> getQuizTimes() { return this.quizTimes; }
+
+    public int getIncrement() { return this.increment; }
+
     @Override
     public int describeContents() {
         return hashCode();
@@ -140,6 +153,8 @@ public class Book implements Parcelable {
         answers = in.readArrayList(ClassLoader.getSystemClassLoader());
         numPages = in.readInt();
         times = in.readArrayList(ClassLoader.getSystemClassLoader());
+        quizTimes = in.readArrayList(ClassLoader.getSystemClassLoader());
+        increment = in.readInt();
     }
 
     @Override
@@ -153,6 +168,8 @@ public class Book implements Parcelable {
         dest.writeList(answers);
         dest.writeInt(numPages);
         dest.writeList(times);
+        dest.writeList(quizTimes);
+        dest.writeInt(increment);
     }
 
     public static final Parcelable.Creator<Book> CREATOR = new Parcelable.Creator<Book>() {
