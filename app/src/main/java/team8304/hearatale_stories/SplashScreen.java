@@ -125,7 +125,7 @@ public class SplashScreen extends AppCompatActivity {
 
         String lionDesc = "A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion.";
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
-                R.drawable.greydot, "grey", 4, times));
+                R.drawable.greydot, "grey", 4, times, new ArrayList<Integer>(Arrays.asList(50, 95, 166)), 5));
 
         ArrayList<Integer> timesHen = new ArrayList<>();
         timesHen.add(25);
@@ -152,7 +152,7 @@ public class SplashScreen extends AppCompatActivity {
 
         String boywolf = "Bored watching over the sheep, a boy causes excitement by lying that a wolf threatens; when a real wolf attacks, the people think the boy’s lying and won’t come to help him.";
         mBooks.add(new Book("The Boy Who Cried Wolf", boywolf, R.drawable.boy_who_cried_wolf,
-                R.drawable.bluedot, "blue", 4, timeswolf));
+                R.drawable.bluedot, "blue", 4, timeswolf, new ArrayList<Integer>(Arrays.asList(82, 118, 274)), 5));
 
         ArrayList<Integer> times4 = new ArrayList<>();
         times4.add(5);
@@ -184,7 +184,7 @@ public class SplashScreen extends AppCompatActivity {
 
         String littlepigs = "Two pigs squander their money and build shabby houses; their smarter brother saves and works hard to build a brick house which protects them all from the big bad wolf.";
         mBooks.add(new Book("The Three Little Pigs", littlepigs, R.drawable.three_little_pigs,
-                R.drawable.greydot, "grey", 4, times5));
+                R.drawable.greydot, "grey", 4, times5, new ArrayList<Integer>(Arrays.asList(66, 140, 225, 320, 392)), 6));
 
         ArrayList<Integer> times6 = new ArrayList<>();
         times6.add(2);
