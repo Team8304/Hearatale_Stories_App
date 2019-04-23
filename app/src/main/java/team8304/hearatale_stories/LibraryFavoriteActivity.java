@@ -77,8 +77,8 @@ public class LibraryFavoriteActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-//        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses, mFileTitles, mStoryDescriptions);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, null);
+        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImages, mDots, mColors, mClasses, mFileTitles, mStoryDescriptions);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mBooks);
         recyclerView.setAdapter(adapter);
     }
 

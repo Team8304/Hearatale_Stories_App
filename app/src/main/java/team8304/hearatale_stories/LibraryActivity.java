@@ -33,7 +33,7 @@ public class LibraryActivity extends AppCompatActivity {
                 startActivityIfNeeded(intent, 0);
             }
         });
-        Button btn2 = (Button) findViewById(R.id.favoriteButton);
+        /*Button btn2 = (Button) findViewById(R.id.favoriteButton);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +41,7 @@ public class LibraryActivity extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivityIfNeeded(intent, 0);
             }
-        });
+        });*/
 
         //getImages();
         initRecyclerView();

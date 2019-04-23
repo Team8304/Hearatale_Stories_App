@@ -303,6 +303,7 @@ public class SplashScreen extends AppCompatActivity {
         ArrayList<Book> mImagines = new ArrayList<>();
 
         ArrayList<Integer> times = new ArrayList<>();
+        times.add(5);
         times.add(42);
         times.add(66);
         times.add(85);
@@ -311,7 +312,6 @@ public class SplashScreen extends AppCompatActivity {
         mImagines.add(new Book("If a Shoe Wanted to be a Car", shoe,
                 R.drawable.shoe, R.drawable.whitespace, "white", 4, times));
 
-        times.clear();
 
         ArrayList<Integer> times2 = new ArrayList<>();
         times2.add(5);

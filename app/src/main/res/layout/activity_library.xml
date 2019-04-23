@@ -33,13 +33,14 @@
             android:layout_weight="1"
             android:text="@string/imagines_string" />
 
-        <Button
+        <!--<Button
             android:id="@+id/favoriteButton"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/favorites_string" />
+            -->
 
     </LinearLayout>
 
