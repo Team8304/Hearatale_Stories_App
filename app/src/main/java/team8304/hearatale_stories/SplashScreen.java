@@ -111,21 +111,21 @@ public class SplashScreen extends AppCompatActivity {
     private ArrayList<Book> createBooks() {
         ArrayList<Book> mBooks = new ArrayList<>();
 
-        ArrayList<Integer> times = new ArrayList<>();
-        times.add(42);
-        times.add(66);
-        times.add(85);
-        times.add(4);
-        times.add(32);
-        times.add(50);
-        times.add(63);
-        times.add(95);
-        times.add(117);
-        times.add(150);
+        ArrayList<Integer> timesLion = new ArrayList<>();
+        /*timesLion.add(42);
+        timesLion.add(66);
+        timesLion.add(85);*/
+        timesLion.add(4);
+        timesLion.add(32);
+        timesLion.add(50);
+        timesLion.add(63);
+        timesLion.add(95);
+        timesLion.add(117);
+        timesLion.add(150);
 
         String lionDesc = "A lion releases a mouse, believing it’s too small and weak ever to return the favor, but when the lion is trapped in a net the mouse gnaws the threads and releases the lion.";
         mBooks.add(new Book("The Lion and the Mouse", lionDesc, R.drawable.thelionandthemouse,
-                R.drawable.greydot, "grey", 4, times, new ArrayList<Integer>(Arrays.asList(50, 95, 166)), 5));
+                R.drawable.greydot, "grey", 4, timesLion, new ArrayList<Integer>(Arrays.asList(50, 95, 166)), 5));
 
         ArrayList<Integer> timesHen = new ArrayList<>();
         timesHen.add(25);
@@ -236,7 +236,7 @@ public class SplashScreen extends AppCompatActivity {
 
         String ginger = "The Gingerbread Man speaks rudely, brags, and outruns all the people and animals until the fox’s help, is tricked and swallowed.";
         ArrayList<Integer> times2 = new ArrayList<>();
-        times2.clear();
+        //times2.clear();
         times2.add(1);
         times2.add(44);
         times2.add(93);
@@ -254,7 +254,7 @@ public class SplashScreen extends AppCompatActivity {
         mBooks.add(new Book("The Gingerbread Man", ginger, R.drawable.gingerbread_man,
                 R.drawable.greendot, "green", 4, times2, new ArrayList<Integer>(Arrays.asList(78, 140, 250, 320, 395, 465)), 5));
         String rumple = "A cruel man spins straw into gold to save a girl’s life, demanding her first child in payment; when she’s queen she saves her child by learning the man’s secret name.";
-        times.clear();
+        ArrayList<Integer> times = new ArrayList<>();
         times.add(3);
         times.add(31);
         times.add(69);
@@ -278,7 +278,7 @@ public class SplashScreen extends AppCompatActivity {
 
         String redriding = "A girl speaks to a wolf and leaves the proper path; the wolf swallows the grandmother and girl, but a huntsman kills the wolf, opens the wolf’s belly, and rescues both of them.";
         ArrayList<Integer> times3 = new ArrayList<>();
-        times3.clear();
+        //times3.clear();
         times3.add(6);
         times3.add(32);
         times3.add(56);
