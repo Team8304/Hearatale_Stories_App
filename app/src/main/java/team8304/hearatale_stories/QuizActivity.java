@@ -32,6 +32,7 @@ public class QuizActivity extends AppCompatActivity {
     private String bookTitle = "";
     private MediaPlayer mp;
     private String questionPath = "";
+    private int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +48,9 @@ public class QuizActivity extends AppCompatActivity {
         questions = getIntent().getStringArrayListExtra("questions");
         answers = getIntent().getStringArrayListExtra("answers");
         bookTitle = getIntent().getStringExtra("bookTitle");
-        // Set up screen with first question
-        mp = MediaPlayer.create(this, Uri.parse("android.resource://" + getPackageName()
-                + "/raw/" + bookTitle));
-        mp.setLooping(false);
-        mp.seekTo(0);
-        mp.setVolume(2.0f, 2.0f);
-        mp.start();
+        //mp = MediaPlayer.create(this, Uri.parse("android.resource://" + getPackageName()
+                //+ "/raw/" + bookTitle));
+
         updateQuestion();
 
         answer1.setOnClickListener(new View.OnClickListener() {
@@ -66,9 +63,11 @@ public class QuizActivity extends AppCompatActivity {
                 } else if (tries < 2) {
                     Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                     tries++;
+                    score--;
                 } else {
                     Toast.makeText(QuizActivity.this, "Aww You'll get the Next One! Next Question", Toast.LENGTH_SHORT).show();
                     counter++;
+                    score--;
                     updateQuestion();
                 }
             }
@@ -83,9 +82,11 @@ public class QuizActivity extends AppCompatActivity {
                 } else if (tries < 2) {
                     Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                     tries++;
+                    score--;
                 } else {
                     Toast.makeText(QuizActivity.this, "Aww You'll get the Next One! Next Question", Toast.LENGTH_SHORT).show();
                     counter++;
+                    score--;
                     updateQuestion();
                 }
             }
@@ -100,9 +101,11 @@ public class QuizActivity extends AppCompatActivity {
                 } else if (tries < 2) {
                     Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                     tries++;
+                    score--;
                 } else {
                     Toast.makeText(QuizActivity.this, "Aww You'll get the Next One! Next Question", Toast.LENGTH_SHORT).show();
                     counter++;
+                    score--;
                     updateQuestion();
                 }
             }
@@ -117,9 +120,11 @@ public class QuizActivity extends AppCompatActivity {
                 } else if (tries < 2) {
                     Toast.makeText(QuizActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                     tries++;
+                    score--;
                 } else {
                     Toast.makeText(QuizActivity.this, "Aww You'll get the Next One! Next Question", Toast.LENGTH_SHORT).show();
                     counter++;
+                    score--;
                     updateQuestion();
                 }
             }
@@ -147,6 +152,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private void updateQuestion() {
         BookActivity.questionCounter++;
+        score += 2;
 
         if (counter == questions.size()) {
             Intent intent = new Intent(this, BookActivity.class);
@@ -154,6 +160,7 @@ public class QuizActivity extends AppCompatActivity {
             BookActivity.questionCounter--;
             System.out.println("QuestCounter:" + BookActivity.questionCounter);
             System.out.println("QuestEnd:" + BookActivity.questionEnd);
+            mp.pause();
             startActivity(intent);
         }
         if (counter < questions.size()) {
@@ -172,14 +179,35 @@ public class QuizActivity extends AppCompatActivity {
             questionPath = "android.resource://" + getPackageName() + "/raw/" + "q" +
                     questionNum + "_" + bookTitle;
             Log.d("Test", questionPath);
-            mp.reset();
-            try {
-                mp.setDataSource(getApplicationContext(), Uri.parse(questionPath));
-                mp.prepare();
-            } catch (IOException e) {
-                e.printStackTrace();
+
+            // strips off all non-ASCII characters
+            questionNum = questionNum.replaceAll("[^\\x00-\\x7F]", "");
+
+            // erases all the ASCII control characters
+            questionNum = questionNum.replaceAll("[\\p{Cntrl}&&[^\r\n\t]]", "");
+
+            // removes non-printable characters from Unicode
+            questionNum = questionNum.replaceAll("\\p{C}", "");
+            int val = Integer.parseInt(questionNum.trim());
+            if (counter == 0) {
+                questionPath = "android.resource://" + getPackageName() + "/raw/" + "q" +
+                        questionNum + "_" + bookTitle;
+                mp = MediaPlayer.create(this, Uri.parse(questionPath));
+                mp.setLooping(false);
+                mp.seekTo(0);
+                mp.setVolume(2.0f, 2.0f);
+                mp.start();
+            } else {
+
+                mp.reset();
+                try {
+                    mp.setDataSource(getApplicationContext(), Uri.parse(questionPath));
+                    mp.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mp.start();
             }
-            mp.start();
         }
     }
 }

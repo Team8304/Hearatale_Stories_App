@@ -78,8 +78,6 @@ public class BookActivity extends AppCompatActivity {
         currentBook = getIntent().getParcelableExtra("book");
         bookTitle = currentBook.getTitle();
         storyImage = (ImageView) findViewById(R.id.storyImage);
-        //storyContent = (TextView) findViewById(R.id.storyContentTextView);
-        //storyContent.setMovementMethod(new ScrollingMovementMethod());
         playButton = (Button) findViewById(R.id.playButton);
         experienceButton = (Button) findViewById(R.id.button10);
         elapsedTimeLabel = (TextView) findViewById(R.id.elapsedTimeLabel);
@@ -135,22 +133,6 @@ public class BookActivity extends AppCompatActivity {
         if (!Arrays.asList(bookllist).contains(formatBookTitle(bookTitle))) {
             experienceButton.setVisibility(View.GONE); //SHOW the button
         }
-
-//        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        /*ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        int i;
-        try {
-            InputStream inputStream = getContentResolver().openInputStream(storyContentPath);
-            i = inputStream.read();
-            while (i != -1) {
-                byteArrayOutputStream.write(i);
-                i = inputStream.read();
-            }
-            inputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        //storyContent.setText(byteArrayOutputStream.toString());
 
         mp = MediaPlayer.create(this, bookPath);
         mp.setLooping(false);
@@ -228,8 +210,10 @@ public class BookActivity extends AppCompatActivity {
         startLibraryActivity.putStringArrayListExtra("answers", a);
         startLibraryActivity.putExtra("bookTitle", formatBookTitle(bookTitle));
         startActivityIfNeeded(startLibraryActivity, 0);
-        mp.pause();
-        playButton.setBackgroundResource(R.drawable.play_button);
+        if (mp.isPlaying()) {
+            mp.pause();
+            playButton.setBackgroundResource(R.drawable.play_button);
+        }
     }
 
     private Handler handler = new Handler() {
@@ -316,6 +300,8 @@ public class BookActivity extends AppCompatActivity {
                             "Yes",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
+                                    questionCounter = 0;
+                                    questionEnd = 0;
                                     Intent end_story_Intent = new Intent(BookActivity.this, End_Story_Page.class);
                                     Bundle get_bundle = getIntent().getExtras();
                                     int pic = get_bundle.getInt("image");
